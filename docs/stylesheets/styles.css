@@ -1,7 +1,8 @@
 body {
   background-color: #fff;
   padding:50px;
-  font: 14px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font: 14px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, 
+  "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   color:#595959;
   font-weight:400;
 }
@@ -65,7 +66,7 @@ blockquote {
   padding:0 0 0 20px;
   font-style:italic;
 }
-
+/*code style start*/
 code, pre {
   font-family:Monaco, Bitstream Vera Sans Mono, Lucida Console, Terminal, Consolas, Liberation Mono, DejaVu Sans Mono, Courier New, monospace;
   color:#333;
@@ -79,6 +80,7 @@ pre {
   border:1px solid #e5e5e5;
   overflow-x: auto;
 }
+/*code style end*/
 
 table {
   width:100%;
@@ -120,6 +122,16 @@ header ul {
   border:1px solid #e0e0e0;
   width:270px;
 }
+.menu ul {
+  list-style: none;
+  /*margin-top: 250px;*/
+  border-radius: 0;
+  border:0;
+  background-color: #fff;
+  font-size: 18px
+
+
+}
 
 header li {
   width:89px;
@@ -127,7 +139,20 @@ header li {
   border-right:1px solid #e0e0e0;
   height:40px;
 }
+.menu ul li{
+  float: left;
+  width: 250px;
+  color: #111;
+  border-right: 0;
+}
+.menu ul li a{
+  color: #111;
+  float: left;
+  font-style: inherit;
+  font-size: 17px;
+  display: block;
 
+}
 header li:first-child a {
   border-radius:5px 0 0 5px;
 }
@@ -143,7 +168,7 @@ header ul a {
   display:block;
   text-align:center;
   padding-top:6px;
-  height:34px;
+  height:40px;
 }
 
 header ul a:hover {
@@ -175,6 +200,169 @@ section {
   float:right;
   padding-bottom:50px;
 }
+
+/*robo-info start*/
+.robo-info {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  margin: auto;
+}
+
+/*robo-info-end*/
+
+
+/*Contact section start*/
+.contact .supervisor{
+   width: 500px;
+   height: 250px;
+   padding: 5px;
+   margin: auto;
+}
+.contact .supervisor p{
+  float: right;
+  width: 66%;
+  padding-left: 15px;
+}
+.contact .supervisor img{
+  width: 33%;
+  opacity: 0.85;
+}
+.contact .supervisor img:hover{
+  opacity: 1;
+  transition: 0.5s ease-in-out;
+
+
+}
+
+.contact .hend {
+  width: 500px;
+  padding: 5px;
+  margin: auto;
+  height: 250px;
+}
+.contact .hend p{
+  float: left;
+  width: 66%;
+}
+.contact .hend img{
+  float: right;
+  width: 33%;
+  opacity: 0.85;
+}
+.contact .hend img:hover{
+  opacity: 1;
+  transition: 0.5s ease-in-out;
+
+}
+
+.contact .amira {
+  width: 500px;
+  padding: 5px;
+  margin: auto;
+  height: 250px;
+}
+.contact .amira p{
+  float: right;
+  width: 66%;
+  padding-left: 15px;
+}
+.contact .amira img{
+  width: 33%;
+  opacity: 0.85;
+}
+.contact .amira img:hover{
+  opacity: 1;
+  transition: 0.5s ease-in-out;
+
+
+}
+
+.contact .nehad {
+  width: 500px;
+  padding: 5px;
+  margin: auto;
+  height: 250px;
+}
+.contact .nehad p{
+  float: left;
+  width: 66%;
+}
+.contact .nehad img{
+  width: 33%;
+  float: right;
+  opacity: 0.85;
+}
+.contact .nehad img:hover{
+  opacity: 1;
+  transition: 0.5s ease-in-out;
+
+
+}
+.contact .muhamed {
+  width: 500px;
+  padding: 5px;
+  margin: auto;
+  height: 250px;
+}
+.contact .muhamed p{
+  float: right;
+  width: 66%;
+  padding-left: 15px;
+}
+.contact .muhamed img{
+  width: 33%;
+  opacity: 0.85;
+}
+.contact .muhamed img:hover{
+  opacity: 1;
+  transition: 0.5s ease-in-out;
+
+
+}
+.contact .khaled {
+  width: 500px;
+  padding: 5px;
+  margin: auto;
+  height: 250px;
+}
+.contact .khaled p{
+  float: left;
+  width: 66%;
+}
+.contact .khaled img{
+  width: 33%;
+  float: right;
+  opacity: 0.85;
+}
+.contact .khaled img:hover{
+  opacity: 1;
+  transition: 0.5s ease-in-out;
+
+
+
+}
+.contact .mahmod {
+  width: 500px;
+  padding: 5px;
+  margin: auto;
+  height: 250px;
+}
+.contact .mahmod p{
+  float: right;
+  width: 66%;
+  padding-left: 15px;
+}
+.contact .mahmod img{
+  width: 33%;
+  opacity: 0.85;
+}
+.contact .mahmod img:hover{
+  opacity: 1;
+  transition: 0.5s ease-in-out;
+
+
+}
+/*Contact section end*/
 
 small {
   font-size:11px;
