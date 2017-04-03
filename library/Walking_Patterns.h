@@ -1,8 +1,8 @@
 #ifndef _Servo_Control_H
 #define _Servo_Control_H
-#endif
 
-#include "Adafruit_PWMServoDriver.h"
+
+#include "ZagHexa_servodriver.h"
 
 #define SERVOMIN  150
 #define SERVOMAX  550
@@ -26,13 +26,13 @@
 #define LeftRearLift     16
 #define LeftRearTibia    17
 
-Adafruit_PWMServoDriver pwm = Adafruit_PWMServoDriver(0x40);
-Adafruit_PWMServoDriver pwm1 = Adafruit_PWMServoDriver(0x41);
+ZagHexa_servodriver pwm = ZagHexa_servodriver(0x40);
+ZagHexa_servodriver pwm1 = ZagHexa_servodriver(0x41);
 
-class Servo
+class Walking_Patterns
 {
 public:
-	Servo();
+	Walking_Patterns();
 	void sitdown();
 	void standup();
 	void tripod_forward(int z_offset = 30, int y_offset = 15, int moveDelay = 100, int stepDelay = 70);
@@ -54,3 +54,4 @@ private:
 	int angle2pwm(int angle);
 };
 
+#endif

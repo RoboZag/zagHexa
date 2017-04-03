@@ -1,7 +1,7 @@
-#include "ServoControl.h"
+#include "Walking_Patterns.h"
 #include "time.h"
 	
-Servo::Servo()
+Walking_Patterns::Walking_Patterns()
 {
 	pwm.begin();
 	pwm.setPWMFreq(60);
@@ -9,7 +9,7 @@ Servo::Servo()
 	pwm1.setPWMFreq(60);
 }
 
-void Servo::set_refAngle() {
+void Walking_Patterns::set_refAngle() {
 	refAngle[RightFrontRot] = 90;
 	refAngle[RightFrontLift] = 95;
 	refAngle[RightFrontTibia] = 92;
@@ -30,13 +30,13 @@ void Servo::set_refAngle() {
 	refAngle[LeftRearTibia] = 95;
 }
 
-void Servo::init_oldAngle() {
+void Walking_Patterns::init_oldAngle() {
 	for (int i = 0; i < 18; i++) {
 		oldAngle[i] = refAngle[i];
 	}
 }
 
-void Servo::reset_angles() {
+void Walking_Patterns::reset_angles() {
 	for (int servo_num = 0; servo_num < 18; servo_num++) {
 		if (servo_num >= 0 && servo_num < 9) {
 			pwm.setPWM(servo_num, 0, angle2pwm(refAngle[servo_num]));
@@ -47,14 +47,14 @@ void Servo::reset_angles() {
 	}
 }
 
-void Servo::calibrate() {
+void Walking_Patterns::calibrate() {
 	set_refAngle();
 	init_oldAngle();
 	reset_angles();
 	delay(2000);
 }
 
-void Servo::twitch(int servo_num, int angle, int duration) {
+void Walking_Patterns::twitch(int servo_num, int angle, int duration) {
 	if (servo_num >= 0 && servo_num <= 8) {
 		newAngle[servo_num] = refAngle[servo_num] - angle;
 		if (newAngle[servo_num] >= oldAngle[servo_num]) {
@@ -92,7 +92,7 @@ void Servo::twitch(int servo_num, int angle, int duration) {
 	oldAngle[servo_num] = newAngle[servo_num];
 }
 
-void sitdown() {
+void Walking_Patterns::sitdown() {
 	for (int servo_num = 0; servo_num < 18; servo_num++) {
 		if (servo_num >= 0 && servo_num <= 8) {
 			if ((servo_num % 3) == 0) {
@@ -113,7 +113,7 @@ void sitdown() {
 	}
 }
 
-void standup() {
+void Walking_Patterns::standup() {
 	for (int servo_num = 0; servo_num < 18; servo_num++) {
 		if (servo_num >= 0 && servo_num <= 8) {
 			if ((servo_num % 3) == 0) {
@@ -134,7 +134,7 @@ void standup() {
 	}
 }
 
-void Servo::tripod_forward(int z_offset, int y_offset, int moveDelay, int stepDelay) {
+void Walking_Patterns::tripod_forward(int z_offset, int y_offset, int moveDelay, int stepDelay) {
 	twitch(RightFrontLift, z_offset, moveDelay);   //raise right front leg 
 	twitch(RightRearLift, z_offset, moveDelay);   //raise right rear leg
 	twitch(LeftMiddleLift, z_offset, moveDelay);   //raise left middle leg
@@ -173,7 +173,7 @@ void Servo::tripod_forward(int z_offset, int y_offset, int moveDelay, int stepDe
 	delay(stepDelay);
 }
 
-void Servo::tripod_backward(int z_offset, int y_offset, int moveDelay, int stepDelay) {
+void Walking_Patterns::tripod_backward(int z_offset, int y_offset, int moveDelay, int stepDelay) {
 	twitch(LeftRearLift, z_offset, moveDelay);  //raise right front leg 
 	twitch(LeftFrontLift, z_offset, moveDelay);  //raise right rear leg
 	twitch(RightMiddleLift, z_offset, moveDelay);  //raise left middle leg
@@ -212,7 +212,7 @@ void Servo::tripod_backward(int z_offset, int y_offset, int moveDelay, int stepD
 	delay(stepDelay);
 }
 
-void tripod_left() {
+void Walking_Patterns::tripod_left() {
 	twitch(RightFrontLift, 30);   //raise left front leg 
 	twitch(RightRearLift, 30);   //raise left rear leg
 	twitch(LeftMiddleLift, 30);   //raise Right middle leg
@@ -251,7 +251,7 @@ void tripod_left() {
 	delay(70);
 }
 
-void tripod_right() {
+void Walking_Patterns::tripod_right() {
 	twitch(LeftFrontLift, 30);   //raise left front leg 
 	twitch(LeftRearLift, 30);   //raise left rear leg
 	twitch(RightMiddleLift, 30);   //raise Right middle leg
@@ -290,26 +290,26 @@ void tripod_right() {
 	delay(70);
 }
 
-void Servo::delay(int seconds)
+void Walking_Patterns::delay(int seconds)
 {
 	clock_t endwait;
 	endwait = clock() + (seconds / 1000)* CLOCKS_PER_SEC;
 	while (clock() < endwait) {}
 }
 
-void Servo::delayMicroseconds(int seconds)
+void Walking_Patterns::delayMicroseconds(int seconds)
 {
 	clock_t endwait;
 	endwait = clock() + (seconds / 1000000) * CLOCKS_PER_SEC;
 	while (clock() < endwait) {}
 }
 
-long Servo::map(long x, long in_min, long in_max, long out_min, long out_max)
+long Walking_Patterns::map(long x, long in_min, long in_max, long out_min, long out_max)
 {
 	return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
 }
 
-int Servo::angle2pwm(int angle) {
+int Walking_Patterns::angle2pwm(int angle) {
 	int pulse_len = map(angle, 0, 180, SERVOMIN, SERVOMAX);
 	return pulse_len;
 }
