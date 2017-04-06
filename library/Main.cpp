@@ -1,85 +1,77 @@
 #include <Walking_Patterns.h>
+#include <ros/ros.h>
+#include <std_msgs/String.h>
 
 char data;
 int mode = 1; //mode 1 for translation, mode 2 for tending, mode 3 for up and down
-
-int main()
+Walking_Patterns walking = Walking_Patterns()
+void oncall(const std_msgs::String::ConstPtr& msg)
 {
-	start();
-	Bluetoothe();
-
-	while(1)
+	if (data == '1')
 	{
-	if (data == '1') 
-	{
-		if (mode == 1) 
-			tripod_forward();
-		if (mode == 2) 
-			tilt_forward();
-		if (mode == 3) 
-			standup();
+		if (mode == 1)
+			walking.tripod_forward();
+		if (mode == 2)
+			walking.tilt_forward();
+		if (mode == 3)
+			walking.standup();
 	}
-	if (data == '2') 
+	if (data == '2')
 	{
-		if (mode == 1) 
-			tripod_left();
-		if (mode == 2) 
-			tilt_left();
-		if (mode == 3) 
+		if (mode == 1)
+			walking.tripod_left();
+		if (mode == 2)
+			walking.tilt_left();
+		//if (mode == 3)
 			//do something 
 	}
-	if (data == '3') 
+	if (data == '3')
 	{
 		if (mode == 1)
-			tripod_backward();
+			walking.tripod_backward();
 		if (mode == 2)
-			tilt_backward();
+			walking.tilt_backward();
 		if (mode == 3)
-			sitdown();
+			walking.sitdown();
 	}
-	if (data == '4') 
+	if (data == '4')
 	{
 		if (mode == 1)
-			tripod_right();
+			walking.tripod_right();
 		if (mode == 2)
-			tilt_right();
-		if (mode == 3)
+			walking.tilt_right();
+		//if (mode == 3)
 			// do something
 	}
-	if (data == 'x') 
+	/*if (data == 'x')
 	{
 		// When x is call
 	}
-	if (data == 't') 
+	if (data == 't')
 	{
 		// When t is call
-	}
-	if (data == 'c') 
-		mode++;
-	if (data == 's') 
-		reset_angles();
-	if (mode > 3) 
-		mode = 1;
-}
-	/*
-while(1)
-	{
-	for(int i=150;i<700;i++)
-		pwm.setPWM(0, 0, i);
-	for(int i=600;i>0;i--)
-		pwm.setPWM(0, 0, i);
-
 	}*/
+	if (data == 'c')
+		mode++;
+	if (data == 's')
+		walking.reset_angles();
+	if (mode > 3)
+		mode = 1;
+	ROS.INFO("data = [%s]", msg-> data.c_str());
 }
 
 void start()
 {
 	// set the angles to the refrance 
-	calibrate();
+	walking.calibrate();
 }
 
-void Bluetoothe()
+int main(int argc, char **argv)
 {
-	// Setup Bluetoothe communcation
-
+	start();
+	ros::init(argc, argv, "servo_joy");
+	ros::NodeHandle servoHandler;
+	ros::Subscriber sub = servoHandler.subscribe("move_direction", 1000, oncall);
+	ros::spin();
+	return 0;
 }

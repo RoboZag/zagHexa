@@ -1,6 +1,7 @@
 # This will move channel 0 from min to max position repeatedly.
 from __future__ import division
-import time
+from std_msgs.msg impot String
+import rospy
 import pygame
 
 # Key mappings
@@ -26,18 +27,28 @@ j = pygame.joystick.Joystick(0)
 j.init()
 j.get_name()
 
-def processControl(event):
+def processcontrol(event):
 
-    if event.type == pygame.JOYAXISMOTION:
-# left stick
-        if event.axis == PS3_AXIS_LEFT_VERTICAL:
-        elif event.axis == PS3_AXIS_LEFT_HORIZONTAL:
+    pub = rospy.Publisher('move_direction', String, queue_size = 10 )
+    rospy.init_node('joy_servo', anonymous=True)
+    rate = rospy.Rate(10)
+    while not rospy.is_shutdown():
+        if event.type == pygame.JOYAXISMOTION:
+            if event.axis == PS3_AXIS_LEFT_VERTICAL:
+                rospy.loginfo('l')
+                pub.publisher('l')
+            elif event.axis == PS3_AXIS_LEFT_HORIZONTAL:
+                rospy.loginfo('l')
+                pub.publisher('l')
+            rate.sleep()
 
-while (True):
-    time.sleep(0.1)
-# read in joystick events
-    events = pygame.event.get()
-
-# and process them
-    for event in events:
-        processControl(event)
+if __name__ = '__main__':
+    # read in joystick events
+    try:
+        events = pygame.event.get()
+        # and process them
+        for event in events:
+            processcontrol(event)
+    except roypy.ROSInterruptException:
+            pass
+        
