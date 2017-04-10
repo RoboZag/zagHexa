@@ -374,6 +374,58 @@ section {
 }
 /*Contact section end*/
 
+/*footer start*/
+
+footer {
+  width:270px;
+  float:left;
+  position:fixed;
+  bottom:50px;
+  -webkit-font-smoothing:subpixel-antialiased;
+}
+.footer .icon{
+font-size: 30px;
+}
+.footer i {
+width: 30px;
+height: 30px;
+background-color: #475254;
+border-radius: 50%;
+line-height: 30px;
+color: #181D21;
+}
+.footer a.ex1 i:hover{
+background-color: #0029A3;
+color: #fff;
+transition: 0.5s ease-in-out;
+}
+.footer a.ex2 i:hover{
+background-color: #0066ff;
+color: #fff;
+transition: 0.5s ease-in-out;
+}
+.footer a.ex3 i:hover{
+background-color: #cc0000;
+color: #fff;
+transition: 0.5s ease-in-out;
+}
+.footer a.ex4 i:hover{
+background-color: #cc0000;
+color: #fff;
+transition: 0.5s ease-in-out;
+}
+.footer a.ex5 i:hover{
+background-color: #3366cc;
+color: #fff;
+transition: 0.5s ease-in-out;
+}
+.footer a.ex6 i:hover{
+background-color: #ff3300;
+color: #fff;
+transition: 0.5s ease-in-out;
+}
+/*footer end*/
+
 small {
   font-size:11px;
 }
@@ -385,13 +437,7 @@ hr {
   margin:0 0 20px;
 }
 
-footer {
-  width:270px;
-  float:left;
-  position:fixed;
-  bottom:50px;
-  -webkit-font-smoothing:subpixel-antialiased;
-}
+
 
 @media print, screen and (max-width: 960px) {
 
