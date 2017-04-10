@@ -6,17 +6,31 @@
       <title>ZagHexa Robot Project Documentation</title>
       
       <!-- Bootstrap -->
-      <link href="stylesheets/bootstrap.min.css" rel="stylesheet">
+      <!-- <link href="{{ site.baseurl }}/stylesheets/bootstrap.min.css" rel="stylesheet"> -->
       
+  	<link rel="stylesheet" href="{{ site.baseurl }}/css/main.css" media="screen">
+	  
       <!-- Css-->
-      <link rel="stylesheet" href="stylesheets/styles.css">
-      <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+      <link rel="stylesheet" href="{{ site.baseurl }}/stylesheets/styles.css">
+      <link rel="stylesheet" href="{{ site.baseurl }}/stylesheets/pygment_trac.css">
       <meta name="viewport" content="width=device-width">
       
       <!--[if lt IE 9]>
       <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
       <![endif]-->
     
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+    </script>
+    <script type="text/javascript" async
+      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML">
+    </script>
+ 
+     <!-- {% if page.use_math %}
+           {% include mathjax_support %}
+         {% endif %} -->
+	
+	
     </head>
     <body>
       <div class="wrapper">
@@ -24,6 +38,11 @@
             <h1>ZagHexa Robot</h1>
             <p>ZagHexa Robot Project Documentation</p>
             <p class="view"><a href="https://github.com/RoboZag/zagHexa">View the Project on GitHub <small>RoboZag/zagHexa</small></a></p>
+            <p class="view"><a href="tutorials/">Tutorials</a></p>
+            <p class="view"><a href="tutorials/">Tutorials</a></p>
+			
+			
+			
             <ul>
                 <li><a href="https://github.com/RoboZag/zagHexa/zipball/master">Download <strong>ZIP File</strong></a></li>
                 <li><a href="https://github.com/RoboZag/zagHexa/tarball/master">Download <strong>TAR Ball</strong></a></li>
