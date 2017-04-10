@@ -122,14 +122,19 @@ header ul {
   border:1px solid #e0e0e0;
   width:270px;
 }
-.menu ul {
+.wrapper .menu{
+  padding-top: 200px;
+  width:270px;
+  float:left;
+  position:fixed;
+}
+.wrapper .menu ul {
   list-style: none;
-  /*margin-top: 250px;*/
   border-radius: 0;
   border:0;
   background-color: #fff;
-  font-size: 18px
-
+  font-size: 18px;
+  
 
 }
 
@@ -140,14 +145,14 @@ header li {
   height:40px;
 }
 .menu ul li{
-  float: left;
+  
   width: 250px;
   color: #111;
   border-right: 0;
 }
-.menu ul li a{
+.wrapper .menu ul li a{
   color: #111;
-  float: left;
+  /*float: left;*/
   font-style: inherit;
   font-size: 17px;
   display: block;
