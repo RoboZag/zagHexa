@@ -122,23 +122,14 @@ header ul {
   border:1px solid #e0e0e0;
   width:270px;
 }
-.intro p{
-  font-size: 16px;
-
-}
-.wrapper .menu{
-  padding-top: 200px;
-  width:270px;
-  float:left;
-  position:fixed;
-}
-.wrapper .menu ul {
+.menu ul {
   list-style: none;
+  /*margin-top: 250px;*/
   border-radius: 0;
   border:0;
   background-color: #fff;
-  font-size: 18px;
-  
+  font-size: 18px
+
 
 }
 
@@ -149,18 +140,17 @@ header li {
   height:40px;
 }
 .menu ul li{
-  
+  float: left;
   width: 250px;
   color: #111;
   border-right: 0;
 }
-.wrapper .menu ul li a{
+.menu ul li a{
   color: #111;
-  /*float: left;*/
+  float: left;
   font-style: inherit;
   font-size: 17px;
   display: block;
-  text-decoration:none;
 
 }
 header li:first-child a {
@@ -374,58 +364,6 @@ section {
 }
 /*Contact section end*/
 
-/*footer start*/
-
-footer {
-  width:270px;
-  float:left;
-  position:fixed;
-  bottom:50px;
-  -webkit-font-smoothing:subpixel-antialiased;
-}
-.footer .icon{
-font-size: 30px;
-}
-.footer i {
-width: 30px;
-height: 30px;
-background-color: #475254;
-border-radius: 50%;
-line-height: 30px;
-color: #181D21;
-}
-.footer a.ex1 i:hover{
-background-color: #0029A3;
-color: #fff;
-transition: 0.5s ease-in-out;
-}
-.footer a.ex2 i:hover{
-background-color: #0066ff;
-color: #fff;
-transition: 0.5s ease-in-out;
-}
-.footer a.ex3 i:hover{
-background-color: #cc0000;
-color: #fff;
-transition: 0.5s ease-in-out;
-}
-.footer a.ex4 i:hover{
-background-color: #cc0000;
-color: #fff;
-transition: 0.5s ease-in-out;
-}
-.footer a.ex5 i:hover{
-background-color: #3366cc;
-color: #fff;
-transition: 0.5s ease-in-out;
-}
-.footer a.ex6 i:hover{
-background-color: #ff3300;
-color: #fff;
-transition: 0.5s ease-in-out;
-}
-/*footer end*/
-
 small {
   font-size:11px;
 }
@@ -437,7 +375,13 @@ hr {
   margin:0 0 20px;
 }
 
-
+footer {
+  width:270px;
+  float:left;
+  position:fixed;
+  bottom:50px;
+  -webkit-font-smoothing:subpixel-antialiased;
+}
 
 @media print, screen and (max-width: 960px) {
 

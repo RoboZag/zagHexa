@@ -1,126 +1,82 @@
 <!doctype html>
 <html>
-	<head>
-	  	<meta charset="utf-8">
-	    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-	    <title>ZagHexa Robot Project Documentation</title>
-	    
-	    <!-- Bootstrap -->
-	    <link href="stylesheets/bootstrap.min.css" rel="stylesheet">
-	    
-	    <!-- Css-->
-	    <link rel="stylesheet" href="stylesheets/styles.css">
-	    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-	    <meta name="viewport" content="width=device-width">
+  <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="chrome=1">
+      <title>ZagHexa Robot Project Documentation</title>
+      <link rel="shortcut icon" href="img/favicon%20(5).ico" type="image/x-icon" />
+      
+      <!-- Bootstrap -->
+      <link href="stylesheets/bootstrap.min.css" rel="stylesheet">
+      
+      <!-- Css-->
+      <link rel="stylesheet" href="stylesheets/font-awesome.min.css">
+      <link rel="stylesheet" href="stylesheets/styles.css">
+      <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+      <meta name="viewport" content="width=device-width">
 	    
 	    <!--[if lt IE 9]>
-	    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-	    
-	    <![endif]-->
-  	</head>
-  	<body>
+        <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+  	
+  </head>
+  <body>
 	    <div class="wrapper">
 	      	<header>
 		        <h1>ZagHexa Robot Test</h1>
 		        <p>ZagHexa Robot Project Documentation</p>
-		        <p class="view"><a href="https://github.com/RoboZag/zagHexa">View the Project on GitHub <small>RoboZag/zagHexa</small></a></p>
+		        <p class="view"><a href="https://github.com/RoboZag/zagHexa">View the Project on GitHub <small>RoboZag/zagHexa</small></a>
+		        </p>
 		        <ul>
 		          	<li><a href="https://github.com/RoboZag/zagHexa/zipball/master">Download <strong>ZIP File</strong></a></li>
 		          	<li><a href="https://github.com/RoboZag/zagHexa/tarball/master">Download <strong>TAR Ball</strong></a></li>
 		          	<li><a href="https://github.com/RoboZag/zagHexa">Fork On <strong>GitHub</strong></a></li>
 		        </ul>
-		        <div class="menu">
+		        
+	      	</header>
+	      	<div class="menu">
 			      	<ul>
-				        <li><a href="http://ros.org"><strong>Assembly Guide & Tutorials</strong></a></li>
-				        	<!--<ul class="dropdown-menu">
-				        		<li>Assembly</li>
-				        		<li>Software Tutorials</li>
-				        		<li>Hardware Tutorials</li>
-				        		<li>Assembly</li>
-				        	</ul>-->
-				        
-				        <li><a href="http://wiki.ros.org"><strong>Hardware</strong></a></li>
-				        <li><a href="http://wiki.ros.org"><strong>Software</strong></a></li>
-				        <li><a href="http://wiki.ros.org"><strong>Contacts</strong></a></li>
+				        <li><a href="index.html"><strong>Home</strong></a></li>
+				        <li><a href="tutorials/index.html"><strong>Tutorials</strong></a></li>
+				        <li><a href="about/index.html"><strong>About us</strong></a></li>
+				        <li><a href="software/index.html"><strong>Software</strong></a></li>
+				        <li><a href="assembly/index.html"><strong>Assembly Guide</strong></a></li>
 				    </ul>
 		    </div>
-	      	</header>
-	      	
-	      	
-	      	<section>
-		        <h1>ZagHexa Robot Project Documentation</h1>
-
-		        <p><em>View the <a href="http://github.github.com/github-flavored-markdown/sample_content.html">source of this content</a>.</em></p>
-		        <!--
-			        <p>Let's get the whole "linebreak" thing out of the way. The next paragraph contains two phrases separated by a single newline character:</p>
-
-			        <p>Roses are red<br>
-			        Violets are blue</p>
-
-			        <p>The next paragraph has the same phrases, but now they are separated by two spaces and a newline character:</p>
-
-			        <p>Roses are red<br><br>
-			        Violets are blue</p>
-			        
-			        <p>Oh, and one thing I cannot stand is the mangling of words with multiple underscores in them like perform_complicated_task or do_this_and_do_that_and_another_thing.</p>
-		         -->
-		         <div class="intro">
-			        <h2><b>Overview</b></h2>
-
-			        <p> hexapod robot is a mechanical vehicle that walks on six legs. Since a robot can be statically stable on three or more legs, a hexapod robot has a great deal of flexibility in how it can move. If legs become disabled, the robot may still be able to walk.<br> Furthermore, not all of the robot's legs are needed for stability; other legs are free to reach new foot placements or manipulate a payload.<br>Many hexapod robots are biologically inspired by Hexapoda locomotion. Hexapods may be used to test biological theories about insect locomotion, motor control, and neurobiology.
-					</p>
-
-					<img src="img/IMG-20170208-WA0011.jpg">
+		   
+		    <section>
+				<div class="intro">
+					<h2><b>Quick Overview</b></h2>
+					<p> ZagHexa is a hexapod robot with 3DOF each leg. <br>It can walk in any direction "translation", turn in place "rotation", or any combination of the two. <br> The leg lift and the ride height is adjustable as well.<br> We are using 18 Servos and controlled with embedded pc and ROS "Robot Operating System" to get our robot up and running and generate the walking pattern pulses precisely.<br> We are using a wireless PS2 controller & mobile application to teleoperate our robot. <br> It can help in search and rescue operations and it can be a learning platform for teaching robotics cources, robot operating system and applying the concepts. <br> It partcipated in Egyptian Universities Competitions and accepted in NTRA annual graduation projects compaign.</p>
+					<img src="img/zagHexa.jpg" width="500" height="500">
 				</div>
+
 <!--robo-info start-->
 				<div class="robo-info">
 				
-					<h2>Robotic Specifications</h2>
+					<h2>Robot Specifications</h2>
 					<ul>
-						<li>Number of legs = 6</li>
+						<li>Number of legs: 6</li>
+						<li>Degrees of freedom per leg: 3</li>
+						<li>Total Degrees of freedom: 18</li>
+						<li>Servo motion control: local closed loop</li>
+						<li>Software Architecture: open source base on ROS</li>
+					</ul>
+					<h2>Robot Features</h2>
+					<ul>
+						<li>Standard DYNAMIXEL AX-12A or Ultra Fast DYNAMIXEL AX-18A Series Robot Servos</li>
 						<li>Degrees of freedom per leg = 3</li>
-						<li>Servo motion control = local closed loop</li>
-						<li>Steering = Differential</li>
+						<li>Arduino-Compatible ArbotiX Robocontroller</li>
+						<li>Open Source Software</li>
+						<li>Advanced Inverse Kinematics Driven Gait Engine</li>
+						<li>6 Different Walking Gaits Available</li>
+						<li>Extended Run Time with High Quality 4500mAh LiPo Battery</li>
+						<li>Rugged Full Metal Frame Construction</li>
 					</ul>
 				</div>
 <!--robo-info end-->
 
-<!-- Contact start-->
-				<div class="contact">
-					<h2>Supervisor & Team Members</h2>
-					
-					<div class="supervisor">
-						<p>You see, that was formatted as code because it's been indented by four spaces<br>You see, that was formatted as code because it's been indented by four spaces<br>You see, that was formatted as code because it's been indented by four spaces</p>
-						<img src="img/meSmall.jpg">
-						
-					</div>
-					<div class="hend">
-						<p>You see, that was formatted as code because it's been indented by four spaces<br>You see, that was formatted as code because it's been indented by four spaces<br>You see, that was formatted as code because it's been indented by four spaces</p>
-						<img src="img/hend.png">
-						
-					</div>
-					<div class="amira">
-						<p>You see, that was formatted as code because it's been indented by four spaces<br>You see, that was formatted as code because it's been indented by four spaces<br>You see, that was formatted as code because it's been indented by four spaces</p>
-						<img src="img/amira.jpg">						
-					</div>
-					<div class="nehad">
-						<p>You see, that was formatted as code because it's been indented by four spaces<br>You see, that was formatted as code because it's been indented by four spaces<br>You see, that was formatted as code because it's been indented by four spaces</p>
-						<img src="img/nehad.jpg">
-					</div>
-					<div class="muhamed">
-						<p>You see, that was formatted as code because it's been indented by four spaces<br>You see, that was formatted as code because it's been indented by four spaces<br>You see, that was formatted as code because it's been indented by four spaces</p>
-						<img src="img/muhamed.jpg">
-					</div>
-					<div class="khaled">
-						<p>You see, that was formatted as code because it's been indented by four spaces<br>You see, that was formatted as code because it's been indented by four spaces<br>You see, that was formatted as code because it's been indented by four spaces</p>
-						<img src="img/khaled.jpg">
-					</div>
-					<div class="mahmod">
-						<p>You see, that was formatted as code because it's been indented by four spaces<br>You see, that was formatted as code because it's been indented by four spaces<br>You see, that was formatted as code because it's been indented by four spaces</p>
-						<img src="img/mahmod.jpg">
-					</div>
-				</div>
-<!--Contact end-->
+
 <!--
 		        <h2>A bit of the GitHub spice</h2>
 
@@ -285,13 +241,32 @@
 		        <a href="http://search.yahoo.com/" title="Yahoo Search">Yahoo</a> or <a href="http://search.msn.com/" title="MSN Search">MSN</a>.</p>
 -->
 	    	</section>
+	    	
 	      	<footer>
 		        <p>This project is maintained by <a href="https://github.com/mnourgwad"><small>Dr.Ing.</small>Mohammed Nour</a></p>
 		        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+		        <div class="icon">
+                    <a class="ex1" href="https://drive.google.com/drive/folders/0B8bYDipm8_AAc0h3N0lIUFJUbEE">
+                        <i class="fa fa-google-plus"></i>
+                    </a>
+                    <a class="ex2" href="https://github.com/RoboZag/zagHexa">
+                        <i class="fa fa-github"></i>
+                    </a>
+                    
+                    <a class="ex4" href="https://www.youtube.com/channel/UCsCPxTiffuTVV5go8i7QMOA">
+                        <i class="fa fa-youtube"></i>
+                    </a>
+                    <a class="ex5" href="https://goo.gl/LZlebV">
+                        <i class="fa fa-linkedin"></i>
+                    </a>
+                    <a class="ex3" href="https://plus.google.com">
+                        <i class="fa fa-google-plus-official"></i>
+                    </a>
+            	</div>
 	      	</footer>
 	    </div>
 	    <script src="javascripts/scale.fix.js"></script>
 	    <script src="javascripts/jquery-2.2.0.min.js"></script>
 	    <script src="javascripts/bootstrap.min.js"></script>
 	</body>
-</html>
+</html> 
