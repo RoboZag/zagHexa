@@ -39,14 +39,14 @@ public:
 	void tripod_backward(int z_offset = 30, int y_offset = 15, int moveDelay = 100, int stepDelay = 70);
 	void tripod_left();
 	void tripod_right();
+	void calibrate();
+	void reset_angles();
 private:
 	int refAngle[18];
 	int oldAngle[18];
 	int newAngle[18];
 	void set_refAngle();
 	void init_oldAngle();
-	void reset_angles();
-	void calibrate();
 	void twitch(int servo_num, int angle, int duration = 200);
 	void delay(int seconds);
 	void delayMicroseconds(int seconds);

@@ -39,7 +39,7 @@
 
 class ZagHexa_servodriver {
  public:
-  ZagHexa(uint8_t addr = 0x40);
+  ZagHexa_servodriver(uint8_t addr = 0x40);
   void begin(void);
   void reset(void);
   void setPWMFreq(float freq);
@@ -49,7 +49,7 @@ class ZagHexa_servodriver {
  private:
   uint8_t _i2caddr;
   int fd;
-  int min(int val1, int val2)
+  int min(int val1, int val2);
   void delay(int seconds);
 };
 
