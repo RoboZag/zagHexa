@@ -1,12 +1,24 @@
+/***************************************************
+  This is a library for Generating a Walking Patterns for Hexa Robot 
+  using FK.
+
+  These use Forward Kinematics to move the Robot the all Directions, 18 DOF - 3 Servo each Leg.
+
+  Written by Mahmoud M. Awadallh & M. Alaa Al-Shafe'y for CES Graguation Project "ZagHexa".
+  all text above must be included in any redistribution
+****************************************************/
+
 #ifndef _Servo_Control_H
 #define _Servo_Control_H
 
-
+// Communication Library
 #include "ZagHexa_servodriver.h"
 
+// Servo Max & Min Level that give 0 and 180 degree 
 #define SERVOMIN  150
 #define SERVOMAX  550
 
+// Leges sequence in the controller 
 #define RightFrontRot    0
 #define RightFrontLift   1
 #define RightFrontTibia  2
@@ -26,8 +38,9 @@
 #define LeftRearLift     16
 #define LeftRearTibia    17
 
-ZagHexa_servodriver pwm = ZagHexa_servodriver(0x40);
-ZagHexa_servodriver pwm1 = ZagHexa_servodriver(0x41);
+// Create an object to each driver and set their addresses 
+ZagHexa_servodriver controller1 = ZagHexa_servodriver(0x40);
+ZagHexa_servodriver controller2 = ZagHexa_servodriver(0x41);
 
 class Walking_Patterns
 {
