@@ -48,3 +48,6 @@ qtcreator-*
 # Catkin custom files
 CATKIN_IGNORE
 docs/about/about.html
+
+#nasty windows file
+Thumbs.db

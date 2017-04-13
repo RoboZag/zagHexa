@@ -1,19 +1,8 @@
-/***************************************************
-  This is a library for 16-channel PWM Servo driver PCA9685
-
-  These displays use I2C from wiringPiI2C library to communicate,
-  2 pins are required to
-  interface. For Raspberry Pi 3 Modle B, thats SCL ->Pin 5, SDA -> Pin 3
-
-  Written by Mahmoud M. Awadallh for CES Graguation Project "ZagHexa".
-  all text above must be included in any redistribution
-****************************************************/
-
-#include <ZagHexa_servodriver.h> // Header file 
-#include <wiringPiI2C.h> // for wiringPiWrite/ReadReg8/setup
-#include <stdint.h> // for uint8_t
-#include <iostream> // for cout
-#include <time.h> // for clock_t, CLOCKS_PER_SEC and clock()
+#include <ZagHexa_servodriver.h>
+#include <wiringPiI2C.h> 		// for wiringPiWrite/ReadReg8/setup
+#include <stdint.h> 			// for uint8_t
+#include <iostream> 			// for cout
+#include <time.h> 				// for clock_t, CLOCKS_PER_SEC and clock()
 //#include <math.h> 
 
 

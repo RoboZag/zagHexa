@@ -1,12 +1,3 @@
-/***************************************************
-This is a library for Generating a Walking Patterns for Hexa Robot
-using FK using 2-PCA9685 Controller.
-
-These use Forward Kinematics to move the Robot the all Directions, 18 DOF - 3 Servo each Leg.
-
-Written by Mahmoud M. Awadallh & Muhammed Alaa for CES Graguation Project "ZagHexa".
-all text above must be included in any redistribution
-****************************************************/
 #include "Walking_Patterns.h"
 #include "time.h"
 	
