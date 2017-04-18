@@ -1,0 +1,16 @@
+%A Survey and Comparison of Commercial and Open-Source Robotic Simulator Software
+\section{ROS}
+\emph{Robot Operating System} (ROS) provides operating system--like tools (e.g., message-passing between processes) and package tools (e.g., create and find ROS packages). ROS is based on nodes, messages, topics, and services. Nodes are processes or software modules in the control code (e.g., a camera node could process all of the visual data). Nodes can communicate with other nodes by passing simple messages (or data structures). Nodes publish and subscribe to a single (or multiple) topics. ROS supports TCP/IP and UDP for message passing; a special type of message, called service, consists of a pair of messages, one for request and the other for reply.
+ The ROS Master keeps track of all services and topics; it also provides node registration and a parameter server which allows nodes to store and retrieve parameters. The ROS Master server and tools are configured with XML files.
+
+
+ROS has several client libraries (e.g., control programs) available such as rosccp (C++ library), rospy (Python library), rosoct (Octave library), roslisp (LISP library), rosjava (Java library), and roslua (Lua library). Each library uses a set of ROS tools to facilitate the development of new clients in ROS. The client libraries are organized into packages. Packages (organized software modules) contain ROS nodes, a ROS-independent library, a dataset, configuration files, a third-party software, and/or other useful modules.
+Packages allow for code reuse but stacks, a collection of packages, allow for code sharing.
+
+
+The ROS tools allow a easy usage of packages and stacks and are divided in to three categories: file system, command-line, and logging.
+The common file system tools allow users to perform tasks in ROS’s file system such as rospack, roscd, rosmake, and roscreate. The common command-line tools such as roscore, rosrun, roslaunch, and rosservice allow users to execute, initialize, or provide details about nodes and services. The logging tools allows users to debug ROS packages and stacks such as rosbag which records and playbacks of ROS topics. There are several visual command tools such as rxbag and rxbag plugins that are used for visualizing the contents that are stored by the rosbag command. Rviz is a 3D visualization environment for robots using ROS and allows rxbag plugins. Rviz has a graphical user interface to allow users to configure and modify objects and the environment.
+The advantage of ROS is code reuse and sharing. Code sharing allows everyone to have a common basis and helps with replicating and testing the source code. By using the ROS tools, implementation is efficient and simplifies some of the complex tasks needed to execute the code but this creates a dependency to ROS and reduces the mobility of the code. ROS can connect to real robots and use simulated robots in ROS’s Gazebo, Stage, and Rviz. However, control code written for Player’s Stage and Gazebo will have to be modified to work in Gazebo/Stage under ROS.
+
+
+TODO!: figure for ROS component interconnections
