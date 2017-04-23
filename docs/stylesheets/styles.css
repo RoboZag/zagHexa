@@ -109,7 +109,7 @@ img {
 header {
   width:270px;
   float:left;
-  position:fixed;
+  position:relative;
   -webkit-font-smoothing:subpixel-antialiased;
 }
 
@@ -136,12 +136,12 @@ header li {
 
 }
 .menu{
-  padding-top: 200px;
+  
   width:270px;
-  float:left;
-  position:fixed;
+  
+  position:absolute;
   overflow: hidden;
-  top:50px;
+  top:250px;
   -webkit-font-smoothing:subpixel-antialiased;
 }
 .menu ul {
@@ -162,23 +162,24 @@ header li {
   
   /*float: left;*/
   font-style: inherit;
-  font-size: 22px;
+  font-size: 20px;
   font-weight:500;
   display: block;
+  color: #333;
   text-decoration:none;
   transition: 1.2s ease;
   font-family: "Ubuntu","Muli","Helvetica","Tahoma","Geneva","Arial",sans-serif;
 
 }
 .menu ul li a:hover {
-    background-color: #f4f4f4;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    line-height: 32px;
-    height: 32px;
-    padding-left: 7px;
-    border-radius: 4px;
+  background-color: #f4f4f4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 32px;
+  height: 32px;
+  padding-left: 7px;
+  border-radius: 4px;
    
 }
 header li:first-child a {
@@ -240,6 +241,8 @@ section {
 
 
 /*Contact section start*/
+/*
+
 .contact .supervisor{
    width: 500px;
    height: 250px;
@@ -251,13 +254,7 @@ section {
   width: 66%;
   padding-left: 15px;
 }
-.contact .supervisor img{
-  width: 33%;
-  opacity: 0.85;
-}
-.contact .supervisor img:hover{
-  opacity: 1;
-  transition: 0.5s ease-in-out;
+
 
 
 }
@@ -272,14 +269,7 @@ section {
   float: left;
   width: 66%;
 }
-.contact .hend img{
-  float: right;
-  width: 33%;
-  opacity: 0.85;
-}
-.contact .hend img:hover{
-  opacity: 1;
-  transition: 0.5s ease-in-out;
+
 
 
 }
@@ -295,13 +285,7 @@ section {
   width: 66%;
   padding-left: 15px;
 }
-.contact .amira img{
-  width: 33%;
-  opacity: 0.85;
-}
-.contact .amira img:hover{
-  opacity: 1;
-  transition: 0.5s ease-in-out;
+ 
 
 
 }
@@ -315,15 +299,6 @@ section {
 .contact .nehad p{
   float: left;
   width: 66%;
-}
-.contact .nehad img{
-  width: 33%;
-  float: right;
-  opacity: 0.85;
-}
-.contact .nehad img:hover{
-  opacity: 1;
-  transition: 0.5s ease-in-out;
 
 
 }
@@ -390,7 +365,7 @@ section {
   transition: 0.5s ease-in-out;
 
 
-}
+}*/
 /*Contact section end*/
 
 /*tutorial start*/
@@ -452,6 +427,7 @@ footer {
   float:left;
   position:fixed;
   bottom:50px;
+  
   -webkit-font-smoothing:subpixel-antialiased;
 }
 
@@ -549,12 +525,13 @@ hr {
     right:50px;
     top:52px;
   }
-  div.menu ul {
+  
+  footer ul {
     position:absolute;
     right:50px;
-    top:52px;
+    top:252px;
   }
-  footer ul {
+  div.menu ul {
     position:absolute;
     right:50px;
     top:52px;
