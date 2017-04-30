@@ -1,0 +1,5 @@
+http://code.runnable.com/VXjZZimG7Nk0smWF/simple-tcp-server-code-for-c%2B%2B-and-socket
+
+http://www.bogotobogo.com/cplusplus/sockets_server_client.php
+https://www.codeproject.com/Articles/412511/Simple-client-server-network-using-Cplusplus-and-W
+http://www.linuxhowtos.org/C_C++/socket.htm
