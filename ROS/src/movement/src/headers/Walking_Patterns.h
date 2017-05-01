@@ -1,49 +1,12 @@
-/*****************************************************************************
- Walking Patterns - ZagHexa
- ----------------------------
-  
-  This is a library for Generating a Walking Patterns for Hexa Robot 
-  using FK.
-
-  These use Forward Kinematics to move the Robot the all Directions, 18 DOF-
-  3 Servo each Leg.
-  
-  Project: CES Graguation Project ZagHexa https://robozag.github.io/zagHexa/
-  Author: 
-  	Mahmoud M. Awadallh  	mahmoud.elsyed21@gmail.com
-  	M. Alaa Al-Shafe'y  	3bqar10@gmail.com
-  Version: 1.0
-  Date: 2017
-------------------------------------------------------------------------------
-Copyright (c) 2017 ZagHexa, Dr.Ing. Mohammed Nour Abdelgwad Ahmed
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-*****************************************************************************/
-
 #ifndef _Servo_Control_H
 #define _Servo_Control_H
 
-// Communication Library
+
 #include "ZagHexa_servodriver.h"
 
-// Servo Max & Min Level that give 0 and 180 degree 
 #define SERVOMIN  150
 #define SERVOMAX  550
 
-// Leges sequence in the controller 
 #define RightFrontRot    0
 #define RightFrontLift   1
 #define RightFrontTibia  2
@@ -63,9 +26,8 @@ SOFTWARE.
 #define LeftRearLift     16
 #define LeftRearTibia    17
 
-// Create an object to each driver and set their addresses 
-ZagHexa_servodriver controller1 = ZagHexa_servodriver(0x40);
-ZagHexa_servodriver controller2 = ZagHexa_servodriver(0x41);
+ZagHexa_servodriver pwm = ZagHexa_servodriver(0x40);
+ZagHexa_servodriver pwm1 = ZagHexa_servodriver(0x41);
 
 class Walking_Patterns
 {

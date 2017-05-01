@@ -2,16 +2,14 @@
 #include "time.h"
 	
 Walking_Patterns::Walking_Patterns()
-{ 
-	/* Set Up the communication and Frequencies of the controllers */
-	controller1.begin();
-	controller1.setPWMFreq(60);
-	controller2.begin();
-	controller2.setPWMFreq(60);
+{
+	pwm.begin();
+	pwm.setPWMFreq(60);
+	pwm1.begin();
+	pwm1.setPWMFreq(60);
 }
 
 void Walking_Patterns::set_refAngle() {
-	/* This is our Robot 0 location to stand up properly */
 	refAngle[RightFrontRot] = 90;
 	refAngle[RightFrontLift] = 95;
 	refAngle[RightFrontTibia] = 92;
@@ -33,27 +31,23 @@ void Walking_Patterns::set_refAngle() {
 }
 
 void Walking_Patterns::init_oldAngle() {
-	/* */
 	for (int i = 0; i < 18; i++) {
 		oldAngle[i] = refAngle[i];
 	}
 }
 
 void Walking_Patterns::reset_angles() {
-	/* Give all the servos the reference angle */
 	for (int servo_num = 0; servo_num < 18; servo_num++) {
-		// First Controller 
 		if (servo_num >= 0 && servo_num < 9) {
-			controller1.setPWM(servo_num, 0, angle2pwm(refAngle[servo_num]));
-		}// Second Controller
+			pwm.setPWM(servo_num, 0, angle2pwm(refAngle[servo_num]));
+		}
 		else {
-			controller2.setPWM((servo_num - 9), 0, angle2pwm(refAngle[servo_num]));
+			pwm1.setPWM((servo_num - 9), 0, angle2pwm(refAngle[servo_num]));
 		}
 	}
 }
 
 void Walking_Patterns::calibrate() {
-	/* */
 	set_refAngle();
 	init_oldAngle();
 	reset_angles();
@@ -61,62 +55,59 @@ void Walking_Patterns::calibrate() {
 }
 
 void Walking_Patterns::twitch(int servo_num, int angle, int duration) {
-	/* Give the angle to each servo */
 	if (servo_num >= 0 && servo_num <= 8) {
-		newAngle[servo_num] = refAngle[servo_num] - angle; // How much is the change from the last one 
-		// If the change is larger than the current position for the first controller
+		newAngle[servo_num] = refAngle[servo_num] - angle;
 		if (newAngle[servo_num] >= oldAngle[servo_num]) {
 			for (int i = oldAngle[servo_num]; i <= newAngle[servo_num]; i++) {
-				controller1.setPWM(servo_num, 0, angle2pwm(i));
-				delayMicroseconds(duration);
-				
-			}
-		}// If it less 
-		else {
-			for (int i = oldAngle[servo_num]; i >= newAngle[servo_num]; i--) {
-				controller1.setPWM(servo_num, 0, angle2pwm(i));
-				delayMicroseconds(duration);
-				
-			}
-		}
-	}// For the Second 
-	else if (servo_num >= 9 && servo_num <= 17) {
-		newAngle[servo_num] = refAngle[servo_num] + angle;
-		if (newAngle[servo_num] >= oldAngle[servo_num]) {
-			for (int i = oldAngle[servo_num]; i <= newAngle[servo_num]; i++) {
-				controller2.setPWM((servo_num - 9), 0, angle2pwm(i));
+				pwm.setPWM(servo_num, 0, angle2pwm(i));
 				delayMicroseconds(duration);
 				
 			}
 		}
 		else {
 			for (int i = oldAngle[servo_num]; i >= newAngle[servo_num]; i--) {
-				controller2.setPWM((servo_num - 9), 0, angle2pwm(i));
+				pwm.setPWM(servo_num, 0, angle2pwm(i));
 				delayMicroseconds(duration);
 				
 			}
 		}
 	}
-	// Set the current position as the old one for the next time 
-	oldAngle[servo_num] = newAngle[servo_num]; 
+	else if (servo_num >= 9 && servo_num <= 17) {
+		newAngle[servo_num] = refAngle[servo_num] + angle;
+		if (newAngle[servo_num] >= oldAngle[servo_num]) {
+			for (int i = oldAngle[servo_num]; i <= newAngle[servo_num]; i++) {
+				pwm1.setPWM((servo_num - 9), 0, angle2pwm(i));
+				delayMicroseconds(duration);
+				
+			}
+		}
+		else {
+			for (int i = oldAngle[servo_num]; i >= newAngle[servo_num]; i--) {
+				pwm1.setPWM((servo_num - 9), 0, angle2pwm(i));
+				delayMicroseconds(duration);
+				
+			}
+		}
+	}
+	oldAngle[servo_num] = newAngle[servo_num];
 }
 
 void Walking_Patterns::sitdown() {
 	for (int servo_num = 0; servo_num < 18; servo_num++) {
 		if (servo_num >= 0 && servo_num <= 8) {
 			if ((servo_num % 3) == 0) {
-				controller1.setPWM(servo_num, 0, angle2pwm(refAngle[servo_num]));
+				pwm.setPWM(servo_num, 0, angle2pwm(refAngle[servo_num]));
 			}
 			else {
-				controller1.setPWM(servo_num, 0, angle2pwm((refAngle[servo_num] - 30)));
+				pwm.setPWM(servo_num, 0, angle2pwm((refAngle[servo_num] - 30)));
 			}
 		}
 		if (servo_num >= 9 && servo_num <= 17) {
 			if ((servo_num % 3) == 0) {
-				controller2.setPWM((servo_num - 9), 0, angle2pwm(refAngle[servo_num]));
+				pwm1.setPWM((servo_num - 9), 0, angle2pwm(refAngle[servo_num]));
 			}
 			else {
-				controller2.setPWM((servo_num - 9), 0, angle2pwm((refAngle[servo_num] + 30)));
+				pwm1.setPWM((servo_num - 9), 0, angle2pwm((refAngle[servo_num] + 30)));
 			}
 		}
 	}
@@ -126,18 +117,18 @@ void Walking_Patterns::standup() {
 	for (int servo_num = 0; servo_num < 18; servo_num++) {
 		if (servo_num >= 0 && servo_num <= 8) {
 			if ((servo_num % 3) == 0) {
-				controller1.setPWM(servo_num, 0, angle2pwm(refAngle[servo_num]));
+				pwm.setPWM(servo_num, 0, angle2pwm(refAngle[servo_num]));
 			}
 			else {
-				controller1.setPWM(servo_num, 0, angle2pwm((refAngle[servo_num] + 30)));
+				pwm.setPWM(servo_num, 0, angle2pwm((refAngle[servo_num] + 30)));
 			}
 		}
 		if (servo_num >= 9 && servo_num <= 17) {
 			if ((servo_num % 3) == 0) {
-				controller2.setPWM((servo_num - 9), 0, angle2pwm(refAngle[servo_num]));
+				pwm1.setPWM((servo_num - 9), 0, angle2pwm(refAngle[servo_num]));
 			}
 			else {
-				controller2.setPWM((servo_num - 9), 0, angle2pwm((refAngle[servo_num] - 30)));
+				pwm1.setPWM((servo_num - 9), 0, angle2pwm((refAngle[servo_num] - 30)));
 			}
 		}
 	}
