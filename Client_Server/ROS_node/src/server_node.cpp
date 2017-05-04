@@ -17,8 +17,10 @@ int sockfd, newsockfd, portno, pid;
 socklen_t clilen;
 struct sockaddr_in serv_addr, cli_addr;
 char buffer;
+std::String message;
+std::stringstream stringPub;
 
-char dostuff(int socket); 
+void dostuff(int); 
 void start(int argc, char *argv[]);
 void error(const char *msg)
 {
@@ -28,14 +30,17 @@ void error(const char *msg)
 
 int main(int argc, char *argv[])
 {     
+	//initiate ROS node with name Server 
     ros::init(argc, argv, "Server");
     ros::NodeHandle serverHandler;
+	// initiate ROS topic 
     ros::Publisher pub = serverHandler.advertise<std_msgs::String>("Server_Clinet", 1000);
-    //ros::spin();
+	//Start the server 
     start(argc, argv);
+	//Listen to find a client 
     listen(sockfd,5);
     clilen = sizeof(cli_addr);
-    while (1) {
+    while (ros::ok()) {
         newsockfd = accept(sockfd, 
             (struct sockaddr *) &cli_addr, &clilen);
         if (newsockfd < 0) 
@@ -45,8 +50,13 @@ int main(int argc, char *argv[])
             error("ERROR on fork");
         if (pid == 0)  {
             close(sockfd);
+		//Clear contents of string stream
+            stringPub.str(std::string()); 
             dostuff(newsockfd);
-	    pub.publish(buffer);
+	    pub.publish(message);
+		//Confirm the message 
+	    n = write(sock,"Server: I got your message",26);
+            if (n < 0) error("ERROR writing to socket");
             exit(0);
         }
         else close(newsockfd);
@@ -55,11 +65,7 @@ int main(int argc, char *argv[])
     return 0; /* we never get here */
 }
 
-/******** DOSTUFF() *********************
- There is a separate instance of this function 
- for each connection.  It handles all communication
- once a connnection has been established.
- *****************************************/
+
 void start(int argc, char *argv[])
 {
 	std::cout<<("Start the server\n\n");
@@ -80,14 +86,19 @@ void start(int argc, char *argv[])
             error("ERROR on binding");
      
 }
-
-char dostuff (int sock)
+/******** DOSTUFF() *********************
+ There is a separate instance of this function 
+ for each connection.  It handles all communication
+ once a connnection has been established.
+ *****************************************/
+void dostuff (int sock)
 {
    int n;
-   //bzero(buffer,256);
+   bzero(buffer,256);
    n = read(sock,buffer,255);
    if (n < 0) error("ERROR reading from socket");
-   n = write(sock,"Server: I got your message",26);
-   if (n < 0) error("ERROR writing to socket");
-   return buffer;
+   //Prepare to publish by convert the buffer to a ros message 
+   stringPub << buffer;
+   message.data = stringPub.str();
+   ROS_INFO("Here is the message:");
 }
