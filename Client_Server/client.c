@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
         fprintf(stderr,"ERROR, no such host\n");
         exit(0);
     }
-    bzero((char *) &serv_addr, sizeof(serv_addr));  ////Initializes the buffer to zeros
+    bzero((char *) &serv_addr, sizeof(serv_addr));  //Initializes the buffer to zeros
     serv_addr.sin_family = AF_INET;		//  code for the address family
     bcopy((char *)server->h_addr, 
          (char *)&serv_addr.sin_addr.s_addr,

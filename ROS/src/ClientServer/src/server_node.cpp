@@ -13,15 +13,17 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 
-int sockfd, newsockfd, portno, pid;
+int sockfd, newsockfd, portno, pid, n;
 socklen_t clilen;
 struct sockaddr_in serv_addr, cli_addr;
-char buffer;
-std::String message;
+char buffer[256];
+std_msgs::String message;
 std::stringstream stringPub;
 
-void dostuff(int); 
+void recvmessage(int); 
+
 void start(int argc, char *argv[]);
+
 void error(const char *msg)
 {
     perror(msg);
@@ -52,10 +54,9 @@ int main(int argc, char *argv[])
             close(sockfd);
 		//Clear contents of string stream
             stringPub.str(std::string()); 
-            dostuff(newsockfd);
-	    pub.publish(message);
-		//Confirm the message 
-	    n = write(sock,"Server: I got your message",26);
+            recvmessage(newsockfd);
+	    pub.publish(message); // Send some message to ROS 
+	    n = write(newsockfd,"Server: I got your message",26); // Send some message to the network 
             if (n < 0) error("ERROR writing to socket");
             exit(0);
         }
@@ -72,33 +73,35 @@ void start(int argc, char *argv[])
 	if (argc < 2) {
         fprintf(stderr,"ERROR, no port provided\n");
         exit(1);
-    }
-    sockfd = socket(AF_INET, SOCK_STREAM, 0);
-    if (sockfd < 0) 
-        error("ERROR opening socket");
-    bzero((char *) &serv_addr, sizeof(serv_addr));
-    portno = atoi(argv[1]);
-    serv_addr.sin_family = AF_INET;
-    serv_addr.sin_addr.s_addr = INADDR_ANY;
-    serv_addr.sin_port = htons(portno);
-    if (bind(sockfd, (struct sockaddr *) &serv_addr,
-        sizeof(serv_addr)) < 0) 
-            error("ERROR on binding");
+    	}
+    	sockfd = socket(AF_INET, SOCK_STREAM, 0);
+    	if (sockfd < 0) 
+        	error("ERROR opening socket");
+    	bzero((char *) &serv_addr, sizeof(serv_addr));
+    	portno = atoi(argv[1]);
+    	serv_addr.sin_family = AF_INET;
+    	serv_addr.sin_addr.s_addr = INADDR_ANY;
+    	serv_addr.sin_port = htons(portno);
+    	if (bind(sockfd, (struct sockaddr *) &serv_addr,
+            sizeof(serv_addr)) < 0) 
+            	error("ERROR on binding");
      
 }
-/******** DOSTUFF() *********************
+/******** recvmessage() *********************
  There is a separate instance of this function 
  for each connection.  It handles all communication
  once a connnection has been established.
  *****************************************/
-void dostuff (int sock)
+void recvmessage (int sock)
 {
-   int n;
+   /* The message will received from the network then we will 
+      do soemthing to this message and send data to ROS or the network */
    bzero(buffer,256);
    n = read(sock,buffer,255);
    if (n < 0) error("ERROR reading from socket");
    //Prepare to publish by convert the buffer to a ros message 
    stringPub << buffer;
+	/* do something when you receive a message */
    message.data = stringPub.str();
    ROS_INFO("Here is the message:");
 }
