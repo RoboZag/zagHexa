@@ -1,0 +1,210 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>zaghexa</title><meta name="generator" content="MATLAB 9.1"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2017-05-01"><meta name="DC.source" content="zaghexa.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><pre class="codeinput">s = <span class="string">'Rz(q1).Rx(q2).Ty(L1).Rx(q3).Tz(L2)'</span>;
+<span class="comment">% set the dimensions of the two leg links</span>
+femur = 0.1;  tebia = 0.1;
+<span class="comment">% applying DH convention</span>
+<span class="comment">%                    theta   d    a     alpha</span>
+links(1) = Link([    0       0    0      pi/2 ], <span class="string">'standard'</span>);
+links(2) = Link([    0       0    femur   0   ], <span class="string">'standard'</span>);
+links(3) = Link([    0       0   -tebia   0   ], <span class="string">'standard'</span>);
+<span class="comment">% create a single leg representation</span>
+leg = SerialLink(links, <span class="string">'name'</span>, <span class="string">'leg'</span>, <span class="string">'offset'</span>, [pi/2   0  -pi/2]);
+<span class="comment">% define the key parameters of the gait trajectory, walking in the x-direction</span>
+xf = 50; xb = -xf;     <span class="comment">% forward and backward limits for foot on ground</span>
+y = 50;                <span class="comment">% distance of foot from body along y-axis</span>
+zu = 20; zd = 50;      <span class="comment">% height of foot when up and down</span>
+<span class="comment">% define the path taken by the foot</span>
+path = [xf y zd; xb y zd; xb y zu; xf y zu; xf y zd] * 0.001;
+path = [path; path];
+<span class="comment">% time of the path is 6 seconds</span>
+<span class="comment">%(5 seconds for walking and 1 second for reset)</span>
+tpath = [5 0.2 0.2 0.2 0.2 0.2 ]';
+tpath = [1; tpath; tpath];
+<span class="comment">% parameters of mstraj() function</span>
+<span class="comment">% mstraj(path, max speed in xyz directions, duration of path, ..</span>
+<span class="comment">%.. initial coordinates, acceleration time, smoothness of robot)</span>
+p = mstraj(path, [], tpath, path(1,:), 0.01, 0);
+pcycle = p(100:500,:);
+<span class="comment">% applying inverse kinematics</span>
+qcycle = leg.ikine( transl(p), [], [1 1 1 0 0 0] );
+<span class="comment">% dimensions of the robot's body</span>
+W = 0.1; L = 0.2;
+plotopt = {<span class="string">'noraise'</span>, <span class="string">'nobase'</span>, <span class="string">'noshadow'</span>, <span class="string">'nowrist'</span>, <span class="string">'nojaxes'</span>, <span class="string">'delay'</span>, 0};
+<span class="comment">% create the legs of the robot with a unique name</span>
+<span class="comment">% and represent the position of each leg on the body</span>
+legs(1) = SerialLink(leg, <span class="string">'name'</span>, <span class="string">'leg1'</span>);
+legs(2) = SerialLink(leg, <span class="string">'name'</span>, <span class="string">'leg2'</span>, <span class="string">'base'</span>, transl(-L/2, 0, 0));
+legs(3) = SerialLink(leg, <span class="string">'name'</span>, <span class="string">'leg3'</span>, <span class="string">'base'</span>, transl(-L, 0, 0));
+legs(4) = SerialLink(leg, <span class="string">'name'</span>, <span class="string">'leg4'</span>, <span class="string">'base'</span>, transl(0, -W, 0)*trotz(pi));
+legs(5) = SerialLink(leg, <span class="string">'name'</span>, <span class="string">'leg5'</span>, <span class="string">'base'</span>, transl(-L/2, -W, 0)*trotz(pi));
+legs(6) = SerialLink(leg, <span class="string">'name'</span>, <span class="string">'leg6'</span>, <span class="string">'base'</span>, transl(-L, -W, 0)*trotz(pi));
+<span class="comment">% create a fixed size axis for the robot, and set z positive downward</span>
+clf;
+axis([-0.3 0.1 -0.2 0.2 -0.15 0.05]);
+set(gca,<span class="string">'Zdir'</span>, <span class="string">'reverse'</span>)
+hold <span class="string">on</span>
+<span class="comment">% draw the robot's body</span>
+patch([0 -L -L 0], [0 0 -W -W], [0 0 0 0], <span class="string">'FaceColor'</span>, <span class="string">'r'</span>, <span class="string">'FaceAlpha'</span>, 0.5)
+<span class="comment">% initiate the legs in the axes</span>
+<span class="keyword">for</span> i=1:6
+    legs(i).plot(qcycle(1,:), plotopt{:});
+<span class="keyword">end</span>
+hold <span class="string">off</span>
+<span class="comment">% walking the robot</span>
+k = 1;
+<span class="keyword">while</span> 1
+    legs(1).animate( gait(qcycle, k, 0,   0));
+    legs(2).animate( gait(qcycle, k, 100, 0));
+    legs(3).animate( gait(qcycle, k, 200, 0));
+    legs(4).animate( gait(qcycle, k, 300, 1));
+    legs(5).animate( gait(qcycle, k, 400, 1));
+    legs(6).animate( gait(qcycle, k, 500, 1));
+    drawnow
+    k = k+1;
+<span class="keyword">end</span>
+</pre><pre class="codeoutput error">Undefined function or variable 'h'.
+
+Error in SerialLink/animate (line 153)
+        if ~h.robot.loop
+
+Error in zaghexa (line 55)
+    legs(1).animate( gait(qcycle, k, 0,   0));
+</pre><p class="footer"><br>	 
+      Author: <a href="https://mnourgwad.github.io">Prof.Dr.Ing. <strong>Mohammed Nour AbdelGwad Ahmed</strong></a> 
+	   | <a href="mailto:mnahmed@eng.zu.edu.eg?Subject=[MATLAB%20CODE]" target="_top">mnahmed@eng.zu.edu.eg</a><br>
+	  Computer and Systems Engineering Dept.  |  Faculty of Engineering | Zagazig University | Egypt<br>
+	  &reg;2017 design and content: [(CC) BY NC SA] | run on MATLAB&reg; R2016b</p></div><!--
+##### SOURCE BEGIN #####
+s = 'Rz(q1).Rx(q2).Ty(L1).Rx(q3).Tz(L2)';
+% set the dimensions of the two leg links
+femur = 0.1;  tebia = 0.1;
+% applying DH convention
+%                    theta   d    a     alpha  
+links(1) = Link([    0       0    0      pi/2 ], 'standard');
+links(2) = Link([    0       0    femur   0   ], 'standard');
+links(3) = Link([    0       0   -tebia   0   ], 'standard');
+% create a single leg representation
+leg = SerialLink(links, 'name', 'leg', 'offset', [pi/2   0  -pi/2]);
+% define the key parameters of the gait trajectory, walking in the x-direction
+xf = 50; xb = -xf;     % forward and backward limits for foot on ground
+y = 50;                % distance of foot from body along y-axis
+zu = 20; zd = 50;      % height of foot when up and down
+% define the path taken by the foot
+path = [xf y zd; xb y zd; xb y zu; xf y zu; xf y zd] * 0.001;
+path = [path; path];
+% time of the path is 6 seconds 
+%(5 seconds for walking and 1 second for reset)
+tpath = [5 0.2 0.2 0.2 0.2 0.2 ]';
+tpath = [1; tpath; tpath];
+% parameters of mstraj() function 
+% mstraj(path, max speed in xyz directions, duration of path, ..
+%.. initial coordinates, acceleration time, smoothness of robot)
+p = mstraj(path, [], tpath, path(1,:), 0.01, 0);
+pcycle = p(100:500,:);
+% applying inverse kinematics
+qcycle = leg.ikine( transl(p), [], [1 1 1 0 0 0] );
+% dimensions of the robot's body
+W = 0.1; L = 0.2;
+plotopt = {'noraise', 'nobase', 'noshadow', 'nowrist', 'nojaxes', 'delay', 0};
+% create the legs of the robot with a unique name
+% and represent the position of each leg on the body
+legs(1) = SerialLink(leg, 'name', 'leg1');
+legs(2) = SerialLink(leg, 'name', 'leg2', 'base', transl(-L/2, 0, 0));
+legs(3) = SerialLink(leg, 'name', 'leg3', 'base', transl(-L, 0, 0));
+legs(4) = SerialLink(leg, 'name', 'leg4', 'base', transl(0, -W, 0)*trotz(pi));
+legs(5) = SerialLink(leg, 'name', 'leg5', 'base', transl(-L/2, -W, 0)*trotz(pi));
+legs(6) = SerialLink(leg, 'name', 'leg6', 'base', transl(-L, -W, 0)*trotz(pi));
+% create a fixed size axis for the robot, and set z positive downward
+clf;
+axis([-0.3 0.1 -0.2 0.2 -0.15 0.05]);
+set(gca,'Zdir', 'reverse')
+hold on
+% draw the robot's body
+patch([0 -L -L 0], [0 0 -W -W], [0 0 0 0], 'FaceColor', 'r', 'FaceAlpha', 0.5)
+% initiate the legs in the axes
+for i=1:6
+    legs(i).plot(qcycle(1,:), plotopt{:});
+end
+hold off
+% walking the robot
+k = 1;
+while 1
+    legs(1).animate( gait(qcycle, k, 0,   0));
+    legs(2).animate( gait(qcycle, k, 100, 0));
+    legs(3).animate( gait(qcycle, k, 200, 0));
+    legs(4).animate( gait(qcycle, k, 300, 1));
+    legs(5).animate( gait(qcycle, k, 400, 1));
+    legs(6).animate( gait(qcycle, k, 500, 1));
+    drawnow
+    k = k+1;
+end
+
+##### SOURCE END #####
+--></body></html>

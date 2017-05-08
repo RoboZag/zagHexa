@@ -3,7 +3,7 @@
 #include <stdint.h> 			// for uint8_t
 #include <iostream> 			// for cout
 #include <time.h> 				// for clock_t, CLOCKS_PER_SEC and clock()
-//#include <math.h> 
+#include <math.h> 				// for floor()
 
 
 ZagHexa_servodriver::ZagHexa_servodriver(uint8_t addr) {
@@ -48,41 +48,6 @@ void ZagHexa_servodriver::setPWM(uint8_t num, uint16_t on, uint16_t off) {
 	wiringPiI2CWriteReg8(DeviceID, LED0_OFF_H + 4 * num, off >> 8);
 }
 
-/* Sets pin without having to deal with on/off tick placement and properly handles
- a zero value as completely off.  Optional invert parameter supports inverting
- the pulse for sinking to ground.  Val should be a value from 0 to 4095 inclusive.
-void ZagHexa_servodriver::setPin(uint8_t num, uint16_t val, bool invert)
-{
-  // Clamp value between 0 and 4095 inclusive.
-  val = min(val, 4095);
-  if (invert) {
-    if (val == 0) {
-      // Special value for signal fully on.
-      setPWM(num, 4096, 0);
-    }
-    else if (val == 4095) {
-      // Special value for signal fully off.
-      setPWM(num, 0, 4096);
-    }
-    else {
-      setPWM(num, 0, 4095-val);
-    }
-  }
-  else {
-    if (val == 4095) {
-      // Special value for signal fully on.
-      setPWM(num, 4096, 0);
-    }
-    else if (val == 0) {
-      // Special value for signal fully off.
-      setPWM(num, 0, 4096);
-    }
-    else {
-      setPWM(num, 0, val);
-    }
-  }
-}*/
-
   /* Additional function for helping to get the minimum value */
 int ZagHexa_servodriver::min(int val1, int val2)
 {
@@ -98,7 +63,7 @@ int ZagHexa_servodriver::min(int val1, int val2)
 void ZagHexa_servodriver::delay(int mseconds)
 {
 	/* Save the current time and add the delay then wait*/
-	clock_t endwait 
+	clock_t endwait;
 	endwait = clock() + (mseconds / 1000)* CLOCKS_PER_SEC;
 	while (clock() < endwait) {}
 }
