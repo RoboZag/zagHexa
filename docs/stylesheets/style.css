@@ -274,8 +274,11 @@ header li {
     /* border-bottom: 1px solid #ddd; 
 }*/
 
-.collapsible-header i{
-  color: #238bd6;
+.collapsible-header i.material-icons{
+  color: #39c;
+}
+.card-panel h5{
+  color: #19719d;
 }
 .collapsible-header:hover {
   background-color: #f4f4f4;
