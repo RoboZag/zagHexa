@@ -1,0 +1,9 @@
+- Install python3
+
+- Install pip (optinal)
+
+- Write in terminal python3 -m pip install pygame --user
+
+- Try python3 -m pygame.examples.aliens 
+
+more on pygame joystick http://pygame.org/docs/ref/joystick.html
