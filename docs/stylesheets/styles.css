@@ -105,6 +105,120 @@ th {
 img {
   max-width:100%;
 }
+/**/
+.side-nav .collapsible-header, .side-nav.fixed .collapsible-header{
+  padding: 0 29px;
+}
+/**/
+/**/
+.slid .slides{
+  background-color: transparent;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+  
+}
+.slid .slides li .caption {
+  top: 85%;
+  left: 0%;
+  opacity: 0;
+  background: rgba(255,255,255,0.6);
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+  width: 100%;
+
+  }
+  .slid .slides li .caption h5 {
+  color: #474747;
+  text-shadow: 1px 14px 3px #555;
+  line-height: 50px;
+  
+
+  }
+
+/**/
+/**/
+.top-nav{
+  background-color: #272323;
+  margin-bottom: 20px;
+  margin-top:-45px;
+
+}
+.top-nav h1{
+  text-shadow: 5px -12px 15px #fff;
+  /*text-shadow: 7px -14px 9px #fff;*/
+  line-height: 50px;
+  font-size: 48px;
+  color: #fff;
+}
+/**/
+/**/
+.side-nav p{
+  margin-left: 33px;
+}
+.side-nav h1{
+  margin-top: 33px;
+  margin-left: 33px;
+}
+.side-nav .icon{
+  margin-left: 33px;
+  font-size: 15px;
+  line-height: 2.5em;
+
+}
+/*    font: 20px 'TheSansB5Plain','TheSansB5Plain-https', Arial;*/
+.side-nav .foot{
+  margin-top: 45px;
+}
+.side-nav .icon a{
+  font-size: 17px;
+  color: #494949 ;
+}
+
+.side-nav li a{
+  font-size: 17px;
+  color: #494949 ;
+  height: 35px;
+  line-height: 35px;
+}
+.side-nav .icon a i {
+width: 30px;
+height: 30px;
+background-color: #f4f4f4;
+border-radius: 50%;
+line-height: 25px;
+text-align: center;
+padding-top: 4px;
+transition: 1s ease-in-out;
+}
+
+.side-nav .icon a.ex1 i:hover{
+background-color: #cc0000;
+color: #fff;
+padding-left: 5px;
+
+}
+
+.side-nav .icon a.ex2 i:hover{
+background-color: #111;
+color: #fff;
+padding-left: 5px;
+
+}
+.side-nav .icon a.ex3 i:hover{
+background-color: #cc0000;
+color: #fff;
+padding-left: 5px;
+}
+.side-nav .icon a.ex4 i:hover{
+background-color: #cc0000;
+color: #fff;
+padding-left: 5px;
+
+}
+.side-nav .icon a.ex5 i:hover{
+background-color: #3366cc;
+color: #fff;
+padding-left: 5px;
+}
+/**/
 
 header {
   width:270px;
@@ -158,6 +272,24 @@ header li {
   border-right: 0;
   display: block;
 }
+.collapsible-header{
+  font-style: inherit;
+  font-size: 20px;
+  font-weight:500;
+  color: #333;
+  font-family: "Ubuntu","Muli","Helvetica","Tahoma","Geneva","Arial",sans-serif;
+
+}
+.collapsible-header:hover {
+  background-color: #f4f4f4;
+  /*overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 32px;
+  height: 32px;*/
+  border-radius: 4px;
+   
+}
 .menu ul li a{
   
   /*float: left;*/
@@ -171,17 +303,17 @@ header li {
   font-family: "Ubuntu","Muli","Helvetica","Tahoma","Geneva","Arial",sans-serif;
 
 }
-.menu ul li a:hover {
+/*.menu ul li a:hover {
   background-color: #f4f4f4;
-  overflow: hidden;
+  /*overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   line-height: 32px;
   height: 32px;
-  padding-left: 7px;
   border-radius: 4px;
    
-}
+}*/
+
 header li:first-child a {
   border-radius:5px 0 0 5px;
 }
@@ -225,7 +357,7 @@ header ul a strong {
 }
 
 section {
-  width:500px;
+  width:750px;
   float:right;
   padding-bottom:50px;
 }
@@ -420,6 +552,54 @@ section {
 
 /*ros tutorial end*/
 
+
+/**/
+
+.collapsible-body .span .icon{
+  font-size: 20px;
+}
+.collapsible-body  a i {
+width: 30px;
+height: 30px;
+background-color: #f4f4f4;
+border-radius: 50%;
+line-height: 25px;
+text-align: center;
+padding-top: 4px;
+transition: 1s ease-in-out;
+}
+
+.collapsible-body  a.ex1 i:hover{
+background-color: #cc0000;
+color: #fff;
+padding-left: 5px;
+
+}
+
+.collapsible-body  a.ex2 i:hover{
+background-color: #111;
+color: #fff;
+padding-left: 5px;
+
+}
+.collapsible-body  a.ex3 i:hover{
+background-color: #cc0000;
+color: #fff;
+padding-left: 5px;
+}
+.collapsible-body  a.ex4 i:hover{
+background-color: #cc0000;
+color: #fff;
+padding-left: 5px;
+
+}
+.collapsible-body  a.ex5 i:hover{
+background-color: #3366cc;
+color: #fff;
+padding-left: 5px;
+}
+/**/
+
 /*footer start*/
 
 footer {
@@ -476,7 +656,7 @@ background-color: #3366cc;
 color: #fff;
 padding-left: 5px;
 }
-/*footer end*/
+/*footer end */
 
 small {
   font-size:11px;
@@ -562,6 +742,7 @@ hr {
   }
   footer ul, footer p.view{
     position:static;
+    padding-top: 250px;
   }
 
   pre, code {

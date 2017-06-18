@@ -1,0 +1,408 @@
+<!doctype html>
+<html>
+  <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="chrome=1">
+      <title>ZagHexa Robot Project Documentation</title>
+      <link rel="shortcut icon" href="img/hexa2.png" type="image/x-icon" />
+      <!--Import Google Icon Font-->
+      <link href="stylesheets/material-icons.css" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="stylesheets/materialize.min.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>   
+      
+      <!-- Css-->
+      <link rel="stylesheet" href="stylesheets/font-awesome.min.css">
+      <link rel="stylesheet" href="stylesheets/styles.css">
+      <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+      <meta name="viewport" content="width=device-width">
+	    
+	    <!--[if lt IE 9]>
+        <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+  	
+  </head>
+  <body>
+  		
+
+	    <div class="wrapper">
+	   		<div class="fixed-action-btn horizontal">
+			    <a class="btn-floating btn-large blue">
+			      <i class="large material-icons">mode_edit</i>
+			    </a>
+			    <ul>
+			      <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
+			      <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
+			      <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
+			      <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
+			    </ul>
+		    </div>
+	      	 <!-- <header> 
+		        <h1>ZagHexa Robot</h1>
+		        <p>ZagHexa Robot Project Documentation</p>
+		        <p class="view"><a href="https://github.com/RoboZag/zagHexa">View the Project on GitHub <small>RoboZag/zagHexa</small></a>
+		        </p>
+		        <ul>
+		          	<li><a href="https://github.com/RoboZag/zagHexa/zipball/master">Download<strong>ZIP File</strong></a></li>
+		          	<li><a href="https://github.com/RoboZag/zagHexa/tarball/master">Download<strong>TAR Ball</strong></a></li>
+		          	<li><a href="https://github.com/RoboZag/zagHexa">Fork On<strong>GitHub</strong></a></li>
+		        </ul>
+		    </header> -->
+		    	
+				<div class="container">
+			      <a href="#" data-activates="nav-mobile" class="button-collapse top-nav full hide-on-large-only">
+			        <i class="material-icons">menu</i> 
+			      </a>  
+			    </div>
+	    		<ul id="nav-mobile" class="side-nav fixed">	
+					<img src="img/hexa2.png" class="circle">
+	    			<h1>ZagHexa Robot</h1>
+			        <p>ZagHexa Robot Project Documentation</p>
+			        <p class="view"><a href="https://github.com/RoboZag/zagHexa">View the Project on GitHub <small>RoboZag/zagHexa</small></a></p>
+			        <!--   
+			        <ul>
+			          	<li><a href="https://github.com/RoboZag/zagHexa/zipball/master">Download<strong>ZIP File</strong></a></li>
+			          	<li><a href="https://github.com/RoboZag/zagHexa/tarball/master">Download<strong>TAR Ball</strong></a></li>
+			          	<li><a href="https://github.com/RoboZag/zagHexa">Fork On<strong>GitHub</strong></a></li>
+			        </ul> -->
+			        <li class="no-padding">
+	        		  <ul class="collapsible collapsible-accordion">
+		    			
+
+		    			<li class="bold">
+					    	<a href="index.html" class="waves-effect"><i class="fa fa-home" aria-hidden="true"></i><strong>Home</strong></a>
+					    </li>
+		    			<li class="bold">
+				            <a class="collapsible-header waves-effect">
+				            	<i class="fa fa-file-text-o" aria-hidden="true"></i> <strong>Tutorials</strong>
+				            </a>
+				            <div class="collapsible-body">
+				              <ul>
+				              	<li><a href="tutorials/index.html">Tutorials</a></li>
+								<li><a href="tutorials/ros.html"><abbr title="Robot Operating System">ROS</abbr></a></li>
+						    	<li><a href="ros.html">Linux</a></li>
+						    	<li><a href="ros.html">Raspberry bi</a></li>
+				              </ul>
+				            </div>
+				        </li>
+				          <li class="bold">
+					      	<a href="about/index.html" class="waves-effect">
+					      		<i class="fa fa-info-circle" aria-hidden="true"></i><strong>About us</strong>
+					      	</a>
+					     </li>
+					     <li class="bold">
+					      	<a href="/software/index.html" class="waves-effect">
+					      		<i class="fa fa-code" aria-hidden="true"></i><strong>Software </strong>
+					      	</a>
+					     </li>
+					     <li class="bold">
+					      	<a href="/assembly/index.html" class="waves-effect">
+					      		<i class="fa fa-list-ul" aria-hidden="true"></i> <strong>Assembly Guid</strong>
+					      	</a>
+					     </li>
+
+		            	</ul>
+					</li>
+					<div class="foot">
+						     <p>This project is maintained by<a href="https://github.com/mnourgwad"><small>Dr.Ing.</small>Mohammed Nour</a>
+						     </p>
+						     
+					    </div>
+					     <div class="icon">
+			                <a class="ex1" href="https://drive.google.com/drive/folders/0B8bYDipm8_AAc0h3N0lIUFJUbEE">
+			                   <i class="fa fa-google-plus"></i> Gmail  
+			                </a>
+			                <a class="ex2" href="https://github.com/RoboZag/zagHexa">
+			                   <i class="fa fa-github"></i> Github<br>
+			                </a>
+			                    
+			                <a class="ex4" href="https://www.youtube.com/channel/UCsCPxTiffuTVV5go8i7QMOA">
+			                   <i class="fa fa-youtube"></i> YouTube 
+			                </a>
+			                <a class="ex5" href="https://goo.gl/LZlebV">
+			                   <i class="fa fa-linkedin"></i> LinkedIn <br>
+			                </a>
+			             </div>
+			             <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a>
+						     </small></p>
+	    		</ul>
+			
+		   
+		    <section>
+		    
+		    	<nav class="top-nav">
+			        <div class="container">
+			          <div class="nav-wrapper">
+			            <a class="page-title"><h1 style="text-align: center;">ZagHexa Robot</h1></a>
+			          </div>
+			        </div>
+			     </nav>
+			     <div class="carousel">
+				    <a class="carousel-item" href="#one!"><img src="img/hexa2.png" class="materialboxed circle responsive-img">
+				    	<div class="caption ">
+				          <h6 style="text-align: center;">This is our ZagHexa Robot</h6>
+				        </div>
+				    </a>
+				    <a class="carousel-item" href="#two!"><img src="img/hexa2.png"></a>
+				    <a class="carousel-item" href="#three!"><img src="img/hexa1.png"></a>
+				    <a class="carousel-item" href="#four!"><img src="img/poster1.png"></a>
+				    <a class="carousel-item" href="#five!"><img src="img/hexa1.png"></a>
+				 </div>
+		    	<div class="slider slid">
+				    <ul class="slides">
+				      <li>
+				        <img src="img/hexa2.png"> <!-- random image -->
+				        <div class="caption">
+				          <h5 style="text-align: center;"">This is our ZagHexa Robot</h5>			         
+				        </div>
+				      </li>
+				      <li>
+				        <img src="img/hexa1.png"> <!-- random image -->
+				        <div class="caption ">
+				          <h5 style="text-align: center;"">This is our ZagHexa Robot</h5>				    
+				        </div>
+				      </li>
+				      <li>
+				        <img src="img/poster1.png"> <!-- random image -->
+				        <div class="caption ">
+				          <h5 style="text-align: center;" >This is our Poster At Makerfaire</h3>
+				        </div>
+				      </li>
+				    </ul>
+				  </div>
+				<div class="intro">
+				
+					<p> ZagHexa is a hexapod robot with 3DOF each leg. <p>It can walk in any direction "translation", turn in place "rotation", or any combination of the two. </p>
+					<p> The leg lift and the ride height is adjustable as well.</p>
+					<p> We are using 18 Servos and controlled with embedded pc and ROS "Robot Operating System" to get our robot up and running and generate the walking pattern pulses precisely.</p>
+					<p> We are using a wireless PS2 controller & mobile application to teleoperate our robot.</p>
+					<p> It can help in search and rescue operations and it can be a learning platform for teaching robotics cources, robot operating system and applying the concepts. </p>
+					<p> It partcipated in Egyptian Universities Competitions and accepted in NTRA annual graduation projects compaign.</p>
+				</div>
+				
+      
+
+<!--robo-info start-->
+				<div class="robo-info">
+				
+				
+				
+				<iframe width="560" height="315" src="https://www.youtube.com/watch?v=AXCyC_WgmFY" frameborder="0" allowfullscreen>ZagHexa night mission</iframe>
+				
+				
+					<h4>Robot Specifications</h4>
+					<ul>
+						<li>Number of legs: 6</li>
+						<li>Degrees of freedom per leg: 3</li>
+						<li>Total Degrees of freedom: 18</li>
+						<li>Servo motion control: local closed loop</li>
+						<li>Software Architecture: open source base on ROS</li>
+					</ul>
+					<h4>Robot Features</h4>
+					<ul>
+						<li>Standard DYNAMIXEL AX-12A or Ultra Fast DYNAMIXEL AX-18A Series Robot Servos</li>
+						<li>Degrees of freedom per leg = 3</li>
+						<li>Arduino-Compatible ArbotiX Robocontroller</li>
+						<li>Open Source Software</li>
+						<li>Advanced Inverse Kinematics Driven Gait Engine</li>
+						<li>6 Different Walking Gaits Available</li>
+						<li>Extended Run Time with High Quality 4500mAh LiPo Battery</li>
+						<li>Rugged Full Metal Frame Construction</li>
+					</ul>
+				</div>
+<!--robo-info end-->
+
+
+<!--
+		        <h2>A bit of the GitHub spice</h2>
+
+		        <p>In addition to the changes in the previous section, certain references are auto-linked:</p>
+
+		        <ul>
+		        	<li>SHA: be6a8cc1c1ecfe9489fb51e4869af15a13fc2cd2</li>
+		          	<li>User@SHA ref:
+		          		<a href="https://github.com/mojombo/product/commit/be6a8cc1c1ecfe9489fb51e4869af15a13fc2cd2" class="commit-link">mojombo@
+			          		<tt>be6a8cc</tt>
+			          	</a>
+		          	</li>
+		          	<li>User/Project@SHA: 
+		          		<a href="https://github.com/mojombo/god/commit/be6a8cc1c1ecfe9489fb51e4869af15a13fc2cd2" class="commit-link">mojombo/god@
+		          			<tt>be6a8cc</tt>
+		          		</a>
+		          	</li>
+		          	<li>#Num: 
+		          		<a href="https://github.com/github/product/issues/1" class="issue-link" title="Baseline: What is up in the air right now?">#1</a>
+		          	</li>
+		          	<li>User/#Num: mojombo#1</li>
+		          	<li>User/Project#Num: 
+		          		<a href="https://github.com/mojombo/god/issues/1" class="issue-link" title="The server is not available (or you do not have permissions to access it)">mojombo/god#1</a>
+		          	</li>
+		        </ul>
+
+		        <p>These are dangerous goodies though, and we need to make sure email addresses don't get mangled:</p>
+
+		        <p>My email addy is <a href="mailto:mnahmed@eng.zu.edu.eg">mnahmed@eng.zu.edu.eg</a>.</p>
+
+		        <h2>Math is hard, let's go shopping</h2>
+
+		        <p>In first grade I learned that 5 &gt; 3 and 2 &lt; 7. Maybe some arrows. 1 -&gt; 2 -&gt; 3. 9 &lt;- 8 &lt;- 7.</p>
+
+		        <p>Triangles man! a^2 + b^2 = c^2</p>
+
+		        <h2>We all like making lists</h2>
+
+		        <p>The above header should be an H2 tag. Now, for a list of fruits:</p>
+
+		        <ul>
+		          <li>Red Apples</li>
+		          <li>Purple Grapes</li>
+		          <li>Green Kiwifruits</li>
+		        </ul>
+
+		        <p>Let's get crazy:</p>
+
+		        <ol>
+		          <li>
+		            <p>This is a list item with two paragraphs. Lorem ipsum dolor<br>
+		            sit amet, consectetuer adipiscing elit. Aliquam hendrerit<br>
+		            mi posuere lectus.</p>
+
+		            <p>Vestibulum enim wisi, viverra nec, fringilla in, laoreet<br>
+		            vitae, risus. Donec sit amet nisl. Aliquam semper ipsum<br>
+		            sit amet velit.</p>
+		          </li>
+		          <li><p>Suspendisse id sem consectetuer libero luctus adipiscing.</p></li>
+		        </ol>
+
+		        <p>What about some code <strong>in</strong> a list? That's insane, right?</p>
+
+		        <ol>
+		          <li>
+		            <p>In Ruby you can map like this:</p>
+
+		            <pre><code>['a', 'b'].map { |x| x.uppercase }</code></pre>
+		          </li>
+		          <li>
+		            <p>In Rails, you can do a shortcut:</p>
+
+		            <pre><code>['a', 'b'].map(&amp;:uppercase)</code></pre>
+		          </li>
+		        </ol>
+
+		        <p>Some people seem to like definition lists</p>
+
+		        <dl>
+		          <dt>Lower cost</dt>
+		          <dd>The new version of this product costs significantly less than the previous one!</dd>
+		          <dt>Easier to use</dt>
+		          <dd>We've changed the product so that it's much easier to use!</dd>
+		        </dl>
+
+		        <h2>I am a robot</h2>
+
+		        <p>Maybe you want to print <code>robot</code> to the console 1000 times. Why not?</p>
+
+		        <pre><code>def robot_invasion puts("robot " * 1000)end </code></pre>
+
+		        <p>You see, that was formatted as code because it's been indented by four spaces.</p>
+
+		        <p>How about we throw some angle braces and ampersands in there?</p>
+
+		        <pre><code>&lt;div class="footer"&gt;&amp;copy; 2004 Foo Corporation&lt;/div&gt;</code></pre>
+
+		        <h2>Set in stone</h2>
+
+		        <p>Preformatted blocks are useful for ASCII art:</p>
+
+		        <pre>             ,-.
+					    ,     ,-.   ,-.
+					   / \   (   )-(   )
+					   \ |  ,.&gt;-(   )-&lt;
+					    \|,' (   )-(   )
+					     Y ___`-'   `-'
+					     |/__/   `-'
+					     |
+					     |
+					     |    -hrr-
+					  ___|_____________
+				</pre>
+
+		        <h2>Playing the blame game</h2>
+
+		        <p>If you need to blame someone, the best way to do so is by quoting them:</p>
+
+		        <blockquote>
+		        <p>I, at any rate, am convinced that He does not throw dice.</p>
+		        </blockquote>
+
+		        <p>Or perhaps someone a little less eloquent:</p>
+
+		        <blockquote>
+		        <p>I wish you'd have given me this written question ahead of time so I<br>
+		        could plan for it... I'm sure something will pop into my head here in<br>
+		        the midst of this press conference, with all the pressure of trying to<br>
+		        come up with answer, but it hadn't yet...</p>
+
+		        <p>I don't want to sound like<br>
+		        I have made no mistakes. I'm confident I have. I just haven't - you<br>
+		        just put me under the spot here, and maybe I'm not as quick on my feet<br>
+		        as I should be in coming up with one.</p>
+		        </blockquote>
+
+		        <h2>Table for two</h2>
+
+		        <table>
+		        	<tbody>
+			        	<tr>
+				            <th>ID</th>
+				        	<th>Name</th>
+				        	<th>Rank</th>
+			          	</tr>
+			          	<tr>
+			            	<td>1</td>
+					        <td>Tom Preston-Werner</td>
+					        <td>Awesome</td>
+			          	</tr>
+			          	<tr>
+				            <td>2</td>
+				        	<td>Albert Einstein</td>
+				        	<td>Nearly as awesome</td>
+			          	</tr>
+		        	</tbody>
+		        </table>
+
+		        <h2>Crazy linking action</h2>
+
+		        <p>I get 10 times more traffic from <a href="http://google.com/" title="Google">Google</a> than from<br>
+		        <a href="http://search.yahoo.com/" title="Yahoo Search">Yahoo</a> or <a href="http://search.msn.com/" title="MSN Search">MSN</a>.</p>
+-->
+	    	</section>
+	    	<!-- 
+	      	<footer>
+		        <p>This project is maintained by <a href="https://github.com/mnourgwad"><small>Dr.Ing.</small>Mohammed Nour</a></p>
+		        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+		        <div class="icon">
+                    <a class="ex1" href="https://drive.google.com/drive/folders/0B8bYDipm8_AAc0h3N0lIUFJUbEE">
+                        <i class="fa fa-google-plus"></i>
+                    </a>
+                    <a class="ex2" href="https://github.com/RoboZag/zagHexa">
+                        <i class="fa fa-github"></i>
+                    </a>
+                    
+                    <a class="ex4" href="https://www.youtube.com/channel/UCsCPxTiffuTVV5go8i7QMOA">
+                        <i class="fa fa-youtube"></i>
+                    </a>
+                    <a class="ex5" href="https://goo.gl/LZlebV">
+                        <i class="fa fa-linkedin"></i>
+                    </a>
+                    
+            	</div>
+	      	<!-- </footer>  -->
+	    </div>
+	    <script src="javascripts/scale.fix.js"></script>
+	    <script src="javascripts/jquery-2.2.0.min.js"></script>
+	    <script src="javascripts/materialize.min.js"></script>
+	</body>
+</html> 
