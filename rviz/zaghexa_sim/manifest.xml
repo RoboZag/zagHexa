@@ -1,0 +1,6 @@
+<package>
+  <description brief="zaghexa_sim">zaghexa_sim</description>
+  <depend package="gazebo" />
+  <author>khaled</author>
+  <license>BSD</license>
+</package>
