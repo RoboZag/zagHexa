@@ -252,6 +252,7 @@ header li {
   width: 250px;
   border-right: 0;
   display: block;
+  min-height: 2rem;
 }
 .collapsible-header{
   font-style: inherit;
@@ -263,6 +264,9 @@ header li {
   border-bottom:0px;
   font-family: "Ubuntu","Muli","Helvetica","Tahoma","Geneva","Arial",sans-serif;
 
+}
+.edit{
+  min-height: 2rem;
 }
 /*.collapsible-header {
     display: block;
@@ -649,6 +653,9 @@ section {
 
 
 /**/
+.collapsible-body{
+  padding: 0rem 4rem;
+}
 
 .collapsible-body .span .icon{
   font-size: 20px;
@@ -663,11 +670,17 @@ text-align: center;
 padding-top: 4px;
 transition: 1s ease-in-out;
 }
+.collapsible-body li:hover {
+  background-color: #f4f4f4;
+  border-radius: 4px;
+ width: 100%;
+   
+}
 
 .collapsible-body  a.ex1 i:hover{
 background-color: #cc0000;
 color: #fff;
-padding-left: 5px;
+
 
 }
 
@@ -802,7 +815,7 @@ hr {
     top:52px;
   }
   
-  footer ul {
+  footer {
     position:absolute;
     right:50px;
     top:252px;

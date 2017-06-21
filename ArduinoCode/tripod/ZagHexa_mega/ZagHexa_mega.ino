@@ -1,6 +1,10 @@
 #include <SoftwareSerial.h>
 #include <VarSpeedServo.h> 
-
+/*
+  - Start communication with RP
+  - Receive struct { char (mode) int (movment) }
+  - move the robot as wanted
+*/
 #define newRx 11
 #define newTx 12
 

@@ -1,7 +1,12 @@
 #include <std_msgs/Int8.h>
 #include <ros/ros.h>
 #include <Walking_Patterns.h>
-
+/*
+  - In start communication with Arduino 
+  - Receive from joyNode
+  - Send struct { char (mode) int (movement) }
+  - Receive sensor reading
+*/
 char data;
 int mode = 1; //mode 1 for translation, mode 2 for tending, mode 3 for up and down
 Walking_Patterns walking = Walking_Patterns();
