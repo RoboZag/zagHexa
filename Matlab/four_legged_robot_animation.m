@@ -1,5 +1,5 @@
 % set the dimensions of the two links of the leg
-L1 = 0.1; L2 = 0.1;
+L1 = 0.05; L2 = 0.1;
 % create the leg links based on DH parameters
 %                    theta   d    a   alpha
 links(1) = Link([    0       0    0   pi/2 ], 'standard');

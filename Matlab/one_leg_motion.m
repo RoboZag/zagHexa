@@ -38,4 +38,4 @@ p = mstraj(path, [], [0, 3, 0.25, 0.5, 0.25]', path(1,:), 0.01, 0);
 qcycle = leg.ikine( transl(p), [], [1 1 1 0 0 0] );
 % to run simulation continueously
 % but you can make a time to run it by (pause(msec))
-leg.plot(qcycle, 'loop') 
+leg.plot(qcycle, 'loop','notiles') 

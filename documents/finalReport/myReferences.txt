@@ -1,0 +1,93 @@
+\begin{thebibliography}{33}
+	\bibitem{1} 
+	Uluc Saranlı. Dynamic locomotion with a hexapod robot. PhD thesis, The University of Michigan, 2002.
+	
+	\bibitem{2} 
+	NASA. All-terrain hex-limbed extra-terrestrial explorer. https://www-robotics.jpl.nasa.gov/systems/system.cfm?System=11, 2009
+	
+	\bibitem{3} 
+	Franco Tedeschi and Giuseppe Carbone. Designissues for hexapod walking robots. Robotics, 3(2):181–206, 2014.
+	\bibitem{4} 
+	Boston Dynamics. Boston dynamics: Dedicated to the science and art of how things move. http://www.bostondynamics.com/robot\_bigdog.html, 2015.
+	\bibitem{5} 
+	Boston Dynamics. Boston dynamics: Dedicated to the science and art of how things move. http://www.bostondynamics.com/robot\_ls3.html, 2015.
+	\bibitem{11h}
+	Schneider, A.; Schmucker, U. Force sensing for multi-legged walking robots: Theory and
+	experiments part 1: Overview and force sensing. In Mobile Robotics, Moving Intelligence; Buchli, J., Ed.; Pro Literatur Verlag ARS: Germany; Austria, 2006; pp. 125–174.
+	\bibitem{12h}
+	Peternella, M.; Salinari, S. Simulation by digital computer of walking machine control system. In Proceedings of the 5th IFAC Symposium on Automatic Control in Space of the Conference, Genova, Italy, June 1973.
+	\bibitem{13h}
+	Okhotsimski, D.; Platonov, A. Control algorithm of the walking climbing over obstacles.
+	In Proceedings of the 3rd International Joint Conference on Artificial Intelligence, Stanford, CA, USA, 20 August 1973.
+	\bibitem{14h}
+	Gurfinkel, V.; Gurfinkel, E.; Devjanin, E.; Efremov, E.; Zhicharev, D.; Lensky, A.; Schneider, A.;	Shtilman, L. Investigation of robotics. In Six-legged Walking Model of Vehicle with Supervisory Control; Nauka Press: Moscow, Russia, 1982; pp. 98–147.
+	\bibitem{15h}
+	McGhee, R. Control of legged locomotion systems. In Proceedings of the 18th Automatic Control
+	Conference, San Francisco, CA, USA, 3–8 December 1977; pp. 205–215.
+	\bibitem{17h}
+	Byrd, J.; de Vries, K. A six-legged telerobot for nuclear applications development. Int. J. Robot. Res.	1990, 9, 43–52.
+	\bibitem{6} 
+	EZ Moore and M Buehler. Stable stair climbing in a simple hexapod robot. Technical report, DTIC Document, 2001.
+	\bibitem{7} 
+	Xilun Ding, Alberto Rovetta, JM Zhu, and Zhiying Wang. Locomotion analysis of hexapod robot. INTECH Open Access Publisher, 2010.
+	\bibitem{8} 
+	S. Manoiu-Olaru, M. Nitulescu, and V. Stoian. Hexapod robot. Mathematical support for modeling and control. In System Theory, Control, and Computing (ICSTCC), 2011 15th International Conference on, pages 1–6, Oct 2011.
+	\bibitem{9} 
+	S. Cousins, “Exponential growth of ros [ros topics],” Robotics Automation Magazine, IEEE, vol. 18, no. 1, pp. 19–20, March 2011.
+	\bibitem{10} 
+	Digia. Qt project. http://qtproject.org/.
+	\bibitem{11} 
+	W.A. Lewinger \& R.D.   Quinn   (2010)   “A hexapod walks    over    irregular    terrain    using    a   controller adapted    from    an   insects       nervous        system,”in proceeding of the IEEE/RSJ international conference on 	intelligent    robots   \&   systems (IROS),   Taiwan October 18-22,2010.
+	\bibitem{12} 
+	Filipp Seljanko (2011)”Hexapod walking Robot gait generation using genetic gravitational hybrid algorithm” in    the 15th International Conference    on    Advanced Robotics, Estonia, June 20-23,2011.
+	\bibitem{13} 
+	MohdDaud \& KenzoNonami(2012)”Autonomous   walking over obstacles by means of LRF for hexapod robot COMET-IV”in   journal   of   robotics   \&   Mechatronics Vol.24 no.1,2012
+	\bibitem{14} 
+	William  A.Lewinger,  H.MartinReekie(2011)”A  hexapod robot  modeled  on  the  stick  insect, carausiusmorosus”,in the 15th international conference on advanced robotics,Tallinn,2011
+	\bibitem{15} 
+	G.M.Nelson,R.D.Quinn(1997)”Design  \& simulation  of a crockroach  like-Hexapod   robot “in  proceedings   of  the IEEE international conference on Robotics \& automation, New Mexico(1997)
+	\bibitem{16} 
+	Hamid Mehdigholi\&SaeedAkbarnejad (2012)” Optimization of watt’s six-bar linkage to generate straight\& parallel leg motion” in the journal of Humanoids,ISSN 1996-7209
+	\bibitem{17}
+	KanYoneda(2007)”Light weight quadruped with nine actuators” in journal of robotics \&   mechatronics Vol.19 No.2,2007
+	\bibitem{18}
+	Dürr, V., Schmitz, J., Cruse, H. (2004), “Behaviour-based modeling of hexapod locomotion: linking biology and technical  application”.  Arthropod Structure \& Development, 33: 237-250.
+	\bibitem{19}
+	Erden,  M.S.,  Leblebicioğlu,  K.  (2005), “Multi legged
+	\bibitem{20}
+	Walking in robotics and dynamic gait pattern generation for a six-legged robot with reinforcement learning.” book chapter in Mobile Robots: New Research, Nova Publishers (in press, ISBN: 1-59454-359-3).
+	\bibitem{21}
+	Pashenkov, N. \&Iwamasa, R. / One-Chip Solution to Intelligent Robot Control: Implementing Hexapod Subsumption Architecture Using a Contemporary Microprocessor , pp. 93 - 98, International Journal of Advanced Robotic Systems, Volume 1 Number 2 (2004), ISSN 1729-8806
+	\bibitem{22}
+	Lee J, Sponberg S, LohO, CowanN. 2008. “Templates and anchorsfor antenna-based wall following in cockroaches and robots.”IEEE Trans Robot. 24(6):130–143
+	\bibitem{23}
+	Brooks, R. (1989), “A robot that walks: emergent behaviorsfrom a carefully evolved network”, MIT AI Lab Memo1091, February.
+	\bibitem{24}
+	Cruse, H., Dean, J.,Muller, U. and Schmitz, J. (1991),“The stick insect as a walking robot”, Proceedings of the FifthInternational  Conference  on Advanced Robotics (ICAR’91),Pisa, Italy, Vol. 2, pp. 936-40.
+	\bibitem{25}
+	Lewinger, W.A. and Quinn, R.D. (2008), “BILL-LEGS: low computation emergent gait system for small mobile robots”, Proceedings of IEEE International Conference on Robotics and Automation (ICRA’08), Pasadena, CA, May11-23, pp. 251-6.
+	\bibitem{25h}
+	Nelson, G.M.; Quinn, R.D.; Bachmann, R.J.; Flannigan, W.C.; Ritzmann, R.E.; Watson, J.T.
+	Design and simulation of a cockroach-like hexapod robot. In Proceedings of the 1997 IEEE
+	International Conference on Robotics and Automation, Albuquerque, NM, USA, 25 April 1997;
+	pp. 1106–1111.
+	\bibitem{26h}
+	Delcomyn, F.; Nelson, M.E. Architectures for a biomimetic hexapod robot. Robot. Auton. Syst.
+	2000, 30, 5–15.
+	\bibitem{26}
+	W. A. Lewinger, "Insect-Inspired, Actively Compliant Robotic Hexapod," Department of Electrical Engineering and   Computer   Science,   M.S.   Thesis, Case   Western Reserve University, Cleveland, OH, 2005.
+	\bibitem{27}
+	Ekeberg,     O.,     Blümel,     M.,     and     Büschges,     A. 2004.Dynamic simulation of insect walking.Arthropod Structure and Development 33:287-300 (Special Issue: Arthropod  Locomotion  Systems:  from  Biological Materials  and  Systems  to  Robotics,  RE  Ritzmann,  SN Gorb and RD Quinn, eds.)
+	\bibitem{28}
+	Hartmann, M. J. (2001) “Active sensing capabilities of the rat whisker system”, Autonomous Robots, 11:249-254.
+	\bibitem{29}
+	“Introduction    to    Robotics:    Mechanics    \&   control”- J.Carig,John
+	\bibitem{30}
+	”Introduction to robotics”- SaeedB.Niku
+	\bibitem{31}
+	William     A.     Lewinger     and     Roger     D.     Quinn, Neurobiologically-based control system for an adaptively walking hexapod doctoral diss., Case Western Reserve University, Cleveland, Ohio, USA, May 2012.
+	\bibitem{32}
+	Hexapod robot gait, oricom, technologies, www.oricomtech.com
+	\bibitem{48h}
+	Zielinska, T. Autonomous walking machines, discussion of the prototyping problems. Bulletin of	the Polish academy of sciences. Tech. Sci. 2010, 58, 443–451.
+\end{thebibliography}

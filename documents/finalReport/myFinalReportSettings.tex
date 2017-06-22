@@ -1,0 +1,32 @@
+\documentclass[12pt,BCOR=1cm,bibliography=totoc]{thesis}
+\pdfminorversion=5 
+\pdfcompresslevel=9 
+\pdfobjcompresslevel=3
+%\usepackage{showframe}
+
+%\KOMAoptions{headings=small}
+%\addtokomafont{disposition}{\rmfamily\mdseries}
+%\renewcommand*{\contentsname}{Table of Contents}
+%\setkomafont{chapterprefix}{\rmfamily\Large\bfseries}
+
+
+% customize chapter format:
+\KOMAoption{headings}{twolinechapter}
+\renewcommand*\chapterformat{\color{blue}{Chapter \thechapter}\vspace{-0.6cm}}%\autodot
+
+% customize dictum format:
+\setkomafont{dictumtext}{\itshape\small}
+\setkomafont{dictumauthor}{\tiny}
+\renewcommand*\dictumwidth{0.5\linewidth}
+\renewcommand*\dictumauthorformat[1]{--- #1}
+\renewcommand*\dictumrule{}
+
+
+\usepackage{float}
+\usepackage{pdfpages}
+
+%*****************************************************************************
+\graphicspath{ {figures/} }
+
+%** new commands ******************************************************
+\include{commands}
