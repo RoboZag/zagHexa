@@ -248,4 +248,3 @@ TibiaAngle_5 = IKTibiaAngle_5
 CoxaAngle_6 = IKCoxaAngle_6 
 FemurAngle_6 = IKFemurAngle_6
 TibiaAngle_6 = IKTibiaAngle_6
-
