@@ -2,10 +2,10 @@ function [legAngles]=clacHexaBodyIK(PosX, PosY, PosZ, RotX, RotY, RotZ)
 
 % clear
 % clc
-BodySideLength = 80;
-Coxa = 12;
-Femur = 35; 
-Tibia = 72;
+ BodySideLength = 80;
+ Coxa = 12;
+ Femur = 35; 
+ Tibia = 72;
 % PosX = 1;
 % PosY = 1;
 % PosZ = 8;
@@ -32,12 +32,9 @@ BodyCenterOffsetY_4 = -BodyCenterOffset2;
 BodyCenterOffsetY_5 = 0;
 BodyCenterOffsetY_6 = BodyCenterOffset2;
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%- initial feet positions
-%- Standup function in our robot code 
-%- Set all angles to 60 deg in each leg to get the current value
-%  of the postion for x,y,z 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %- Analysing initial feet positions
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %leg 1
 feetposX_1 = cos((60/180)*pi)*(Coxa + Femur);
@@ -140,9 +137,9 @@ SrotZ = sin(RotZ * pi/180);
     IKA1_1 = atan((CoxaFeetDist_1 - Coxa)/NewPosZ_1);
     IKA2_1 = acos((Tibia^2 - Femur^2 - IKSW_1^2)/(-2 * IKSW_1 *Femur));
     TAngle_1 = acos((IKSW_1^2 - Tibia^2 - Femur^2)/(-2 * Femur *Tibia));
-    IKTibiaAngle_1 = 90 - TAngle_1 * 180/pi;
-    IKFemurAngle_1 = (IKA1_1 + IKA2_1) * 180/pi - 90 ;
-    IKCoxaAngle_1 = atan2(TranformX_1, TranformY_1) * 180/pi;
+    IKTibiaAngle_1 = pi - TAngle_1;
+    IKFemurAngle_1 = (IKA1_1 + IKA2_1) - pi ;
+    IKCoxaAngle_1 = atan2(TranformX_1, TranformY_1);
 
 
     %leg 2
@@ -156,9 +153,9 @@ SrotZ = sin(RotZ * pi/180);
     IKA1_2 = atan((CoxaFeetDist_2 - Coxa)/NewPosZ_2);
     IKA2_2 = acos((Tibia^2 - Femur^2 - IKSW_2^2)/(-2 * IKSW_2 *Femur));
     TAngle_2 = acos((IKSW_2^2 - Tibia^2 - Femur^2)/(-2 * Femur *Tibia));
-    IKTibiaAngle_2 = 90 - TAngle_2 * 180/pi;
-    IKFemurAngle_2 = (IKA1_2 + IKA2_2) * 180/pi - 90;
-    IKCoxaAngle_2 = 90 - atan2(TranformY_2, TranformX_2) * 180/pi;
+    IKTibiaAngle_2 = pi/2 - TAngle_2;
+    IKFemurAngle_2 = (IKA1_2 + IKA2_2) - pi/2;
+    IKCoxaAngle_2 = pi/2 - atan2(TranformY_2, TranformX_2);
     
     %leg 3
     NewPosX_3 = feetposX_3 + PosX + BodyIKX_3;
@@ -171,9 +168,9 @@ SrotZ = sin(RotZ * pi/180);
     IKA1_3 = atan((CoxaFeetDist_3 - Coxa)/NewPosZ_3);
     IKA2_3 = acos((Tibia^2 - Femur^2 - IKSW_3^2)/(-2 * IKSW_3 *Femur));
     TAngle_3 = acos((IKSW_3^2 - Tibia^2 - Femur^2)/(-2 * Femur *Tibia));
-    IKTibiaAngle_3 = 90 - TAngle_3 * 180/pi;
-    IKFemurAngle_3 =(IKA1_3 + IKA2_3) * 180/pi - 90;
-    IKCoxaAngle_3 = 90 - atan2(TranformY_3, TranformX_3) * 180/pi ;
+    IKTibiaAngle_3 = pi/2 - TAngle_3;
+    IKFemurAngle_3 =(IKA1_3 + IKA2_3) - pi/2;
+    IKCoxaAngle_3 = pi/2 - atan2(TranformY_3, TranformX_3);
 
     %leg 4
     NewPosX_4 = feetposX_4 + PosX + BodyIKX_4;
@@ -186,9 +183,9 @@ SrotZ = sin(RotZ * pi/180);
     IKA1_4 = atan((CoxaFeetDist_4 - Coxa)/NewPosZ_4);
     IKA2_4 = acos((Tibia^2 - Femur^2 - IKSW_4^2)/(-2 * IKSW_4 *Femur));
     TAngle_4 = acos((IKSW_4^2 - Tibia^2 - Femur^2)/(-2 * Femur *Tibia));
-    IKTibiaAngle_4 = 90 - TAngle_4 * 180/pi;
-    IKFemurAngle_4 = (IKA1_4 + IKA2_4) * 180/pi - 90;
-    IKCoxaAngle_4 = 90 - atan2(TranformY_4, TranformX_4) * 180/pi ;
+    IKTibiaAngle_4 = pi/2 - TAngle_4;
+    IKFemurAngle_4 = (IKA1_4 + IKA2_4) - pi/2;
+    IKCoxaAngle_4 = pi/2 - atan2(TranformY_4, TranformX_4);
     
     %leg 5
     NewPosX_5 = feetposX_5 + PosX + BodyIKX_5;
@@ -201,9 +198,9 @@ SrotZ = sin(RotZ * pi/180);
     IKA1_5 = atan((CoxaFeetDist_5 - Coxa)/NewPosZ_5);
     IKA2_5 = acos((Tibia^2 - Femur^2 - IKSW_5^2)/(-2 * IKSW_5 *Femur));
     TAngle_5 = acos((IKSW_5^2 - Tibia^2 - Femur^2)/(-2 * Femur *Tibia));
-    IKTibiaAngle_5 = 90 - TAngle_5 * 180/pi;
-    IKFemurAngle_5 = (IKA1_5 + IKA2_5) * 180/pi - 90;
-    IKCoxaAngle_5 = 90 - atan2(TranformY_5, TranformX_5) * 180/pi ;
+    IKTibiaAngle_5 = pi/2 - TAngle_5;
+    IKFemurAngle_5 = (IKA1_5 + IKA2_5) - pi/2;
+    IKCoxaAngle_5 = pi/2 - atan2(TranformY_5, TranformX_5);
     
     %leg 6
     NewPosX_6 = feetposX_6 + PosX + BodyIKX_6;
@@ -216,40 +213,40 @@ SrotZ = sin(RotZ * pi/180);
     IKA1_6 = atan((CoxaFeetDist_6 - Coxa)/NewPosZ_6);
     IKA2_6 = acos((Tibia^2 - Femur^2 - IKSW_6^2)/(-2 * IKSW_6 *Femur));
     TAngle_6 = acos((IKSW_6^2 - Tibia^2 - Femur^2)/(-2 * Femur *Tibia));
-    IKTibiaAngle_6 = 90 - TAngle_6 * 180/pi;
-    IKFemurAngle_6 = (IKA1_6 + IKA2_6) * 180/pi - 90;
-    IKCoxaAngle_6 = 90 - atan2(TranformY_6, TranformX_6) * 180/pi;
+    IKTibiaAngle_6 = pi/2 - TAngle_6;
+    IKFemurAngle_6 = (IKA1_6 + IKA2_6) - pi/2;
+    IKCoxaAngle_6 = pi/2 - atan2(TranformY_6, TranformX_6);
     
     %servo angles
 %leg 1 
-CoxaAngle_1 = IKCoxaAngle_1; 
-FemurAngle_1 = IKFemurAngle_1;
+CoxaAngle_1 = IKCoxaAngle_1 + pi/2;
+FemurAngle_1 = IKFemurAngle_1 + pi/2 ;
 TibiaAngle_1 = IKTibiaAngle_1;
 
 %leg 2
-CoxaAngle_2 = IKCoxaAngle_2;
+CoxaAngle_2 = IKCoxaAngle_2 + pi/3;
 FemurAngle_2 = IKFemurAngle_2;
-TibiaAngle_2 = IKTibiaAngle_2;
+TibiaAngle_2 = IKTibiaAngle_2 + pi/2;
 
 %leg 3
-CoxaAngle_3 = IKCoxaAngle_3; 
+CoxaAngle_3 = IKCoxaAngle_3 + pi/6; 
 FemurAngle_3 = IKFemurAngle_3;
-TibiaAngle_3 = IKTibiaAngle_3;
+TibiaAngle_3 = IKTibiaAngle_3+ pi/2;
 
 %leg 4
-CoxaAngle_4 = IKCoxaAngle_4; 
+CoxaAngle_4 = IKCoxaAngle_4 + pi/2; 
 FemurAngle_4 = IKFemurAngle_4;
-TibiaAngle_4 = IKTibiaAngle_4;
+TibiaAngle_4 = IKTibiaAngle_4 + pi/2;
 
 %leg 5
-CoxaAngle_5 = IKCoxaAngle_5; 
+CoxaAngle_5 = IKCoxaAngle_5 + pi/3; 
 FemurAngle_5 = IKFemurAngle_5;
-TibiaAngle_5 = IKTibiaAngle_5;
+TibiaAngle_5 = IKTibiaAngle_5 + pi/2;
     
 %leg 6
-CoxaAngle_6 = IKCoxaAngle_6; 
+CoxaAngle_6 = IKCoxaAngle_6 + pi/6; 
 FemurAngle_6 = IKFemurAngle_6;
-TibiaAngle_6 = IKTibiaAngle_6;
+TibiaAngle_6 = IKTibiaAngle_6 + pi/2;
 
 legAngles = [CoxaAngle_1, FemurAngle_1, TibiaAngle_1,... 
              CoxaAngle_2, FemurAngle_2, TibiaAngle_2,...

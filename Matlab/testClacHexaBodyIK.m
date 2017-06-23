@@ -1,6 +1,6 @@
 %% desired new position
-PosX = 1; PosY = 1; PosZ = 8;
-RotX = 3; RotY = 1; RotZ = 6;
+PosX = 0; PosY = 0; PosZ = 0;
+RotX = 0; RotY = 0; RotZ = 0;
 
 %% set the dimensions of the leg links
 %Note: the real values must be supplied here
@@ -32,7 +32,7 @@ leg4 = SerialLink(leg1, 'name', 'leg6', 'base', transl(-BodySideLength,BodySideW
 %% ploting the leg at initial position (all angles are 60 deg.)
 plotopt = {'noraise', 'nobase', 'noshadow', 'nowrist', 'nojaxes', 'delay', 0};
 
-thisLegAngles = [1.0472,1.0472,1.0472]; %[0 0 0];
+thisLegAngles = calibration(); %[0 0 0];
 %leg.plot([0 0 0])
 %leg.plot([1.0472,1.0472,1.0472], 'nobase', 'noshadow');
 
@@ -43,27 +43,27 @@ patch([-BodySideLength BodySideLength BodySideLength -BodySideLength],...
       [0  0              BodySideWidth BodySideWidth],... 
       [0 0 0 0],'FaceColor', 'y', 'FaceAlpha', 0.5);
 
-leg1.plot(thisLegAngles, plotopt{:});
+leg1.plot(thisLegAngles(1:3), plotopt{:});
 % set(gca, 'Zdir', 'reverse'); view(75, 40);
 
 hold on
-leg2.plot(thisLegAngles, plotopt{:});
-leg3.plot(thisLegAngles, plotopt{:});
-leg4.plot(thisLegAngles, plotopt{:});
-leg5.plot(thisLegAngles, plotopt{:});
-leg6.plot(thisLegAngles, plotopt{:});
+leg2.plot(thisLegAngles(4:6), plotopt{:});
+leg3.plot(thisLegAngles(7:9), plotopt{:});
+leg4.plot(thisLegAngles(10:12), plotopt{:});
+leg5.plot(thisLegAngles(13:15), plotopt{:});
+leg6.plot(thisLegAngles(16:18), plotopt{:});
 hold off
 set(gca, 'Zdir', 'reverse');
 view(75, 40);
 axis([-2*BodySideLength 2*BodySideLength -2*BodySideWidth 2.5*BodySideWidth -100 100]);
 
 %% just move the body forward
-for qq=1:8      % to move 8 steps
+
+for qq=1:40      % to move 8 steps
     % calculated new position based on the full body kinematics
-    [legAngles]=clacHexaBodyIK(qq, PosY, PosZ, RotX, RotY, RotZ);
+    [legAngles]=clacHexaBodyIK(qq, PosY,PosZ, RotX, RotY, RotZ);
     thisLegAngles=legAngles(1:3)
     
-    pause(1);
     % ploting the leg at the new position
     leg1.plot(legAngles(1:3), 'nobase');
     % set(gca, 'Zdir', 'reverse');
