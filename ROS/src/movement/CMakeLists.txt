@@ -122,8 +122,8 @@ include_directories(
 )
 
 ## Declare a C++ library
-add_library(ZagHexa_servodriver src/headers/ZagHexa_servodriver.cpp)
-add_library(Walking_Patterns src/headers/Walking_Patterns.cpp)
+add_library(clacHexaBodyIK src/headers/clacHexaBodyIK.cpp)
+
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
 ## either from message generation or dynamic reconfigure
@@ -202,7 +202,7 @@ add_library(Walking_Patterns src/headers/Walking_Patterns.cpp)
 #target_link_libraries(ZagHexa_servodriver wiringPi ${catkin_LIBRARIES})
 #add_executable(Walking_Patterns src/Walking_Patterns.cpp)
 #arget_link_libraries(Walking_Patterns ZagHexa_servodriver ${catkin_LIBRARIES})
-add_executable(Main src/Main.cpp )
-target_link_libraries(Main ZagHexa_servodriver wiringPi Walking_Patterns ${catkin_LIBRARIES})
+add_executable(Main src/main.cpp )
+target_link_libraries(Main clacHexaBodyIK ${catkin_LIBRARIES})
 # add_dependencies(Main zaghexa_generate_messages_cpp)
 

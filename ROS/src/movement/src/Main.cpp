@@ -1,83 +1,29 @@
-#include <std_msgs/Int8.h>
-#include <ros/ros.h>
-#include <Walking_Patterns.h>
-/*
-  - In start communication with Arduino 
-  - Receive from joyNode
-  - Send struct { char (mode) int (movement) }
-  - Receive sensor reading
-*/
-char data;
-int mode = 1; //mode 1 for translation, mode 2 for tending, mode 3 for up and down
-Walking_Patterns walking = Walking_Patterns();
-void oncall(const std_msgs::Int8 msg)
-{
-	if (msg.data == 1)
-	{
-		if (mode == 1){
-			walking.tripod_forward();
-			ROS_INFO(" The direction is [%d] ", msg.data);
-			}
-		//if (mode == 2)
-			//walking.tilt_forward();
-		if (mode == 3)
-			walking.standup();
-	}
-	if (msg.data == 2)
-	{
-		if (mode == 1){
-			walking.tripod_left();
-			ROS_INFO(" The direction is [%d] ", msg.data);
-}
-		//if (mode == 2)
-			//walking.tilt_left();
-	//	if (mode == 3) //do something 
-	}
-	if (msg.data == 3)
-	{
-		if (mode == 1)
-			walking.reset_angles();
-		//if (mode == 2)
-		//	walking.tilt_backward();
-		if (mode == 3)
-			walking.sitdown();
-	}
-	if (msg.data == '4')
-	{
-		if (mode == 1)
-			walking.tripod_right();
-//		if (mode == 2)
-		//	walking.tilt_right();
-	//	if (mode == 3)		// do something
-	}
-	//if (msg.data == 'x')
-//	{
-		// When x is call
-	//}
-//	if (msg.data == 't')
-	//{
-		// When t is call
-//	}
-	if (msg.data == 'c')
-		mode++;
-	if (msg.data == 's')
-		walking.reset_angles();
-	if (mode > 3)
-		mode = 1;
-}
+#include <BodyIK.h>
 
-void start()
-{
-	// set the angles to the refrance 
-	walking.calibrate();
-}
+BodyIk Hexa;
 
-int main(int argc, char **argv)
+void main()
 {
-	start();
-	ros::init(argc, argv, "servo_joy");
-	ros::NodeHandle servoHandler;
-	ros::Subscriber sub = servoHandler.subscribe("move_direction", 1000, oncall);
-	ros::spin();
-	return 0;
+	Hexa.Coxa = 12;
+	Hexa.Femur = 35;
+	Hexa.Tibia = 72;
+	Hexa.BodySideLength = 80;
+	Hexa.calibration();
+	Hexa.clacHexaBodyIK(5, 5, 5,5,5,5);
+
+	/*
+	for (int j = 0; j < 6; j++)
+	{
+	for (vec_float::iterator i = Hexa.IKangles[j].begin(); i != Hexa.IKangles[j].end(); i++)
+	{
+	std::cout << *(i) << "\n";
+	}
+
+	}
+
+
+
+	int x;
+	std::cin >> x;*/
+
 }
