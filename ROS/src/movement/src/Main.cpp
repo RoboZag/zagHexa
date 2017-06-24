@@ -1,8 +1,8 @@
 #include <std_msgs/Int8.h>
-#include <std_msgs/Float32MultiArray.h>
+#include <movement/vfloat.h>
 #include <ros/ros.h>
 #include <BodyIK.h>
-#include <iostream>
+
 
 BodyIk Hexa;
 
@@ -13,7 +13,7 @@ void oncall(const std_msgs::Int8 msg)
 
 int main(int argc, char** argv)
 {
-	std_msgs::Float32MultiArray message;
+	movement::vfloat message;
 
 	Hexa.Coxa = 12.0;
 	Hexa.Femur = 35.0;
@@ -22,14 +22,13 @@ int main(int argc, char** argv)
 
 	ros::init(argc, argv, "servo_joy");
 	ros::NodeHandle servoHandler;
-	ros::Publisher  pub = servoHandler.advertise<std_msgs::Float32MultiArray>("/angles", 1000);
+	ros::Publisher  pub = servoHandler.advertise<movement::vfloat>("/angles1", 1000);
 	ros::Subscriber sub = servoHandler.subscribe("move_direction", 1000, oncall);
 	ros::Rate loop_rate(10); 
-	Hexa.calibration();
 
+	Hexa.calibration();
 	// Hexa.clacHexaBodyIK(PosX, PosY, PosZ, RotX, RotY, RotZ);
 	Hexa.clacHexaBodyIK(5, 5, 5,5,5,5);
-
 	/*
 		0 RightFront
 		1 RightMiddle
@@ -50,7 +49,6 @@ int main(int argc, char** argv)
 		loop_rate.sleep(); 
 		
 	}
-
 	/*
 	// For Testing the output value 
 	for (int j = 0; j < 6; j++)
