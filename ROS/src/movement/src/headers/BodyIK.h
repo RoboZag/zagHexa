@@ -33,7 +33,6 @@ private:
 	float BodyCenterOffset2;
 	float feetpos[5];
 	int refAngle[18];
-	vec_float correct_angle(int servo_num);
 	
 public:
 	float Coxa = 12;
@@ -41,6 +40,7 @@ public:
 	float Tibia = 72;
 	float BodySideLength = 80;
 	vec_float IKangles[6];
+	vec_float correct_angle(int Leg_num);
 	void calibration();
 	vec_float Body(float Pos[], float feetposx, float feetposy, float BodyCenterOffsetx, float BodyCenterOffsety);
 	void clacHexaBodyIK(float PosX, float PosY, float PosZ, float RotX, float RotY, float RotZ);

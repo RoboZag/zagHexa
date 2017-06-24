@@ -31,8 +31,8 @@ vec_float BodyIk::Leg(vec_float BodyI[], float Pos[], float feetposX, float feet
 {
 	vec_float IKangles;
 
-	float NewPosX = feetposX + Pos[0] + BodyI[0][2];
-	float NewPosY = feetposY + Pos[1] + BodyI[0][1];
+	float NewPosX = feetposX   + Pos[0] + BodyI[0][2];
+	float NewPosY = feetposY   + Pos[1] + BodyI[0][1];
 	float NewPosZ = feetpos[2] + Pos[2] + BodyI[0][0];
 
 	float TranformX = NewPosX * cos(angle * PI / 180) - NewPosY * sin(angle * PI / 180);
@@ -47,8 +47,9 @@ vec_float BodyIk::Leg(vec_float BodyI[], float Pos[], float feetposX, float feet
 	float IKTibiaAngle = 90 - (TAngle * 180 / PI);
 	float IKFemurAngle = ((IKA1 + IKA2)* 180 / PI) - 90;
 	float IKCoxaAngle = ((atan2(TranformX, TranformY) * 180 )/ PI);
-	float a = atan2(TranformX, TranformY);
 
+
+	// Deal with is like stake Last in first out LIFO
 	IKangles.push_back(IKTibiaAngle);
 	IKangles.push_back(IKFemurAngle);
 	IKangles.push_back(IKCoxaAngle);
@@ -74,13 +75,13 @@ void BodyIk::clacHexaBodyIK(float PosX, float PosY, float PosZ, float RotX, floa
 	Pos[0] = PosX; 	Pos[1] = PosY; Pos[2] = PosZ;	Pos[3] = RotX;	Pos[4] = RotY;	Pos[5] = RotZ;
 	
 	// Body IK
-	BodyI[0] = Body(Pos,  feetpos[0], feetpos[1], BodyCenterOffset1,  BodyCenterOffset2 );
-	BodyI[1] = Body(Pos,  feetpos[3], 0			, BodySideLength   , 0					);
-	BodyI[2] = Body(Pos,  feetpos[0], feetpos[4], BodyCenterOffset1, -BodyCenterOffset2 );
-	BodyI[3] = Body(Pos, -feetpos[0], feetpos[4], -BodyCenterOffset1,-BodyCenterOffset2 );
-	BodyI[4] = Body(Pos, -feetpos[3], 0			, -BodySideLength   , 0					);
-	BodyI[5] = Body(Pos, -feetpos[0], feetpos[1], -BodyCenterOffset1, BodyCenterOffset2 );
-	
+	BodyI[0] = Body(Pos,  feetpos[0], feetpos[1],  BodyCenterOffset1,  BodyCenterOffset2 );
+	BodyI[1] = Body(Pos,  feetpos[3], 0	    ,  BodySideLength   ,  0   		     );
+	BodyI[2] = Body(Pos,  feetpos[0], feetpos[4],  BodyCenterOffset1, -BodyCenterOffset2 );
+	BodyI[3] = Body(Pos, -feetpos[0], feetpos[4], -BodyCenterOffset1, -BodyCenterOffset2 );
+	BodyI[4] = Body(Pos, -feetpos[3], 0	    , -BodySideLength   ,  0		     );
+	BodyI[5] = Body(Pos, -feetpos[0], feetpos[1], -BodyCenterOffset1,  BodyCenterOffset2 );
+
 	// Leg IK
 	IKangles[0] = Leg(&BodyI[0], Pos,  feetpos[0], feetpos[1], 30);
 	IKangles[1] = Leg(&BodyI[1], Pos,  feetpos[3], 0         , 90);
@@ -108,6 +109,7 @@ void BodyIk::clacHexaBodyIK(float PosX, float PosY, float PosZ, float RotX, floa
 
 void BodyIk::calibration()
 {
+	// Set the stand up angles
 	refAngle[RightFrontRot] = 90;
 	refAngle[RightFrontLift] = 95;
 	refAngle[RightFrontTibia] = 92;
@@ -129,18 +131,39 @@ void BodyIk::calibration()
 	
 }
 
-vec_float BodyIk::correct_angle(int servo_num) {
+/*
+	0 RightFront
+	1 RightMiddle
+	2 RightRear
+	3 LeftFront
+	4 LeftMiddle
+	5 LeftRear
+
+*/
+vec_float BodyIk::correct_angle(int Leg_num) {
+	// Return the angle which the Servo will move according to it (Coxa, Fumer, Tibia)
 	vec_float angle;
-	if (servo_num >= 0 && servo_num <= 8) {
-		angle.push_back(refAngle[servo_num] - IKangles[servo_num][0]);
-		angle.push_back(refAngle[servo_num] - IKangles[servo_num][1]);
-		angle.push_back(refAngle[servo_num] - IKangles[servo_num][2]);
+	if (Leg_num >= 0 && Leg_num < 3) {
+
+		// Deal with is like stake Last in first out LIFO
+		angle.push_back(refAngle[Leg_num + 2] - IKangles[Leg_num][2]); // Tibia Angel for the first 3 Legs
+
+		angle.push_back(refAngle[Leg_num + 1] - IKangles[Leg_num][1]); // Femur Angel for the first 3 Legs
+
+		angle.push_back(refAngle[Leg_num] - IKangles[Leg_num][0]);	   // Coxa Angel for the first 3 Legs
+
 	}
-	else if (servo_num >= 9 && servo_num <= 17) {
-		angle.push_back(refAngle[servo_num] + IKangles[servo_num][0]);
-		angle.push_back(refAngle[servo_num] + IKangles[servo_num][1]);
-		angle.push_back(refAngle[servo_num] + IKangles[servo_num][2]);
+	else if (Leg_num >= 3 && Leg_num < 6) {
+
+		angle.push_back(refAngle[Leg_num + 2] + IKangles[Leg_num][2]); // Tibia Angel for the second 3 Legs	
+
+		angle.push_back(refAngle[Leg_num + 1] + IKangles[Leg_num][1]); // Femur Angel for the second 3 Legs
+
+		angle.push_back(refAngle[Leg_num] + IKangles[Leg_num][0]);     // Coxa Angel for the second 3 Legs
+
+
 	}
+	// Return vector containe the 3 angles for the wanted leg 
 	return angle;
 }
 
