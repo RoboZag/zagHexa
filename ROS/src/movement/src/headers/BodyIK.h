@@ -29,15 +29,15 @@ typedef std::vector<float> vec_float;
 class BodyIk {
 	
 private:
-	float BodyCenterOffset1;
-	float BodyCenterOffset2;
 	float feetpos[5];
 	int refAngle[18];
 	
 public:
-	float Coxa = 12;
-	float Femur = 35;
-	float Tibia = 72;
+	float Coxa;
+	float Femur;
+	float Tibia;
+	float BodyCenterOffset1;
+	float BodyCenterOffset2;
 	float BodySideLength = 80;
 	vec_float IKangles[6];
 	vec_float correct_angle(int Leg_num);

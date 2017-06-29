@@ -63,8 +63,6 @@ void BodyIk::clacHexaBodyIK(float PosX, float PosY, float PosZ, float RotX, floa
 	vec_float BodyI[6];
 	int angle = 60;
 
-	BodyCenterOffset1 = BodySideLength/2;
-	BodyCenterOffset2 = sqrt((BodySideLength * BodySideLength) - (BodyCenterOffset1 * BodyCenterOffset1));
 	feetpos[0] = cos(angle * PI /180)*(Coxa + Femur);   // feetposX_1, feetposX_3, -feetposX_4, -feetposX_6
 	feetpos[1] = sin(angle * PI /180)*(Coxa + Femur);   // feetposY_1, feetposY_6
 	feetpos[2] = Tibia;									// feetposZ_All
@@ -76,10 +74,10 @@ void BodyIk::clacHexaBodyIK(float PosX, float PosY, float PosZ, float RotX, floa
 	
 	// Body IK
 	BodyI[0] = Body(Pos,  feetpos[0], feetpos[1],  BodyCenterOffset1,  BodyCenterOffset2 );
-	BodyI[1] = Body(Pos,  feetpos[3], 0	    ,  BodySideLength   ,  0   		     );
+	BodyI[1] = Body(Pos,  feetpos[3], 0	  		,  BodySideLength   ,  0   		    	 );
 	BodyI[2] = Body(Pos,  feetpos[0], feetpos[4],  BodyCenterOffset1, -BodyCenterOffset2 );
 	BodyI[3] = Body(Pos, -feetpos[0], feetpos[4], -BodyCenterOffset1, -BodyCenterOffset2 );
-	BodyI[4] = Body(Pos, -feetpos[3], 0	    , -BodySideLength   ,  0		     );
+	BodyI[4] = Body(Pos, -feetpos[3], 0	    	, -BodySideLength   ,  0		   		 );
 	BodyI[5] = Body(Pos, -feetpos[0], feetpos[1], -BodyCenterOffset1,  BodyCenterOffset2 );
 
 	// Leg IK
