@@ -2,7 +2,7 @@
 #include <VarSpeedServo.h> 
 /*
   - Start communication with RP
-  - Receive struct { char (mode) int (movment) }
+  - Receive struct { char (mode) int (direction) }
   - move the robot as wanted
 */
 #define newRx 11
@@ -30,7 +30,16 @@
 SoftwareSerial bluetooth(newRx, newTx);
 VarSpeedServo servo[18];
 
-char data;
+/*
+typedef struct {
+char Mode;
+int direction;
+}stru;
+stru serial_comm_port;
+*/
+
+char data;  //Replace data with serial_comm_port->mode or serial_comm_port -> direction 
+
 int refAngle[18];
 
 void init_refAngle();
