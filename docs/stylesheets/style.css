@@ -245,7 +245,7 @@ header li {
   padding: 0;
   border-radius: 0;
   border:0;
-  line-height: 1.8em;
+  line-height: 1.2em;
 }
 
 .menu ul li{
@@ -626,16 +626,20 @@ section {
 }
 .rostut b{
   font-family:"Segoe UI", "Lucida Grande", "Helvetica Neue", sans-serif;
-  font-size: 22px;
-  line-height: 1.5em;
+  line-height: 1.6em;
   text-align: center !important;
-
+  font-size: 17px;
 }
 .rostut p{
-  font-family: "Ubuntu","Muli","Helvetica","Tahoma","Geneva","Arial",sans-serif;
+  font-family:  "Lato","proxima-nova","Helvetica Neue",Arial,sans-serif;
   line-height: 1.6em;
   font-size: 16px;
 
+}
+.rostut strong , .rostut li strong{
+  font-size: 17px;
+  color: #464444;
+  font-weight: 600;
 }
 .rostut h1{
   font-family: "Ubuntu","Montserrat","Helvetica","Tahoma","Geneva","Arial",sans-serif;
@@ -648,12 +652,22 @@ section {
   display: block;
 
 }
+.rostut ul.a{
+  margin-left: 30px; 
+  list-style: initial;
+  color: #464444;
+  list-style-type: square; 
+  list-style-position:inside;
+}
+
 
 /*ros tutorial end*/
 
 
 /**/
-.collapsible-body{
+
+
+.menu .side{
   padding: 0rem 4rem;
 }
 
@@ -892,4 +906,26 @@ hr {
     font-size:12pt;
     color:#444;
   }
+}
+.breadcrumb{
+  color: #39c;
+}
+.breadcrumb:last-child{
+  color: #39c
+}
+.breadcrumb:before {
+    content: '\E5CC';
+    color: #39c;
+    vertical-align: top;
+    display: inline-block;
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 25px;
+    margin: -4px 10px 0 8px;
+    -webkit-font-smoothing: antialiased;
+}
+ghpages-materialize.css:1
+*, *:before, *:after {
+    box-sizing: inherit;
 }

@@ -4,22 +4,20 @@
 	  	<meta charset="utf-8">
 	    <meta http-equiv="X-UA-Compatible" content="chrome=1">
 	    <title>ZagHexa Robot Project Documentation</title>
-		<link rel="shortcut icon" href="../img/hexa2.png" type="image/x-icon" />
-     	 <!--Import Google Icon Font-->
+	    <link rel="shortcut icon" href="../img/hexa2.png" type="image/x-icon" />
+	    <!--Import Google Icon Font-->
      	 <link href="../stylesheets/material-icons.css" rel="stylesheet">
       	<!--Import materialize.css-->
       	<link type="text/css" rel="stylesheet" href="../stylesheets/materialize.min.css"  media="screen,projection"/>
 
       	<!--Let browser know website is optimized for mobile-->
-      	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>   
+      	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	    
 	    <!-- Css-->
-	    <link rel="stylesheet" href="../stylesheet/material-icons.css">
 	    <link rel="stylesheet" href="../stylesheets/font-awesome.min.css">
 	    <link rel="stylesheet" href="../stylesheets/style.css">
 	    <link rel="stylesheet" href="../stylesheets/pygment_trac.css">
 	    <meta name="viewport" content="width=device-width">
-
 	    
 	    <!--[if lt IE 9]>
 	    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -48,18 +46,19 @@
 					<li>
 						<div class="collapsible-header edit "><a href="../os/index.html"><i class="fa fa-laptop" aria-hidden="true"></i> Operating System</a></div>
 					</li>
+					
 					<li>
 						<div class="collapsible-header edit"><a href="../software/index.html"><i class="fa fa-code" aria-hidden="true"></i> Software</a></div>
 					</li>
 					<li>
 						<div class="collapsible-header edit"><a href="../assembly/index.html"><i class="fa fa-list-ul" aria-hidden="true"></i> Assembly Guide</a></div>
-					</li>	
+					</li>
 					<li>
 						<div class="collapsible-header edit"><i class="fa fa-file-text-o" aria-hidden="true"></i> Tutorials</div>
 							<div class="collapsible-body side">
 								<ul>
-									<li><a href="index.html"><strong>Home</strong></li>
-									<li><a href="tutorials/ros.html"><abbr title="Robot Operating System"><strong>ROS</strong></abbr></a></li>
+									<li><a href="tutorials/index.html"><strong>Home</strong></li>
+									<li><a href="ros.html"><abbr title="Robot Operating System"><strong>ROS</strong></abbr></a></li>
 					    			<li><a href="tutorials/ros.html"><strong>Linux</strong></a></li>
 					    			<li><a href="tutorials/ros.html"><strong>Raspberry bi</strong></a></li>
 								</ul>
@@ -67,7 +66,8 @@
 					</li>
 					<li>
 						<div class="collapsible-header edit"><a href="../about/index.html"><i class="fa fa-info-circle" aria-hidden="true"></i> About us</a></div>
-					</li>
+					</li>	
+
 		        	<li class="icon">
 				        <p>This project is maintained by <a href="https://github.com/mnourgwad"><small>Dr.Ing.</small>Mohammed Nour</a></p>
 				        <ul>
@@ -80,69 +80,38 @@
 		        			
 				</ul>	  
           	</div>
-		    <div class="fixed-action-btn horizontal">
-			    <a class="btn-floating btn-large blue">
-			      <i class="large material-icons">mode_edit</i>
-			    </a>
-			    <ul>
-			      <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
-			      <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
-			      <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
-			      <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
-			    </ul>
-		    </div>
 		    <section>
-		    	
-		        <h3>ZagHexa Robot Project</h3>
+		      	<h1 style="text-align: center;">Robot Operating System</h1>
 	        	<div class="nav-wrapper">
 			      <div class="col s12">
 			        <a href="../index.html" class="breadcrumb">Home</a>
 			        <a href="index.html" class="breadcrumb">Tutorials</a>
+			        <a href="ros.html" class="breadcrumb">ROS</a>
+			        <a href="instal.html" class="breadcrumb">General Concepts</a>
+
 			      </div>
-			    </div>		        
-			    <div class="tutorial">
-		        	<h4 style="text-align: center;">ZagHexa Tutorials</h4>
-		        	<img src="../img/hexa2.png" class="responsive-img materialboxed" alt="ZagHexa">
-		        	<p>This <b> ZagHexa</b> robot tutorial series will  show you how to build a cheap, basic and simple hexapod robot.<br> Similar approach can be used to build a quadruped robot. <em><a href="hexa.html" target="_blank">Learn more about Hexapod robots</a> </em></p>
-				    <b>The Goal Of This<b> ZagHexa</b> Robot Tutorial</b>
-			    	<p>Our goal is to build a hexapod robot that can walk, able to tilt the body toward all horizontal directions and so on.
-			    	</p>
-			    	<p><a href="#"><b>Hint</b></a> These Tutorials will help you in Hexapod Projects only ..!!</p>
-				    <b>The Structure of This Tutorial ..!!<em> OR </em>  What Do You Need ..??</b>
-				    <p>This is supposed to be very simple and quick tutorials ,So We wil list what we need to learn or to know to build a Hexapod Robot</p>
+			    </div>
+			    <br>
+		      	<div class="rostut">
+		      		<h4>General Concepts</h4>
+		      		<p>The basic building blocks of <abbr title="Robot Operating System">ROS</abbr> software framework are <b>Packages.</b><br><abbr title="Robot Operating System">ROS</abbr> works as a groub of programs every one is called <b>Node</b>.<br>Every<b> Package</b> contains a collection of <b>Nodes</b>.<br> 
+		      		<abbr title="Robot Operating System">ROS</abbr> starts with the <abbr title="Robot Operating System">ROS</abbr> Master node. The Master node allows all other <abbr title="Robot Operating System">ROS</abbr> pieces of software (Nodes) to find and talk to each other.<br>Every <b>Node</b> communicate with each others through <b>Messages.</b>
+		      		</p><br>
+		      		<h5>Topics will be covered in this tutorial</h5>
+		      		<ul class="a">
+		      			<li><strong>Packages</strong> </li>
+		      			<li><strong>Nodes</strong></li>
+		      			<li><strong>Master Node</strong></li>
+		      			<li><strong>Messages</strong></li>
+		      			<li><strong>Topics</strong></li>
+		      			<li><strong>Services</strong></li>
+		      		</ul>
+		      		<p><b style="color: #39c">Packages:</b> The ROS packages are the most basic unit of the ROS software. <br>It contains the ROS runtime process (nodes), libraries, configuration files, and so on, which are organized together as a single unit.<br><strong>Packages</strong> are the atomic build item and release item in the ROS software.</p>
+		      		<p><b style="color: #39c"> Package manifest:</b> The package manifest file is inside a package that contains information about the package, author, license, dependencies, compilation flags, and so on. The<em> package.xml</em> file inside the ROS package is the manifest file of that package.</p>
 
-				    <ul style="margin-left: 27px">
-				    	<li><a href="ros.html"><abbr title="Robot Operating System"><b>ROS</b></abbr></a></li>
-				    	<li><a href="ros.html"><b>Linux</b></a></li>
-				    	<li><a href="ros.html"><b>Raspberry bi</b></a></li>
-				    	<li><a href="ros.html"><b>Inverse Kinematics</b></a></li>
-				    </ul>
-				</div>
+		      		
+		      	</div>
 		    </section>
-
-		    <!-- footer start -->
-		    <!-- <footer> 
-		        <p>This project is maintained by <a href="https://github.com/mnourgwad"><small>Dr.Ing.</small>Mohammed Nour</a></p>
-		        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-		        <div class="icon">
-                    <a class="ex1" href="https://drive.google.com/drive/folders/0B8bYDipm8_AAc0h3N0lIUFJUbEE">
-                        <i class="fa fa-google-plus"></i>
-                    </a>
-                    <a class="ex2" href="https://github.com/RoboZag/zagHexa">
-                        <i class="fa fa-github"></i>
-                    </a>
-                    
-                    <a class="ex4" href="https://www.youtube.com/channel/UCsCPxTiffuTVV5go8i7QMOA">
-                        <i class="fa fa-youtube"></i>
-                    </a>
-                    <a class="ex5" href="https://goo.gl/LZlebV">
-                        <i class="fa fa-linkedin"></i>
-                    </a>
-                    
-            	</div>
-	      	</footer> -->
-	      	<!-- footer end -->
-
 	    <script src="../javascripts/scale.fix.js"></script>
 	    <script src="../javascripts/jquery-2.2.0.min.js"></script>
  		<script src="../javascripts/materialize.min.js"></script>
