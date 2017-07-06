@@ -66,7 +66,7 @@ Our choice was Kinetic because is the update  distribution that have a LTS with 
 		\label{Fig:Pub}
 	\end{figure}
 
-	\item ROS Topic 
+	\item ROS Topic \\
 	
 	Topics are named buses over which nodes exchange messages. Topics have anonymous publish/subscribe semantics, which decouples the production of information from its consumption. In general, nodes are not aware of who they are communicating with. Instead, nodes that are interested in data subscribe to the relevant topic; nodes that generate data publish to the relevant topic. There can be multiple publishers and subscribers to a topic.
 	
@@ -74,7 +74,7 @@ Our choice was Kinetic because is the update  distribution that have a LTS with 
 	
 	Each topic is strongly typed by the ROS message type used to publish to it and nodes can only receive messages with a matching type. The Master does not enforce type consistency among the publishers, but subscribers will not establish message transport unless the types match. Furthermore, all ROS clients check to make sure that an MD5 computed from the msg files match. This check ensures that the ROS Nodes were compiled from consistent code bases.
 	
-	with a simple words we can define this terms:
+	with a simple words we can define this terms:\\
 	
 	Nodes: A node is an executable that uses ROS to communicate with other nodes.
 	Topics: Nodes can publish messages to a topic as well as subscribe to a topic to receive messages.
@@ -83,7 +83,7 @@ Our choice was Kinetic because is the update  distribution that have a LTS with 
 	roscore: is a collection of nodes and programs that are pre-requisites of a ROS-based system. You must have a roscore running in order for ROS nodes to communicate. It is launched using the roscore command.
 	
 	
-	\item Can we access ROS form a remote computer?    
+	\item Can we access ROS form a remote computer? \\   
 	ROS is a distributed computing environment. A running ROS system can comprise dozens, even hundreds of nodes, spread across multiple machines. Depending on how the system is configured, any node may need to communicate with any other node, at any time.	
 	\begin{itemize}
 		\item There must be complete, bi-directional connectivity between all pairs of machines, on all ports.
@@ -93,7 +93,24 @@ Our choice was Kinetic because is the update  distribution that have a LTS with 
 	for more info: wiki.ros.org/ROS/NetworkSetup
 \end{itemize}
 
-\section{Linux}
+\section{UNIX}
+	UNIX is an open source operating system which was first developed in the 1960s, and has been under constant development ever since. By operating system, we mean the suite of programs which make the computer work. It is a stable, multi-user, multi-tasking system for servers, desktops and laptops.
+	UNIX systems also have a graphical user interface (GUI) similar to Microsoft Windows which provides an easy to use environment. However, knowledge of UNIX is required for operations which aren't covered by a graphical program, or for when there is no windows interface available.
+	
+	- Types of UNIX
+	
+	There are many different versions of UNIX, although they share common similarities. The most popular varieties of UNIX are Sun Solaris, GNU/Linux, Ubuntu, Kali, and MacOS X.
+	Here in the School, we use Solaris on our servers and workstations, and Fedora Linux on the servers and desktop PCs.
+	
+	- The UNIX operating system
+	The UNIX operating system is made up of three parts; the kernel, the shell and the programs.
+	
+	- The kernel
+	The kernel of UNIX is the hub of the operating system: it allocates time and memory to programs and handles the filestore and communications in response to system calls.
+	
+	- The shell
+	The shell acts as an interface between the user and the kernel. The shell is a command line interpreter (CLI), it interprets the commands the user types in and arranges for them to be carried out.
+	
 
 \section{General View Of The Control System}
 
@@ -104,9 +121,9 @@ The control system of the robot can be divided into two parts:
 \item Arduino - Low level -
 \end{itemize}
 
-All computing and control operation is done on RP that lies on the robot to inure the speed of control and precision.
-The sensors data send from mobile App to the RP through TCP/IP connection and to a computer also, RP receive this data and process it to be aware with its environment and make a decision upon it, the computer show this data on a GUI to the operator/user so he can also make a decision using the reading form sensors and the camera.
-When a order form an operator using Joystick/Bluetooth to move the robot the RP take this order and send it to the Arduino through a serial port, using a C++ program in Arduino we compute the angles to move to the desired direction with minimal error. Figure\ref{Fig:Outline} show an Outline for the control system.
+All computing and control operation is done on RPi and Arduino that lies on the robot to inure the speed of control and precision.
+The sensors data send from mobile App to the RPi through TCP/IP connection and to a computer also, RPi receive this data and process it to be aware with its environment and make a decision upon it, the computer show this data on a GUI to the operator/user so he can also make a decision using the reading form sensors and the camera.
+When a order form an operator using Joystick/Bluetooth to move the robot the RPi take this order and send it to the Arduino through a serial port, using a C++ program in Arduino we compute the angles to move to the desired direction with minimal error. Figure\ref{Fig:Outline} show an Outline for the control system.
 
 \begin{figure}[h]		
 	\centering
@@ -125,7 +142,7 @@ The Raspberry Pi is slower than a modern laptop or desktop but is still a comple
 The Raspberry Pi is open hardware, with the exception of the primary chip on the Raspberry Pi, the Broadcomm SoC (System on a Chip), which runs many of the main components of the board–CPU, graphics, memory, the USB controller, etc. Many of the projects made with a Raspberry Pi are open and well-documented as well and are things you can build and modify yourself.
 
 \begin{itemize}
-	\item What kind of operating system does the Raspberry Pi run?
+	\item What kind of operating system does the Raspberry Pi run?\\
 	
 	The Raspberry Pi was designed for the Linux operating system, and many Linux distributions now have a version optimized for the Raspberry Pi.
 	
@@ -185,9 +202,16 @@ The Raspberry Pi is open hardware, with the exception of the primary chip on the
 	
 	\subsubsection{Raspberry Pi with ROS} 
 	
+	This part is consider as the the brain of the robot as it contain all the nodes of our robot that make it move and interact with its environment, we can divide our program to two main packages that will control all functions in our robot:
 	
+	\begin{enumerate}
+		\item Movement package \\ 
+			This package is responsible to handle the movement of the robot,  		
+		\item Client package  \\
+			This package is responsible to handle the communication through the TCP/IP connection, 	   
+	\end{enumerate}
 
-
+	
 
 \subsection{Arduino Mega}
 Arduino is an open-source platform used for building electronics projects. Arduino consists of both a physical programmable circuit board (often referred to as a microcontroller) and a piece of software, or IDE (Integrated Development Environment) that runs on your computer, used to write and upload computer code to the physical board.
@@ -225,33 +249,84 @@ The Arduino Mega 2560 is a microcontroller board based on the ATmega2560. It has
 
 		\subsubsection{Arduino whit Raspberry Pi} 
 		
+		Rather than struggle with the very basic unprotected IO pins on the Raspberry Pi and the lack of real-time performance in Linux, the ideal setup for many real-world-interfacing projects is Raspberry Pi + Arduino.
+		
+		There are four basic ways to connect Arduino to Raspberry Pi:
+		\begin{enumerate}
+			\item Buy an add-on board like the Gertboard which has an Arduino compatible IC on it. Pricey.
+			\item Plug a standard Arduino into the USB port of the RPi. This is by far the easiest method and minimises wiring and hassle. However it requires the more expensive Arduinos.
+			\item Use a USB to Serial adapter with a cheaper/smaller Arduino like a Pro Mini or a self-made Shrimp. This is the best DIY option and has the same advantage of method 2 that you can power the Arduino/Shrimp from USB.
+			\item Use the Serial Pins on the Raspberry Pi to connect to a cheaper/smaller Aruduino like a Pro Mini or a self-made Shrimp. This is theoretically the cheapest method but by far the most hassle. This is also the best method if you are using the cheaper Raspberry Pi Model A and its single USB port is being used for Wifi.
+		\end{enumerate}	
+		Using the second method to connect the two devices in serial connection,
+		
+		
 		\subsubsection{Arduino PWM to Servo Motors} 
+		
 		
 \section{Mobile Application}
 
+	Most of the android devices have built-in sensors that measure motion, orientation, and various environmental condition.
+	SensorsCORE is Android application act like server that read any kind of data from your smartphone's sensors and send it through socket request to any client.  
+	
+	- How to communicate: 
+	
+	The communication between SensorsCOER(server) and your application(client) based on socket communication. The server is accessed via server's IP address (or domain name) and a port number. Once two application are connected, they can communicate streams of bytes with each other.  
+	
+	- How it works: 
+	
+	Once your application connected with the server for the first time, it send a list of your available sensors in your smartphone - you can use – with its IDs. You can send ID of the desired sensor that you want to get its values to the server. Every time you send a request, you get an answer with the sensor values. So we have three type of requests. 
+	The first request sent with first time connection with the list of available sensors and its IDs. 
+	When you want a data form specific sensor, you sent a request with the sensor's id The third request is initialized when you want the data from all sensors. 
+
+	Example:
+
+	\begin{figure}[h]		
+	\centering
+	\includegraphics[width =.8\textwidth]{App1}
+	\caption{Outline of control systems.}
+	\label{Fig:App1}
+\end{figure}
+
+
+	\begin{figure}[h]		
+	\centering
+	\includegraphics[width =.8\textwidth]{App2}
+	\caption{Outline of control systems.}
+	\label{Fig:App2}
+\end{figure}
+
+
+
 \section{Communication Types}
-	Firstly, the wireless joystick communicates with the Raspberry Pi, using a ROS node called ‘joy’, and send a keystroke to it. Then the Raspberry Pi find the key pressed using a python library called ‘pygame’ and send a proper character on the serial port to the Arduino, our low-level interface with the servomotors. Lastly, the Arduino checks the received character and perform the needed action.
-	Another line of communication is between our control station and an Android smart phone mounted on the robot through a TCP/IP client server application.
+
 	
 	\subsection{Joystick}
-	
+	the wireless joystick communicates with the Raspberry Pi, using a ROS node called ‘joy’, and send a keystroke to it. Then the Raspberry Pi find the key pressed using a python library called ‘pygame’ and send a proper character on the serial port to the Arduino, our low-level interface with the servomotors. Lastly, the Arduino checks the received character and perform the needed action.
+	\begin{figure}[h]		
+		\centering
+		\includegraphics[width =.8\textwidth]{logitech_joy}
+		\caption{Outline of control systems.}
+		\label{Fig:joy}
+	\end{figure}
+
 	\subsection{Bluetooth}
 		
 	\subsection{Wi-Fi}
-	
+		Another line of communication is between our control station and an Android smart phone mounted on the robot through a TCP/IP client server application.
 		\begin{itemize}
-			\item What is TCP/IP?
+			\item What is TCP/IP?\\
 			When two computers follow the same protocols—the same set of rules—they can understand each other and exchange data. TCP/IP (Transmission Control Protocol/Internet Protocol) is the basic communication language or protocol of the Internet that use this concept to communicate through the internet and become standard terminology for referring to this suite of protocols.		
 			TCP/IP architecture omits some features found under the OSI model, combines the features of some adjacent OSI layers and splits other layers apart. The 4-layer structure of TCP/IP is built as information is passed down from applications to the physical network layer. When data is sent, each layer treats all of the information it receives from the upper layer as data, adds control information (header) to the front of that data and then pass it to the lower layer. When data is received, the opposite procedure takes place as each layer processes and removes its header before passing the data to the upper layer. 
 			
-			- Application Layer
+			- Application Layer\\
 			The Application Layer in TCP/IP groups the functions of OSI Application, Presentation Layer and Session Layer. Therefore any process above the transport layer is called an Application in the TCP/IP architecture. In TCP/IP socket and port are used to describe the path over which applications communicate. Most application level protocols are associated with one or more port number.
 			Transport Layer. In TCP/IP architecture, there are two Transport Layer protocols. The Transmission Control Protocol (TCP) guarantees information transmission. The User Datagram Protocol (UDP) transports datagram without end-to-end reliability checking. Both protocols are useful for different applications.
 			
-			- Network Layer
+			- Network Layer\\
 			The Internet Protocol (IP) is the primary protocol in the TCP/IP Network Layer. All upper and lower layer communications must travel through IP as they are passed through the TCP/IP protocol stack. In addition, there are many supporting protocols in the Network Layer, such as ICMP, to facilitate and manage the routing process.
 			
-			- Network Access Layer
+			- Network Access Layer\\
 			In the TCP/IP architecture, the Data Link Layer and Physical Layer are normally grouped together to become the Network Access layer. TCP/IP makes use of existing Data Link and Physical Layer tandards rather than defining its own. Many RFCs describe how IP utilizes and interfaces with the existing data link protocols such as Ethernet, Token Ring, FDDI, HSSI, and ATM. The physical layer, which defines the hardware communication properties, is not often directly interfaced with the TCP/IP protocols in the network layer and above. []
 			
 			\begin{figure}[h]		
@@ -274,6 +349,20 @@ The Arduino Mega 2560 is a microcontroller board based on the ATmega2560. It has
 			
 			\item The Protocol Used In ZagHexa Robot
 			
+			Client will send "I" character in the first time of connection, Server will reply by an array of string in this format {"Sensor1\_name, ID, Sensor2\_name,ID, ..etc"}
+			Ex:	{"gyroscope, 3, GPS, 4, ..etc"}
+			
+			Client will store this array into an text file to retrieve the ID for future requests.
+			Client can do one of these requests :
+			\begin{itemize}
+				\item "A" character  to send all sensors data.
+				\item ID number to select one sensor to get its data.
+			\end{itemize}
+				
+			Server will reply in the first case by an array of numbers in the same order of the sensors in the index file, in the second case it will reply by a single float number that its index match the request one.
+			
 		\end{itemize}
 		
 \section{GUI}
+
+Future work
