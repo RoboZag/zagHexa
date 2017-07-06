@@ -243,6 +243,7 @@ and see the movements of the joints.\\
 We will create the display.launch file in zaghexa-sim/launch folder,
 and put the following code in it:
 \begin{lstlisting}[language=XML]
+>>>>>>> origin/master
 	<launch>
 	<arg
 	name="model" />
@@ -275,6 +276,66 @@ and put the following code in it:
 	type="rviz"
 	args="-d $(find zaghexa_sim)/urdf.rviz" />
 	</launch>
+<<<<<<< HEAD
+	\end{lstlisting}	
+	\textbf{We will launch it with the following command:}
+	\begin{lstlisting}
+	$ roslaunch zaghexa_sim display_model.launch model:="`rospack find
+	zaghexa_sim`/urdf/zaghexa_sim.urdf"
+	\end{lstlisting}
+	\textbf{if every thing is fine and you have no errors, it will load RVIZ and you will see:}
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=1\linewidth, height=0.26\textheight]{s5}
+		\caption{output of urdf to graphics}
+		\label{figure :s5}
+	\end{figure}
+	\subsection{Making our robot movable}
+	\textbf{A good way of testing whether or not the axis and limits of the joints are fine by running rviz with joint state publisher GUI}
+	\begin{lstlisting}
+	$ roslaunch zaghexa_sim display.launch model:="`rospack find
+	zaghexa_sim`/urdf/zaghexa_sim.urdf" gui:=true
+	
+	\end{lstlisting}
+	\textbf{you will see a GUI with some sliders each of them controls one joint of the 18 joints so we have 18 sliders:}
+	\begin{figure}[h]
+		\centering
+		\includegraphics[height=0.3\textheight]{s6}
+		\caption{Joint state publisher GUI}
+		\label{fig:s6}
+	\end{figure}
+	\\\textbf{In the next figures you will see the effect of changing sliders values to the joints angles and positions}
+	\begin{figure}[h]
+		\centering
+		\includegraphics[height=.5\linewidth]{s7}
+		\caption{Control sliders and their effect on the robot }
+		\label{fig:s7}
+	\end{figure}
+	\begin{figure}[htb]
+		\centering
+		\includegraphics[height=0.5\linewidth]{s8}
+		\caption{top view of the robot}
+		\label{fig:s8}
+		\includegraphics[height=0.5\linewidth]{s9}
+		\caption{Different views of the robot}
+		\label{fig:s9}
+		\includegraphics[height=0.5\linewidth]{s10}
+		\caption{Different views of the robot}
+		\label{fig:s10}
+	\end{figure}
+\clearpage
+\vspace{10cm}
+\section{ Matlab Simulation}
+In the second simulation, we modelled the robot in MATLAB and employing the Robotics Toolbox. The main purpose of this simulation is to calculate and simulate the kinematics of robot. To create the six-legged walking robot, we started by creating a three-axis robot arm that we used as a leg. Then we implemented a trajectory for the leg that is suitable for walking. Finally, we instantiated six instances of the leg to create the walking robot. The equations given in Sec.4 are programmed first for one leg and tested on successful working, the whole body kinematics were also programmed and tested.
+The results were very useful in modifying the walking gaits of the robot which then implemented in the real robot. Figure 10 shows one such simulations in which the same experiment performed on the real robot to test the whole body kinematics for raising and lowering the body height.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width =.8\textwidth]{Fig15_1.jpg} 
+	\includegraphics[width =.8\textwidth]{Fig15_2.jpg}
+	\caption{ Hexapod robot Simulation.}
+	\label{sim}
+=======
 \end{lstlisting}	
 \textbf{We will launch it with the following command:}
 \begin{lstlisting}[language=terCmd]
