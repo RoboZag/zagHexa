@@ -40,4 +40,5 @@ for a=1:1:30
     hold on
 end
 % end
-
+plotopt = {'jaxes','jvec'};
+plot(ZagHexa,[0 20/180*pi -80/180*pi])
