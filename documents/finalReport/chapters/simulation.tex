@@ -1,3 +1,4 @@
+
 \documentclass[a4paper]{article}
 
 %% Language and font encodings
@@ -8,11 +9,13 @@
 %% Sets page size and margins
 \usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
 
+\usepackage{color}
+
+
 %% Useful packages
 \usepackage{amsmath}
 \usepackage{graphicx}
-\usepackage[colorinlistoftodos]{todonotes}
-\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{listings}
 
 \title{Chapter :     Simulation}
 
@@ -21,6 +24,9 @@
 \maketitle
 
 \section{Introduction}
+Programming directly on a real robot gives us good feedback and it is more impressive
+than simulations, but not everybody has possible access to real robots. For this reason,
+we have programs that simulate the physical world.\\
 The first phase of robot manufacturing is its design and modeling. We can design and model the 
 robot using CAD tools such as Solid Works, Blender, and so on. One of the main purposes 
 of modeling robot is simulation.
@@ -41,9 +47,7 @@ real hardware.
 
 \item    Understanding robot modeling using URDF
 
-\item    Creating the ROS package for the robot description
-
-\item    Creating our first URDF model
+\item    Creating our URDF model
 
 \item    Explaining the URDF code
 \item   Understanding robot modeling using xacro
@@ -55,17 +59,15 @@ real hardware.
 \item  Conversion of xacro to URDF
 \end{enumerate}
 
-\section{Get deep into those topics}
-
 \subsection{ROS packages for robot modeling}
-ROS provides some good packages that can be used to build 3D robot models. In this
+The way ROS uses the 3D model of a robot or its parts, to simulate them. ROS provides some good packages that can be used to build 3D robot models.\\ In this
 section, we will discuss some of the important ROS packages that are commonly used to
 build robot models:
-\\robot model: ROS has a meta package called robot model, which contains important 
+\\\\\textbf{robot model}: ROS has a meta package called robot model, which contains important 
 packages that 
 help build the 3D robot models. We can see all the important packages inside this meta-
 package:
-\\urdf: One of the important packages inside the robot model meta package is urdf. The 
+\\\\\textbf{URDF}: One of the important packages inside the robot model meta package is urdf. The 
 URDF package contains a C++ parser for the Unified Robot Description Format (URDF),
 which is an XML file to represent a robot model.
 \\\\ We can define a robot model, sensors, and a working environment using URDF and 
@@ -123,9 +125,14 @@ The syntax is as follows:
 \\\\The following is a representation of a single link. The Visual section represents 
 the real link of the robot, and the area surrounding the real link is the Collision 
 section. The Collision section encapsulates the real link to detect collision before 
-hitting the real link.
-\\\\figure s1 is here: caption :Visualization of a URDF link \\
-\\\textbf{joint}: The joint tag represents a robot joint. We can specify the kinematics and dynamics of the joint and also set the limits of the joint movement and its velocity. The joint tag supports the different types of joints such as revolute, continuous, prismatic,fixed, floating, and planar.
+hitting the real link.\\\\\\\\\\
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.7\linewidth]{s1}
+	\caption{Visualization of a URDF link}
+	\label{fig:s1}
+\end{figure}
+\\\\\textbf{joint}: The joint tag represents a robot joint. We can specify the kinematics and dynamics of the joint and also set the limits of the joint movement and its velocity. The joint tag supports the different types of joints such as revolute, continuous, prismatic,fixed, floating, and planar.
 \\\\The syntax is as follows:\\\\
 
 <joint name="<name of the joint>">
@@ -141,8 +148,13 @@ hitting the real link.
   <limit effort .... />
 
 </joint>
-\\\\A URDF joint is formed between two links; the first is called the Parent link and the second is the Child link. The following is an illustration of a joint and its link:
-\\\\figure s2 is here: caption :Visualization of a URDF joint \\
+\\\\A URDF joint is formed between two links; the first is called the Parent link and the second is the Child link. The following is an illustration of a joint and its link:\\
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.6\linewidth]{s2}
+	\caption{Visualization of a URDF joint}
+	\label{fig:s2}
+\end{figure}
 \\\\\textbf{robot}: This tag encapsulates the entire robot model that can be represented using URDF. Inside the robot tag, we can define the name of the robot, the links, and the joints of the robot.
 \\\\The syntax is as follows:\\
 
@@ -158,22 +170,204 @@ hitting the real link.
 
 </robot>
 \\\\A robot model consists of connected links and joints. Here is a visualization of the robot model:
-\\\\figure s3 is here: caption :Visualization of a robot model having joints and links \\
- \\\\\textbf{gazebo}: This tag is used when we include the simulation parameters of the Gazebo simulator inside URDF. We can use this tag to include gazebo plugins, gazebo material properties, and so on. The following shows an example using gazebo tags:
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.7\linewidth]{s3}
+	\caption{Visualization of a robot model having joints and links}
+	\label{fig:s3}
+\end{figure}
 
-·          <gazebo reference="link 1">
+\subsection{Creating our URDF model}
+To start first we create the urdf file, let's call it\textit{ zaghexasim.urdf} and put in
+the following code; this URDF code is based on XML.As you will see in the code, there are two principal fields that describe the geometry of a robot: links and joints.\\
+the first link has the name base link; this name must be unique to the file\\
+\begin{lstlisting}
+<?xml version="1.0" ?>
 
-·            <material>Gazebo/Black</material>
+<robot name="zaghexa" xmlns:xacro="http://ros.org/wiki/xacro">
+ <!-- Build the body frame -->
+<link name="base_link"/>
+<joint name="base_joint" type="fixed">
+<parent link="base_link"/>
+<child link="box"/>
+<origin rpy="0 0 0" xyz="0 0 0"/>
+</joint>
+<link name="box">
+<visual>
+<origin rpy="0 0 0" xyz="0 0 0"/>
+<geometry>
+<mesh filename="package://zaghexa_sim/meshes/box.STL"/>
+</geometry>
+<material name="grey">
+<color rgba="0.5 0.5 0.5 1"/>
+</material>
+</visual>
+</link>
 
- </gazebo>
+\end{lstlisting}
+In the joint field we define the name which must be unique as well also we define 
+the type of joint(fixed,revolute,continous,floating or planar) the parent, and the child.\\
+in our case tibia,femur and leg centre joint are the children of base link which is fixed but all of other joints are revolute.\\
+\textbf{this is a sample of one leg and how does it build}\\
+\begin{lstlisting}
+<!-- Joint properties -->
+<!-- Leg macros -->
+<!-- Build robot model -->
+<joint name="leg_center_joint_r1" type="fixed">
+<origin rpy="0 0 0" xyz="0.087598 -0.050575 0"/>
+<parent link="box"/>
+<child link="leg_center_r1"/>
+</joint>
+<link name="leg_center_r1"/>
+<joint name="coxa_joint_r1" type="revolute">
+<origin rpy="0 0 -1.0471975512" xyz="0 0 0"/>
+<parent link="leg_center_r1"/>
+<child link="coxa_r1"/>
+<axis xyz="0 0 -1"/>
+<limit effort="10000" lower="-1.5" upper="1.5" velocity="100"/>
+</joint>
+<link name="coxa_r1">
+<visual>
+<origin rpy="0 0 0" xyz="0 0 0"/>
+<geometry>
+<mesh filename="package://zaghexa_sim/meshes/coxa_r.STL"/>
+</geometry>
+<material name="">
+<color rgba="0.7 0.7 0 1"/>
+</material>
+</visual>
+</link>
+<joint name="femur_joint_r1" type="revolute">
+<origin rpy="-1.57079632679 0 0" xyz="0.0294 0 0"/>
+<parent link="coxa_r1"/>
+<child link="zaghexa"/>
+<axis xyz="0 0 -1"/>
+<limit effort="10000" lower="-1.5" upper="1.5" velocity="100"/>
+</joint>
+<link name="zaghexa">
+<visual>
+<origin rpy="0 0 0" xyz="0 0 0"/>
+<geometry>
+<mesh filename="package://zaghexa_sim/meshes/femur_r.STL"/>
+</geometry>
+<material name="">
+<color rgba="0 0.7 0.7 1"/>
+</material>
+</visual>
+</link>
+<joint name="tibia_joint_r1" type="revolute">
+<origin rpy="3.14159265359 0 1.57079632679" xyz="0.08 0 0"/>
+<parent link="zaghexa"/>
+<child link="tibia_r1"/>
+<axis xyz="0 0 1"/>
+<limit effort="10000" lower="-1.5" upper="1.5" velocity="100"/>
+</joint>
+<link name="tibia_r1">
+\end{lstlisting}
+\textbf{You can check the syntax of the urdf whether we have errors, we can use:
+check urdf command tool:}
+\begin{lstlisting}
+$ rosrun urdf_parser check_urdf zaghexa_sim.urdf
+\end{lstlisting}
 
-"We can find more URDF tags at http://wiki.ros.org/urdf/XML."
-\subsection{Creating the ROS package for the robot description}
-\textbf{TO BE CONTINUED}
+If you want to see it graphically, you can use the urdf to graphiz command tool
 
+\begin{lstlisting}
+$ rosrun urdf_parser urdf_to_graphiz "`rospack find zaghexa_sim`/urdf/zaghexa_sim.urdf"
+\end{lstlisting}
+\textbf{The following is what you will receive as output:}
 
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1\linewidth, height=0.35\textheight]{s4}
+	\caption{output of urdf to graphics}
+	\label{figure :s4}
+\end{figure}
 
-\bibliographystyle{alpha}
-\bibliography{sample}
+\subsection{Watching the 3D model in RVIZ}
+Now that we have the model of our robot, we can use it on rviz to watch it in 3D
+and see the movements of the joints.\\
+We will create the display.launch file in zaghexa-sim/launch folder,
+and put the following code in it:
+\begin{lstlisting}
+	<launch>
+	<arg
+	name="model" />
+	<arg
+	name="gui"
+	default="True" />
+	<param
+	name="robot_description"
+	command="$(find xacro)/xacro.py '$(find zaghexa_sim)/models/zaghexa_model.xacro'" />
+	<param
+	name="use_gui"
+	value="$(arg gui)" />
+	<param
+	name="rate"
+	value="25" />
+	<rosparam param="source_list">
+	[leg_joints_states]
+	</rosparam>
+	<node
+	name="joint_state_publisher"
+	pkg="joint_state_publisher"
+	type="joint_state_publisher" />
+	<node
+	name="robot_state_publisher"
+	pkg="robot_state_publisher"
+	type="state_publisher" />
+	<node
+	name="rviz"
+	pkg="rviz"
+	type="rviz"
+	args="-d $(find zaghexa_sim)/urdf.rviz" />
+	</launch>
+\end{lstlisting}	
+\textbf{We will launch it with the following command:}
+\begin{lstlisting}
+$ roslaunch zaghexa_sim display_model.launch model:="`rospack find
+zaghexa_sim`/urdf/zaghexa_sim.urdf"
+\end{lstlisting}
+\textbf{if every thing is fine and you have no errors, it will load RVIZ and you will see:}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1\linewidth, height=0.26\textheight]{s5}
+	\caption{output of urdf to graphics}
+	\label{figure :s5}
+\end{figure}
+
+\subsection{Making our robot movable}
+\textbf{A good way of testing whether or not the axis and limits of the joints are fine by running rviz with joint state publisher GUI}
+\begin{lstlisting}
+$ roslaunch zaghexa_sim display.launch model:="`rospack find
+	zaghexa_sim`/urdf/zaghexa_sim.urdf" gui:=true
+		
+\end{lstlisting}
+\textbf{you will see a GUI with some sliders each of them controls one joint of the 18 joints so we have 18 sliders:}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.3\textheight]{s6}
+	\caption{Joint state publisher GUI}
+	\label{fig:s6}
+\end{figure}
+\\\textbf{In the next figures you will see the effect of changing sliders values to the joints angles and positions}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=.5\linewidth]{s7}
+	\caption{Control sliders and their effect on the robot }
+	\label{fig:s7}
+\end{figure}
+\begin{figure}[htb]
+	\centering
+	\includegraphics[height=0.5\linewidth]{s8}
+	\caption{top view of the robot}
+	\label{fig:s8}
+	\includegraphics[height=0.5\linewidth]{s9}
+	\caption{Different views of the robot}
+	\label{fig:s9}
+	\includegraphics[height=0.5\linewidth]{s10}
+	\caption{Different views of the robot}
+	\label{fig:s10}
+\end{figure}
 
 \end{document}
