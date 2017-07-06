@@ -2,14 +2,110 @@
 %!TEX encoding = UTF-8 Unicode
 %==============================================================================
 
-ZagHexa was first implemented in SolidWorks to verify its mechanical structure and produce the required workshop drawings to develop and cut its metal and plastic parts. In addition, some preliminary motion analysis simulations were also conducted. The final resulting design is given in \ref{CAD}.
+\section{Design Characteristics}
+In the following section, the main design characteristics and modeling issues are discussed in order to show how the proposed design procedure can be implemented. It is worth mentioning also that other design characteristics exist and additional features can be considered for specific applications. Thus, the most remarkable design characteristics have been considered as examples for filling in the data in the cause and effect matrix.
+
+\subsection{Robot Body Architecture}
+There are two basic architectures of hexapod robots: rectangular and hexagonal as shown in \ref {figure a.png}. The first one has six legs distributed symmetrically along two sides,each side having three legs. The second haslegs distributed axi-symmetrically around the body, in a hexagonal or circular shape.
+
 \begin{figure}[h]
 	\centering
-	\includegraphics[width =0.8\textwidth]{Fig1}
-	\caption{ CAD rendering of the robot.}
-	\label{CAD}
+	\includegraphics{figure_a}
+	\caption{Basic architectures of hexapod robots}
+	\label{figure a.png}
 \end{figure}
-To further develop the kinematic model of the robot, the coordinate systems (Cartesian frames \cite{28}) for all parts of the robot need to be identified. Next, the detailed development of such frames is given.
+
+Many references can be found in the literature on rectangular six-legged robots, they describe the longitudinal stability margin for rectangular hexapods. Also, the feasible walking gaits have been widely investigated and tested. Bilateral symmetry may be better suited than radial symmetry to move along a straight line. Rectangular architectures require a special gait for turning action; generally, they need four steps in order to realize a turning action. Hexagonal hexapod robots demonstrate better performances than rectangular robots for some aspects. As example hexagonal robots can have many kinds of gaits and can easily change direction—in fact true radial symmetry implies that all legs are equal and the body has no “front” or “rear”—there is thus no preferential directionfor the motion. It is proved that hexagonal hexapods can easily steerin all directions and that they have a longer stability margin. It isfound that hexagonal robots rotate and move in all directions at the same time,better than rectangular ones, by comparing stability margin and stroke in wave gait.It is proved theoretically that hexagonal hexapod robots have superior stability margin,stride and turning ability compared to rectangular robots.
+
+\subsection{Kinematic Architectures of Legs}
+Kinematics architecture depends on the factors related to the application in which the hexapod robot is required for, as for example the terrain form, the workspace and the payload. Literature shows that there is a number of different leg types currently employed for hexapod walking robots. All have advantages and disadvantages. \ref{figure b.png} shows a schematic classification of hexapod legs types.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width =0.8\textwidth]{figure_b}
+	\caption{Classification of hexapod legs types}
+	\label{figure b.png}
+
+\end{figure}
+
+At the first stage, one can choose between bio inspired and non-zoomorphic legs. Bio inspired leg configuration is motivated primarily by animal gait, such as reptiles, mammals or arachnid. The first one has legs and bodies for moving over rough and uneven terrains. The principal characteristic of the Reptilian type is that the legs are placed on both ends of the protruding body and knees to the side of the base. Mammals’ bodies are above the legs, which gives less support to the base and lower power consumption is needed to support the body, but it requires more stability than other types of animal. In Arachnid configuration, legs extremities are situated on both sides, sticking the knees at the top of the spider’s body. The orientation of the legs in respect to the body of the hexapod robot can be done with three configurations: frontal, sagittal or circular as shown in \ref{figure c.png} .
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width =0.8\textwidth]{figure_c}
+	\caption{Hexapod leg configurations}
+	\label{figure c.png}
+\end{figure}
+
+In the first one, the directions are perpendicular to the advancement of the legs’ position, unlike the sagittal, which moves parallel to the robot legs, while in the circular arrangement the legs are positioned radially to the body of the system allowing the mechanism to move in any direction. In the mammalian configuration, the legs are below the body and can place the knees in different positions depending on the application it requires, shown in figure (d). Non zoomorphic legs can be hybrids, telescopic or under-actuated, a solution named Roller-Walker is presented. The principle through which the robot propels itself during wheeled locomotion is the same as that of the skaters.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width =0.8\textwidth]{figure_d}
+	\caption{Joint configurations}
+	\label{figure d.png}
+\end{figure}
+
+\subsection{Actuator Types}
+Many kinds of actuators can be employed for operating hexapod walking robots. The majority of hexapods is actuated by electric rotating motors (Servo motors), as they are relatively cheap, easy to control and there are suitable technologies to store the energy.\\ 
+Linear motors are able to generate considerable forces at very considerable speeds. However, these do not yet appear to have been utilized in many hexapods since they have a limited movable range to weight ratio. Pneumatics actuators have very low stiffness, inaccurate response, and low power to weight ratio. Pneumatics actuators, or air muscle, are able to offer a fast response time but they need an on-board air supply as bottles or compressors that are heavy pieces of equipment. Hydraulics actuators have high power/weight ratio; they are able to supply very high force, but suffer from the serious drawback of having to carry an engine to drive the pump. Hydraulics actuators are suitable for larger sized hexapod robots.\\
+Unconventional actuators for hexapod robots can also be materials that can change shape through the direct application of electricity or a chemical agent. Ionic polymer-metal composites, for example, are materials that exhibit high strains under applied voltage differences allowing them to change from a sheet shape into curved shapes. Polyacrylonitrile is a form of artificial silk, classed as a gel polymer. It can respond fast, but the activation method is a change in pH, which requires the fibers to be housed in a watertight bag. Another class of materials that can change shape under the application of electricity is the Shape Memory Alloys (SMA), such as a nickel-titanium alloy that exhibits extreme contraction when heated.\\
+Contraction rates are controlled by the heating and cooling; the major drawback resulting in slow response times and small operating forces. Thus, despite a great research interest and the building of some prototypes, the uses of SMA as hexapod actuators have been very limited. Present trends indicate that they are more suited to micro robots.
+
+\subsection{Actuators Arrangements}
+Typically, specific actuator arrangements are developed in order to obtain maximum leg workspace with a minimal kinematic structure. Several types of geometrical arrangements such as in \ref{figure_e} are recurrent in literature.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width =0.8\textwidth]{figure_e}
+	\caption{Three DoF solution}
+	\label{figure_e}
+\end{figure}
+
+The design consists of links connected through knee joints. The walking motion is accomplished by controlling the angle of the links to position the feet. There are a number of different ways in which the joints can be actuated. Options include mounting the motor at the joint itself, or using a pulley and belt \ref{figure_f} or lead screw \ref{figure_h} to set the angle of the knee using an actuator mounted near the base of the leg.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics{figure_f}
+	\caption{Pinion-belt arrangement}
+	\label{figure_f}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics{figure_g}
+	\caption{Lead screw leg}
+	\label{figure_g}
+\end{figure}
+
+The major drawback of last design is the necessity to actuate remote joints. On the other hand, latching the actuator at the knee joint adds various dynamic effects to the leg which have to be compensated by the controller. This adds complexity to the control algorithms needed to move the leg.\\
+It also requires more powerful motors at the hip joint to move the added mass of the leg. Remote actuation, in which the actuators are located at the base of the leg, eliminates some of these problems, at the cost of increasing the complexity of the mechanism. The coupling of the motion of the end effector relative to the actuators is another undesirable characteristic of this leg design.  Another potential leg design is modeled according to a typical mammalian leg with a four-bar linkage structure. The major drawback of this design is that the motions are highly coupled and the effective workspace is somewhat limited. Moreover, the entire weight of the robot is supported by the hip joint and they necessitate a powerful and expensive motor.
+
+\section{Walking Gaits}
+A gait is a sequence of leg motions coordinated with a sequence of body motions for moving the overall body of the robot in the desired direction and for orientation from one place to another. A gait is described as periodic when similar states of the same leg during successive strokes occur at the same interval for all legs. Periodic gaits are suitable for smooth terrain and they have been studied by several investigators. Figure 9 shows the scheme of some periodical hexapod gaits; white color indicates that the foot is in ground contact and the black color otherwise. Figure 9a reports the hexapod legs’ description.
+
+\subsection{Tripod gait}
+Tripod gait is a regular, periodic gait where the anterior and posterior legs on one side lift in time with the contralateral middle leg, forming alternating tripods. Thus, it is based on two groups of legs. During each step the first group of the legs is lifted and is rotated forward and is laid upon on the ground. Then the other group is lifted. Now both groups are moving, the first group backward, the second group forward and finally the second group is laid on the ground. It is obvious that both groups perform the same movement, but they are shifted by half a period. Tripod gait is very fast, but also very unstable. That is because at one moment half of the whole weight of the robot is only on one leg, which can lead to slip or even to fall. This is a gait suitable for high speed walking over relatively flat ground.
+
+\subsection{Wave Gait}
+Another gait is wave, which is the most stable gait, but also the slowest. Wave gait consists of a sequential adjustment of legs forward and only when all the legs are set to the new positions, the step is completed. In each phase of step maximally one leg is lifted up, which leads to high stability of this gait.
+
+\subsection{Ripple Gait}
+Ripple gait is inspired by insects. Each leg performs the same move – up, forward, down, backward.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width =0.8\textwidth]{figure_h}
+	\caption{Gait diagram of hexapodal gaits}
+	\label{figure h.png}
+\end{figure}
+
+\ref{figure h.png} shows the movement of each leg in time. A high value represents leg movement and low values means no movement. Tripod, wave and ripple gaits are shown in this figure. Tripod has two group of legs, all the legs in the same group move at once. In the wave gait only one leg is moving at any time. After all legs are set up to their new positions, step is completed. In the ripple gait all legs move the same way, but their moves are shifted. Leg moves partially overlap. In other words, the time when the first foot is lifted and begins to move forward, the second leg begins to lift up. In this way the robot cycles through all legs.
+
+These are the most common gaits. Theoretical number of different gaits N can be calculated using equation: N = (2K - 1)!, where K is the number of the legs of the robot. Not all of them are usable for effective locomotion. For hexapod robot it is 11! = 39 916 800 possibilities of locomotion. The number is quite large, because this equation calculates all possible motions, like motion up and down, which of course doesn’t lead to an effective movement.
+
+\section{Robot Kinematics}
+
 \subsection{Robot body frame}
 The origin of the robot base frame will be in the center of the body, structured with Z-axis pointing up, the X-axis positioning right and Y-axis pointing forwards with respect to the robot front side as depicted in \ref{Loc}.
 
@@ -19,6 +115,7 @@ The origin of the robot base frame will be in the center of the body, structured
 	\caption{ Location of body frame relative to robot hardware.}
 	\label{Loc}
 \end{figure}
+
 \subsection{Leg frames and notations}
 The design of hexapod constitutes the kinematic configuration of a hexapod robot, with each leg acting as an independent serial manipulator with three degrees of freedom. Figure \ref{fig1} shows the actual prototype of our robot.
 
@@ -145,21 +242,3 @@ First, the coxa angle can be found directly by knowing the end effectors positio
     \alpha      & = \cos ^{-1}(\frac{Z_{offset}}{L})+\cos ^{-1}(\frac{Tibia^{2}-Femar^{2}-L^{2}}{-2(Femar)(L)}) \\
     \beta        & = \cos^{-1}(\frac{L^{2}-Femar^{2}-Tibia^{2}}{-2(Femar)(Tibia)}
 \end{align}
-
-
-\section{Walking Pattern}
-In this section, the generation of the robot gait will be described. We provided the robot with a group of programmed gait sequences used for different purposes. For example, a Tripedal gait is used as the basic movement for the robot which provide speed and longer traverse length. Metachronical gait is used for rough terrain traverse which provide better stability but slower motion \cite{29,31}. Main types of gaits used in ZagHexa robot are shown in \ref{walking}. The description of these gaits is given next.
-\subsection{Wave gait (Metachronical Gait)}
-In this gait mode, the robot move one leg at a time, it starts by lifting one leg and then lowering it down gradually until the foot touches the ground and then the next leg starts to move, as mentioned before this gait sequence is rather slow but it provides maximum stability for the robot, and it enables the robot to walk on rough terrain. This is illustrated in \ref{walking}.
-
-\subsection{Ripple gait (Two wave Gait)}
-In this gait, two legs move at a time, since it has two independent wave gaits. The opposite sides legs are 180 degrees out of phase and it needs three beats to complete one cycle. \ref{walking}. shows the Ripple gait.
-
-\subsection{Tripedal Gait}
-This gait is the fast gait for the hexapod; it completes a cycle in two beats. In this gait, the robot lift three legs simultaneously while leaving three legs on the ground, which keeps the robot stable. \ref{walking}. shows Tripedal gait reaction \cite{19}.
-\begin{figure}[h]
-	\centering
-	\includegraphics[width =.6\textwidth]{walking}
-	\caption{ Different walking gaits: wave (top), ripple (middle), and tripod (middle).}
-	\label{walking}
-\end{figure}
