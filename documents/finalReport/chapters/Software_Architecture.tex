@@ -2,7 +2,7 @@
 
 The high–level functionality and control of the robot are implemented in ROS packages. The Robot Operating System (ROS) is a standard and open–source operating system for robot control \cite{9}. ROS is not an operating system in the traditional sense of process management and scheduling; rather, it provides a structured communication layer above the host operating systems of a heterogeneous compute cluster. Our software ROS packages interact with each of the subsystems in C++ and Python for direct system control. The system described uses a Linux based software framework as an operating system (OS) for providing the advantages of using an OS, which supports developing additional modules that can be easily implemented and integrated. 
 
-\section{Robot Operating System}
+\section{Robot Operating System (ROS)}
 
 Robot Operating System (ROS) provides operating system like service for the robot. It is a meta-operating system, which loads on top of an operating system, including hardware abstraction, low-level device control, implementation of commonly-used functionality, message-passing between processes, and package management. It also provides tools and libraries for obtaining, building, writing, and running code across multiple computers. These facilities cannot only help robots but also other embedded systems with a rich set of tools to successfully manage the complexity. With ROS handling the basic communications and data exchange.
 
@@ -11,43 +11,35 @@ ROS currently only runs on Unix-based platforms. Software for ROS is primarily t
 The core ROS system, along with useful tools and libraries are regularly released as a ROS Distribution. This distribution is similar to a Linux distribution and provides a set of compatible software for others to use and build upon example for this distribution: Hydro, Indigo, Jade, Kinetic, Lunar...etc. [http://wiki.ros.org]
 
 Our choice was Kinetic because is the update  distribution that have a LTS with high variety of support from ROS community that make it easy to exchange the knowledge and figure out how to solve issues and to come up with new idea to implement it. 
-
-\begin{itemize}
-	\item why ROS?\\
+\subsection{Why ROS?}
 	The answer for this question lies in power of ROS the make it preferable for most of the designers: 
-	\begin{enumerate}
+  
+	\begin{description}
+		\item [Inter-platform operability]: ROS message-passing means that you can work between very different components and subsystems that are probably running with different languages (maybe something like low-level hardware control with C for speed, and high-level state machines with Java or Python for ease of coding). This also gets around the problem of the mess of APIs you would have had to deal with before.
 		
-		\item Inter-platform operability: ROS message-passing means that you can work between very different components and subsystems that are probably running with different languages (maybe something like low-level hardware control with C for speed, and high-level state machines with Java or Python for ease of coding). This also gets around the problem of the mess of APIs you would have had to deal with before.
+		\item [Modularity]: Since things are connected by a distributed message system, if one component crashes, your whole system doesn't crash. Granted, there are plenty of ways to make your system more robust so that this doesn't happen in the first place, but ROS makes it easier for your robot to continue doing its thing even if two sensors and an arm motor have died (for example).
 		
-		\item Modularity: Since things are connected by a distributed message system, if one component crashes, your whole system doesn't crash. Granted, there are plenty of ways to make your system more robust so that this doesn't happen in the first place, but ROS makes it easier for your robot to continue doing its thing even if two sensors and an arm motor have died (for example).
+		\item [Concurrent resource handling]: Without ROS, reading/writing to resources quickly becomes a mess with large multi-threaded systems (i.e. virtually any robotics application). Again, there are ways to deal with this, but ROS simplifies the whole process by ensuring that your threads aren't actually trying to read and write to shared resources, but are rather just publishing and subscribing to messages.
+		\item[ Vibrant Community]: Over the past several years, ROS has grown to include a large community of users worldwide. Historically, the majority of the users were in research labs, but increasingly we are seeing adoption in the commercial sector, particularly in industrial and service robotics.
 		
-		\item Concurrent resource handling: Without ROS, reading/writing to resources quickly becomes a mess with large multi-threaded systems (i.e. virtually any robotics application). Again, there are ways to deal with this, but ROS simplifies the whole process by ensuring that your threads aren't actually trying to read and write to shared resources, but are rather just publishing and subscribing to messages.
-		\item Vibrant Community: Over the past several years, ROS has grown to include a large community of users worldwide. Historically, the majority of the users were in research labs, but increasingly we are seeing adoption in the commercial sector, particularly in industrial and service robotics.
-		
-		\item Collaborative Environment: ROS by itself offers a lot of value to most robotics projects, but it also presents an opportunity to network and collaborate with the world class roboticists that are part of the ROS community. One of the core philosophies in ROS is shared development of common components.
-		
-		and much more in: www.ros.org/core-components/
-		
-		
-	\end{enumerate}
+		\item [Collaborative Environment]: ROS by itself offers a lot of value to most robotics projects, but it also presents an opportunity to network and collaborate with the world class roboticists that are part of the ROS community. One of the core philosophies in ROS is shared development of common components.
+	\end{description}
+Interested reader can find more information,material, and much more at:  \url{www.ros.org/core-components}
 
-
-	\item ROS Package\\
+\subsection{ROS Package}
 	Software in ROS is organized in packages. A package might contain ROS nodes, a ROS-independent library, a dataset, configuration files, a third-party piece of software, or anything else that logically constitutes a useful module. The goal of these packages it to provide this useful functionality in an easy-to-consume manner so that software can be easily reused. In general, ROS packages follow a "Goldilocks" principle: enough functionality to be useful, but not too much that the package is heavyweight and difficult to use from other software.
 	
 	Packages are easy to create by hand or with tools like catkin\_create\_pkg. A ROS package is simply a directory descended from ROS\_PACKAGE\_PATH (see ROS Environment Variables) that has a package.xml file in it. Packages are the most atomic unit of build and the unit of release. This means that a package is the smallest individual thing you can build in ROS and it is the way software is bundled for release (meaning, for example, there is one debian package for each ROS package), respectively.
 	
-	\item ROS Node \\
+\subsection{ROS Node}
 	
 	A node is a process that performs computation. Nodes are combined together into a graph and communicate with one another using streaming topics, RPC services, and the Parameter Server. These nodes are meant to operate at a fine-grained scale; a robot control system will usually comprise many nodes. For example, one node controls a laser range-finder, one Node controls the robot's wheel motors, one node performs localization, one node performs path planning, one node provide a graphical view of the system, and so on.
 	
 	The use of nodes in ROS provides several benefits to the overall system. There is additional fault tolerance as crashes are isolated to individual nodes. Code complexity is reduced in comparison to monolithic systems. Implementation details are also well hidden as the nodes expose a minimal API to the rest of the graph and alternate implementations, even in other programming languages, can easily be substituted.
 	
-	All running nodes have a graph resource name that uniquely identifies them to the rest of the system. For example, /hokuyo\_node could be the name of a Hokuyo driver broadcasting laser scans. Nodes also have a node type, that simplifies the process of referring to a node executable on the fileystem. These node types are package resource names with the name of the node's package and the name of the node executable file. In order to resolve a node type, ROS searches for all executables in the package with the specified name and chooses the first that it finds. As such, you need to be careful and not produce different executables with the same name in the same package.
+	All running nodes have a graph resource name that uniquely identifies them to the rest of the system. For example, /hokuyo\_node could be the name of a Hokuyo driver broadcasting laser scans. Nodes also have a node type, that simplifies the process of referring to a node executable on the fileystem. These node types are package resource names with the name of the node's package and the name of the node executable file. In order to resolve a node type, ROS searches for all executables in the package with the specified name and chooses the first that it finds. As such, you need to be careful and not produce different executables with the same name in the same package. Finally, a ROS node is written with the use of a ROS client library, such as roscpp or rospy.
 	
-	A ROS node is written with the use of a ROS client library, such as roscpp or rospy.
-	
-	\item Publisher/Subscriber \\
+\subsection{Publisher/Subscriber}
 	The Publisher object represents a publisher on the ROS network. The object publishes to an available topic or to a topic that it creates. This topic has an associated message type. When the Publisher object publishes a message to the topic, all subscribers to the topic receive this message. The same topic can have multiple publishers and subscribers.
 	
 	The primary mechanism for ROS nodes to exchange data is to send and receive messages. Messages are transmitted on a topic and each topic has a unique name in the ROS network. If a node wants to share information, it will use a publisher to send data to a topic. A node that wants to receive that information will use a subscriber to that same topic. Besides its unique name, each topic also has a message type, which determines the types of messages that are allowed to be transmitted.
@@ -66,8 +58,7 @@ Our choice was Kinetic because is the update  distribution that have a LTS with 
 		\label{Fig:Pub}
 	\end{figure}
 
-	\item ROS Topic 
-	
+\subsection{ROS Topic}
 	Topics are named buses over which nodes exchange messages. Topics have anonymous publish/subscribe semantics, which decouples the production of information from its consumption. In general, nodes are not aware of who they are communicating with. Instead, nodes that are interested in data subscribe to the relevant topic; nodes that generate data publish to the relevant topic. There can be multiple publishers and subscribers to a topic.
 	
 	Topics are intended for unidirectional, streaming communication. Nodes that need to perform remote procedure calls, i.e. receive a response to a request, should use services instead. There is also the Parameter Server for maintaining small amounts of state.
@@ -83,15 +74,14 @@ Our choice was Kinetic because is the update  distribution that have a LTS with 
 	roscore: is a collection of nodes and programs that are pre-requisites of a ROS-based system. You must have a roscore running in order for ROS nodes to communicate. It is launched using the roscore command.
 	
 	
-	\item Can we access ROS form a remote computer?    
+\subsection{Can we access ROS form a remote computer?}
 	ROS is a distributed computing environment. A running ROS system can comprise dozens, even hundreds of nodes, spread across multiple machines. Depending on how the system is configured, any node may need to communicate with any other node, at any time.	
 	\begin{itemize}
 		\item There must be complete, bi-directional connectivity between all pairs of machines, on all ports.
 		\item Each machine must advertise itself by a name that all other machines can resolve.
 	\end{itemize}
 
-	for more info: wiki.ros.org/ROS/NetworkSetup
-\end{itemize}
+More information can be found at:  \url{wiki.ros.org/ROS/NetworkSetup}
 
 \section{Linux}
 
@@ -139,36 +129,31 @@ The Raspberry Pi is open hardware, with the exception of the primary chip on the
 % Take this to the Component Part 
 	Raspberry Pi 3 Model B specification
 	The Raspberry Pi 3 Model B is the third generation Raspberry Pi. This powerful credit-card sized single board computer can be used for many applications and supersedes the original Raspberry Pi Model B+ and Raspberry Pi 2 Model B. Whilst maintaining the popular board format the Raspberry Pi 3 Model	B brings you a more powerful processer, 10x faster than the first generation Raspberry Pi. Additionally it adds wireless LAN \& Bluetooth connectivity making it the ideal solution for powerful connected designs.
-	\begin{figure}[h]		
-		\centering
-		\includegraphics[width =.8\textwidth]{RP3}
-		\caption{Outline of control systems.}
-		\label{Fig:RP3}
-	\end{figure}
-	\begin{center}
-		\begin{tabular}{ |c|c|}
-			\hline
-			Processor		& Broadcom BCM2387 chipset.
-							  1.2GHz Quad-Core ARM Cortex-A53
-						  	  802.11 b/g/n Wireless LAN and Bluetooth 4.1 (Bluetooth Classic and LE)\\ \hline
-		   GPU		  		& Dual Core VideoCore IV® Multimedia Co-Processor. Provides Open GL
-		   				 	  ES 2.0, hardware-accelerated OpenVG, and 1080p30 H.264 high-profile decode.\\ \hline
-		  Memory	  		& 1GB LPDDR2 \\ \hline
-		  Operating System  & Boots from Micro SD card, running a version of the Linux operating system \\ \hline
-		  Dimensions		& 85 x 56 x 17mm \\ \hline
-		  Power				& Micro USB socket 5V1, 2.5A \\ \hline
-		  Ethernet			& 10/100 BaseT Ethernet socket \\ \hline
-		  Video Output		& HDMI (rev 1.3 \& 1.4 Composite RCA (PAL and NTSC) \\ \hline
-		  Audio Output		& Audio Output 3.5mm jack, HDMI \\ \hline
-		  USB				& 4 x USB 2.0 Connector \\ \hline
-		  GPIO Connector 	& 40-pin 2.54 mm (100 mil) expansion header: 2x20 strip 
-		  					  Providing 27 GPIO pins as well as +3.3 V, +5 V and GND supply lines \\ \hline
-		  Camera Connector  & 15-pin MIPI Camera Serial Interface (CSI-2)\\ \hline
-		  Display Connector & Display Serial Interface (DSI) 15 way flat flex cable connector 
-							  with two data lanes and a clock lane\\ \hline
-		  Memory Card 		& Slot Push/pull Micro SDIO \\ \hline
-		\end{tabular}
-	\end{center}
+\begin{figure}[h]
+\centering
+\includegraphics[width =.8\textwidth]{RP3}
+\caption{Outline of control systems.}
+\label{Fig:RP3}
+\end{figure}
+\begin{center}
+\begin{tabular}{ |l||p{12cm}|}
+	\hline
+	Processor      & Broadcom BCM2387 chipset. 1.2GHz Quad-Core ARM Cortex-A53 802.11 b/g/n Wireless LAN and Bluetooth 4.1 (Bluetooth Classic and LE)\\ \hline
+	GPU               & Dual Core VideoCore IV® Multimedia Co-Processor. Provides Open GL ES 2.0, hardware-accelerated OpenVG, and 1080p30 H.264 high-profile decode. \\ \hline
+	Memory          & 1GB LPDDR2  \\ \hline
+	Operating System  & Boots from Micro SD card, running a version of the Linux operating system  \\ \hline
+	Dimensions     & 85 x 56 x 17mm  \\ \hline
+	Power             & Micro USB socket 5V1, 2.5A  \\ \hline
+	Ethernet          & 10/100 BaseT Ethernet socket  \\ \hline
+	Video Output   & HDMI (rev 1.3 \& 1.4 Composite RCA (PAL and NTSC)  \\ \hline
+	Audio Output   & Audio Output 3.5mm jack, HDMI     \\ \hline
+	USB                 & 4 x USB 2.0 Connector   \\ \hline
+	GPIO Connector    & 40-pin 2.54 mm (100 mil) expansion header: 2x20 strip Providing 27 GPIO pins as well as +3.3 V, +5 V and GND supply lines \\ \hline
+	Camera Connector  & 15-pin MIPI Camera Serial Interface (CSI-2) \\ \hline
+	Display Connector & Display Serial Interface (DSI) 15 way flat flex cable connector with two data lanes and a clock lane    \\ \hline
+	Memory Card       & Slot Push/pull Micro SDIO  \\ \hline
+\end{tabular}
+\end{center}
 
 	\subsubsection{Ubuntu MATE with Raspberry Pi}
 	Ubuntu MATE is a stable, easy-to-use operating system with a configurable desktop environment. It is ideal for those who want the most out of their computers and prefer a traditional desktop metaphor. With modest hardware requirements it is suitable for modern workstations, single board computers and older hardware alike. Ubuntu MATE makes modern computers fast and old computers usable.
