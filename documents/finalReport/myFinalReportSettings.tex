@@ -30,3 +30,39 @@
 
 %** new commands ******************************************************
 \include{commands}
+
+%** listings settings ******************************************************
+
+\lstset{basicstyle=\footnotesize\ttfamily,breaklines=true}
+\lstset{framextopmargin=50pt,frame=bottomline}
+\lstset{showstringspaces=false}%do not use "squat-u" symbole for space
+
+\lstdefinelanguage{XML}{ 
+    columns=fullflexible, 
+    basicstyle=\ttfamily, 
+    commentstyle=\ttfamily\color{green!50!black}, 
+    morestring=[s]{"}{"}, 
+        alsoletter={ },
+    morecomment=[s]{?}{?}, 
+    morecomment=[s]{!--}{--}, 
+    morecomment=[s]{!DOCTYPE}{]}, 
+    moredelim=[s][\color{black}]{>}{<}, 
+    moredelim=[s][\bfseries\color{black}]{\ }{=}, 
+    stringstyle=\color{blue}, 
+    identifierstyle=\bfseries\color{violet} 
+} 
+
+\lstdefinelanguage{terCmd}{
+    sensitive=false,
+    alsoletter={.},
+    alsoletter={\$},
+    morestring=[s]{"}{"}, 
+    stringstyle=\color{blue}, 
+    morestring=[s]{'}{'}, 
+    %stringstyle=\color{violet}, 
+    moredelim=[s][\color{red}]{<}{>},
+    moredelim=[s][\color{blue}]{[}{]},
+    %  moredelim=[is][\color{orange}]{:}{:},
+    keywords=[10]{roslaunch,model,rospack,find},
+    keywordstyle=[10]{\color{magenta}},
+}
