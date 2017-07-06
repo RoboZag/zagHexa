@@ -268,21 +268,14 @@ The Arduino Mega 2560 is a microcontroller board based on the ATmega2560. It has
 	When you want a data form specific sensor, you sent a request with the sensor's id The third request is initialized when you want the data from all sensors. 
 
 	Example:
-
 	\begin{figure}[h]		
 	\centering
-	\includegraphics[width =.8\textwidth]{App1}
-	\caption{Hom page.}
+	\includegraphics[width =.45\textwidth]{App1}\quad
+    	\includegraphics[width =.45\textwidth]{App2}
+	\caption{Home page (left) and Sensor window (right)}
 	\label{Fig:App1}
 \end{figure}
 
-
-	\begin{figure}[h]		
-	\centering
-	\includegraphics[width =.8\textwidth]{App2}
-	\caption{Sensor windows.}
-	\label{Fig:App2}
-\end{figure}
 
 
 
@@ -293,7 +286,7 @@ The Arduino Mega 2560 is a microcontroller board based on the ATmega2560. It has
 	the wireless joystick communicates with the Raspberry Pi, using a ROS node called ‘joy’, and send a keystroke to it. Then the Raspberry Pi find the key pressed using a python library called ‘pygame’ and send a proper character on the serial port to the Arduino, our low-level interface with the servomotors. Lastly, the Arduino checks the received character and perform the needed action.
 	\begin{figure}[h]		
 		\centering
-		\includegraphics[width =.8\textwidth]{logitech_joy}
+		\includegraphics[width =.45\textwidth]{logitech_joy}
 		\caption{JoyStick.}
 		\label{Fig:joy}
 	\end{figure}
