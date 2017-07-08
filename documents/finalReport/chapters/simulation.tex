@@ -328,15 +328,14 @@ and put the following code in it:
 \section{ Matlab Simulation}
 In the second simulation, we modelled the robot in MATLAB and employing the Robotics Toolbox. The main purpose of this simulation is to calculate and simulate the kinematics of robot. To create the six-legged walking robot, we started by creating a three-axis robot arm that we used as a leg. Then we implemented a trajectory for the leg that is suitable for walking. Finally, we instantiated six instances of the leg to create the walking robot. The equations given in Sec.4 are programmed first for one leg and tested on successful working, the whole body kinematics were also programmed and tested.
 The results were very useful in modifying the walking gaits of the robot which then implemented in the real robot. Figure 10 shows one such simulations in which the same experiment performed on the real robot to test the whole body kinematics for raising and lowering the body height.
-
 \begin{figure}[h]
 	\centering
 	\includegraphics[width =.8\textwidth]{Fig15_1.jpg} 
 	\includegraphics[width =.8\textwidth]{Fig15_2.jpg}
 	\caption{ Hexapod robot Simulation.}
 	\label{sim}
-=======
-\end{lstlisting}	
+\end{figure}
+
 \textbf{We will launch it with the following command:}
 \begin{lstlisting}[language=terCmd]
 $ roslaunch zaghexa_sim display_model.launch model:="`rospack find zaghexa_sim`/urdf/zaghexa_sim.urdf"

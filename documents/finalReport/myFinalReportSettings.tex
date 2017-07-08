@@ -39,7 +39,7 @@
 
 \lstdefinelanguage{XML}{ 
     columns=fullflexible, 
-    basicstyle=\ttfamily, 
+    basicstyle=\footnotesize\ttfamily, 
     commentstyle=\ttfamily\color{green!50!black}, 
     morestring=[s]{"}{"}, 
         alsoletter={ },
@@ -53,6 +53,7 @@
 } 
 
 \lstdefinelanguage{terCmd}{
+        basicstyle=\footnotesize\ttfamily, 
     sensitive=false,
     alsoletter={.},
     alsoletter={\$},
@@ -63,6 +64,14 @@
     moredelim=[s][\color{red}]{<}{>},
     moredelim=[s][\color{blue}]{[}{]},
     %  moredelim=[is][\color{orange}]{:}{:},
-    keywords=[10]{roslaunch,model,rospack,find},
+    keywords=[10]{roslaunch,model,rospack,find,source,cd,sudo,usermod,chmod},
     keywordstyle=[10]{\color{magenta}},
+}
+
+\lstset{language=C++,
+    basicstyle=\footnotesize\ttfamily,
+    keywordstyle=\color{blue}\ttfamily,
+    stringstyle=\color{red}\ttfamily,
+    commentstyle=\color{teal}\ttfamily,
+    morecomment=[l][\color{magenta}]{\#}
 }
