@@ -310,14 +310,47 @@ void main()
      
  	\item In folder source /src: create a new document let's call it 'servotry.cpp' and copy the code here inside this file \& save it then close.
      
- 	\item In CMakeLists.txt we will add the dependencies which is needed to run the code \& for building it: please delete all comments to make the view clearer and make the code the same as this: cmake\_minimum\_required (VERSION 2.8.3) project(servo1)
- 	
+ 	\item In CMakeLists.txt we will add the dependencies which is needed to run the code \& for building it: please delete all comments to make the view clearer and make the code the same as this:
+ 	\begin{lstlisting}[language=XML]
+ 	cmake_minimum_required (VERSION 2.8.3) 
+ 	project(servo1)
+ 	find_package(catkin REQUIRED COMPONENTS
+ 	joy
+ 	roscpp
+ 	rospy
+ 	std_msgs
+ 	geometry_msgs
+ 	sensor_msgs )
+ 	catkin_package()
+ 	include_directories(
+ 	${catkin_INCLUDE_DIRS}
+ 	)
+ 	add_executable(servotry src/servotry.cpp)
+ 	target_link_libraries(servotry ${catkin_LIBRARIES})
+ 	add_dependencies(servotry servo1_generate_messages_cpp)
+ \end{lstlisting}
      \item Save the CMakeLists.txt then close it.
  	
      \item Important: Check that the created package: 'servo1' folder is in the path : /catkin\_ws/src
  	if not move the folder servo1 from '/catkin\_ws' into '/catkin\_ws/src'
  	
      \item In "servo1" folder create new folder call it "launch" \& inside "launch" create new document and call it "servorun.launch" then open using text editor and insert the following code:\\
+     \begin{lstlisting}[language=XML]
+     <launch>
+     <!-- joy node -->
+     <node respawn="true" pkg="joy"
+     type="joy_node" name="joy_node" >
+     <param name="dev" type="string" value="/dev/input/js0" />
+     <param name="moda" value="0.1" />
+     </node>
+     <!-- Axes -->
+     <param name="axis_linear" value="1" type="int"/>
+     <param name="axis_angular" value="0" type="int"/>
+     <param name="scale_linear" value="2" type="double"/>
+     <param name="scale_angular" value="2" type="double"/>
+     <node pkg="jost" type="ser" name="servo_joy"/>
+     </launch>
+     \end{lstlisting}
  	As we created the code we need to build it, go to your package directory : 
      \begin{lstlisting}[language=terCmd]
 $ cd catkin_ws
@@ -330,6 +363,42 @@ $ catkin_make
  	\item If you don't have Arduino IDE please check this tutorial: \url{www.wiki.ros.org/rosserial_arduino/Tutorials/Arduino%20IDE%20Setup}
  	for step by step installation once you complete the install open the Arduino IDE and jump to next step.
  	\item Write Arduino code:
+ 		\begin{lstlisting}[language=CPP]
+ 	#if (ARDUINO >= 100)
+ 	#include <Arduino.h>
+ 	#else
+ 	#include <WProgram.h>
+ 	#endif
+ 	#include <Servo.h>
+ 	#include <ros.h>
+ 	#include <std_msgs/UInt16.h>
+ 	ros::NodeHandle nh;
+ 	Servo servo;
+ 	void servo_cb( const std_msgs::UInt16& cmd_msg){
+ 	if(cmd_msg.data==2)
+ 	{
+ 	servo.write(180);
+ 	}
+ 	else if(cmd_msg.data==65534)
+ 	{
+ 	servo.write(0);
+ 	}
+ 	else
+ 	{servo.write(90);}
+ 	}
+ 	ros::Subscriber<std_msgs::UInt16> sub("servo", servo_cb);
+ 	void setup(){
+ 	
+ 	nh.initNode();
+ 	nh.subscribe(sub);
+ 	
+ 	servo.attach(9); //attach it to pin 9
+ 	}
+ 	void loop(){
+ 	nh.spinOnce();
+ 	delay(1);
+ 	}
+ 	\end{lstlisting}
  	\item Save then upload to your Arduino, don't forget to choose your board type \& the serial port.
  	
  	Note: if you COULDN'T UPLOAD to Arduino \& the upload stopped with the message: \emph{"couldn't open port"}, do the following:
@@ -365,3 +434,60 @@ $ source devel/setup.bash
 $ roslaunch servo1 servorun.launch
      \end{lstlisting}
  \end{enumerate}
+
+
+\section{Setting ROS on Raspberry Pi 3B}
+
+Raspberry Pi3 is single board computers which have low form factor with a size of a credit card. This single board computer can be installed in robots and we can install ROS on it.
+One of the popular single board computers is Raspberry Pi. The Raspberry Pi boards are manufactured by Raspberry Pi Foundation which is based in the UK. The latest model of Raspberry Pi is Raspberry Pi 3B. The official website of Raspberry Pi is \url{www.raspberrypi.org} .
+
+\subsection{Environment}
+We can install Ubuntu and Android on Raspberry Pi. There are also unofficial distributions of Linux such as Debian mini, Kali Linux, Arch Linux, and Fedora, and also support libraries such as ROS, OpenCV, PCL, and so on .
+For getting ROS on Raspberry Pi , we can either install a fresh Ubuntu and install ROS manually or install Ubuntu which is inbuilt with ROS, OpenCV, and PCL.
+Installing ROS from the source code and packages will take several hours. 
+The official guide of installing ROS on Raspberry Pi 2 into their official OS is available at \url{wiki.ros.org/indigo/Installation/UbuntuARM} .
+The Raspberry Pi 3 official OS images are given at \url{www.raspberrypi.org/downloads/} .The official OS supported by Raspberry Pi foundation are Raspbian and Ubuntu. There are unofficial images based on this OS which has ROS pre-installed on them.
+
+\subsection{How to install an OS image to Raspberry Pi}
+
+We installed a fresh Ubuntu and install ROS manually. 
+
+\textbf{Installation in Windows}
+
+In Windows, there is a tool called Win32 disk image which is designed specifically for Raspberry Pi . You can download the tool from \url{www.raspberry-projects.com/pi/pi-operating-systems/win32diskimager} , run Win32 Disk Imager with the Administrator privilege.
+
+Select the downloaded image  "Ubuntu mate" download it from \url{ubuntu-mate.org/raspberry-pi/} , select the memory card drive, and write the image to the drive.
+
+\begin{figure}[h]		
+	\centering
+	\includegraphics[width =.8\textwidth]{win32}
+	\caption{Registration and lookup the nodes.}
+	\label{Fig:Win32}
+\end{figure}
+
+After completing this wizard, we can put the micro SD card in Raspberry Pi and boot up the OS "Ubuntu mate". Then, you can install ROS from the source code \url{wiki.ros.org/kinetic/Installation/Ubuntu}, now, you have Raspberry Pi support ROS.
+
+\subsection{Connecting to Raspberry Pi from a PC}
+
+We can work with Raspberry Pi  by connecting to the HDMI display port and connect the keyboard and mouse to the USB like a normal PC.\\
+This is the simplest way of working with Raspberry Pi.
+
+In most of the projects, the boards will be placed on the robot, so we can't connect the display and the keyboards to it. There are several methods for connecting these boards to the PC. 
+It will be good if we can share the Internet to these boards too. The following methods can share the Internet to these boards, and at the same time, we can remotely connect via SSH protocol:
+
+\begin{itemize}
+	\item \textbf{Remote connection using Wi-Fi router and Wi-Fi dongle through SSH:}
+\end{itemize}
+In this method, we need a Wi-Fi router with Internet connectivity. 
+Both the PC and board will connect to the same network, so each will have an IP address and can communicate using that address.
+
+\begin{itemize}
+	\item \textbf{Direct connection using an Ethernet hotspot:}
+\end{itemize}
+
+We can share the Internet connection and communicate using SSH via Dnsmasq, a free software DNS forwarder and DHCP server using low system resources. Using this tool, we can tether the Wi-Fi Internet connection of the laptop to the Ethernet and we can connect the board to the Ethernet port of the PC. This kind of communication can be used for robots which are static in operation.
+
+The first method is very easy to configure; it's like connecting two PCs on the same network. 
+The second method is a direct connection of board to laptop through the Ethernet. This method can be used when the robot is not moving.
+In this method, the board and the laptop can communicate via SSH at the same time and it can share 
+Internet access too. We are using this method in this chapter for working with ROS.
