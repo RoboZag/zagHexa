@@ -136,3 +136,93 @@ Firstly, we used the Adafruit PCA9685 servo controller shown in \ref{figure_i} a
 	\caption{Adafruit PCA9685 wiring}
 	\label{figure_p}
 \end{figure}
+
+\subsection{Servo Motors}
+We used 18 servo motors of different sizes as actuators. A 7 kg.cm servo motor is used to drive the tibia part as well as the coxa. The motor that will lift the whole leg should be much stronger so we used a 13 kg.cm servo. That's it, we have 3 servo motors in each leg(3 DOFs): one for coxa and one for tibia and a stronger one for the femur.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics{figure_q}
+	\caption{13 kg.cm servo motor}
+	\label{figure_q}
+\end{figure}
+
+\subsection{Playstaion joystick}
+In earlier versions of ZagHexa, we used a wireless playstation 2 controller to teleoperate the hexapod. It communicates with the arduino through its uniqe via an SPI communication protocol.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics{figure_r}
+	\caption{Playstaion 2 controller}
+	\label{figure_r}
+\end{figure}
+
+\subsection{PS2/Serial converter}
+A converter is used to keep the communication between the joystick and the controller happens serially so it well be easier to handle.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics{figure_s}
+	\caption{PS2/Serial adapter}
+	\label{figure_s}
+\end{figure}
+
+\subsection{Arduion Mega}
+Later, we use an Arduino Mega in replacement of the PCA 9685 servo controller to send PWM signals to each servo motor. The reason why we moved our work from the servo controller to the Arduino Mega is that the servo controller can NOT withstand voltage above 6 Volts nor current above 5 Amps.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics{figure_t}
+	\caption{Arduino Mega 25600}
+	\label{figure_t}
+\end{figure}
+
+\subsection{Servo interface}
+We want to make a servo interface with the arduino mega and that would make installing the servos so easy without making a mess. In theory we could use 48 servos on a Mega board, but we only soldered 18 servo ports, just to keep wires tidy and compact.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics{figure_u}
+	\caption{Servo interface}
+	\label{figure_u}
+\end{figure}
+
+\subsection{Raspberry Pi 3}
+We used a Raspberry Pi 3 as an embedded computer to host our OS and to run ROS (Robotic Operating System). With the folllowing specs, Raspberry Pi is a very good choice for an embedded PC besides offering a set of GPIO pins as well.
+
+\begin{center}
+\begin{tabular}{ |l||p{12cm}|}
+	\hline
+	Processor      & Broadcom BCM2387 chipset. 1.2GHz Quad-Core ARM Cortex-A53 802.11 b/g/n Wireless LAN and Bluetooth 4.1 (Bluetooth Classic and LE)\\ \hline
+	GPU               & Dual Core VideoCore IV® Multimedia Co-Processor. Provides Open GL ES 2.0, hardware-accelerated OpenVG, and 1080p30 H.264 high-profile decode. \\ \hline
+	Memory          & 1GB LPDDR2  \\ \hline
+	Operating System  & Boots from Micro SD card, running a version of the Linux operating system  \\ \hline
+	Dimensions     & 85 x 56 x 17mm  \\ \hline
+	Power             & Micro USB socket 5V1, 2.5A  \\ \hline
+	Ethernet          & 10/100 BaseT Ethernet socket  \\ \hline
+	Video Output   & HDMI (rev 1.3 \& 1.4 Composite RCA (PAL and NTSC)  \\ \hline
+	Audio Output   & Audio Output 3.5mm jack, HDMI     \\ \hline
+	USB                 & 4 x USB 2.0 Connector   \\ \hline
+	GPIO Connector    & 40-pin 2.54 mm (100 mil) expansion header: 2x20 strip Providing 27 GPIO pins as well as +3.3 V, +5 V and GND supply lines \\ \hline
+	Camera Connector  & 15-pin MIPI Camera Serial Interface (CSI-2) \\ \hline
+	Display Connector & Display Serial Interface (DSI) 15 way flat flex cable connector with two data lanes and a clock lane    \\ \hline
+	Memory Card       & Slot Push/pull Micro SDIO  \\ \hline
+\end{tabular}
+\end{center}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics{figure_v}
+	\caption{Raspberry Pi 3 model B}
+	\label{figure_v}
+\end{figure}
+
+\subsection{NIMH battery}
+We used a 5 volts NIMH battery to power up servo motors. With 1500 mAh capacity, ZagHexa is able to run for about 15 minutes.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics{figure_w}
+	\caption{5V NIMH battery}
+	\label{figure_w}
+\end{figure}
