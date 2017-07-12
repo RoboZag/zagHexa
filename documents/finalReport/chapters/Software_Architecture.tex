@@ -206,7 +206,13 @@ The Raspberry Pi is open hardware, with the exception of the primary chip on the
 				\label{Fig:Movement}
 			\end{figure}
 		\item Client package  \\
-			This package is responsible to handle the communication through the TCP/IP connection, 	   
+			This package is responsible to handle the communication through the TCP/IP connection, this package is consist of two way of communication, so it receive the sensor data as will be descried in the Mobile Application section then it publish these data to the GUI node which can also select some sensor id or all sensors to be receive then publish it value to the Client node to git its value(s) form the mobile application.
+			\begin{figure}[h]		
+				\centering
+				\includegraphics[width =.8\textwidth]{Client_pck}
+				\caption{General view of Client Package.}
+				\label{Fig:Client}
+			\end{figure}  
 	\end{enumerate}
 
 	
