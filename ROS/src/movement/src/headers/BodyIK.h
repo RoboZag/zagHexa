@@ -38,7 +38,7 @@ public:
 	float Tibia;
 	float BodyCenterOffset1;
 	float BodyCenterOffset2;
-	float BodySideLength = 80;
+	float BodySideLength;
 	vec_float IKangles[6];
 	vec_float correct_angle(int Leg_num);
 	void calibration();

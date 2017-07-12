@@ -45,14 +45,14 @@ int mode::getvalue()
 int main(int argc, char *argv[]) {
 
     // Node
-    ros::init(argc, argv, "client_node");
+    ros::init(argc, argv, "Client_node");
     ros::NodeHandle nh;
     ros::Rate loop_rate(MESSAGE_FREQ); // set the rate as defined in the macro MESSAGE_FREQ
     std_msgs::String message;
     std::stringstream ss;
-    ros::Publisher GA_pub = nh.advertise<std_msgs::String>("/sensors_values", 1000);
+    ros::Publisher GA_pub = nh.advertise<std_msgs::String>("/Sensors_values", 1000);
     mode choice;
-    ros::Subscriber client_sub = nh.subscribe("/client_messages", 100 , &mode::callback, &choice);
+    ros::Subscriber client_sub = nh.subscribe("/Oreading", 100 , &mode::callback, &choice);
 
 
     // Socket

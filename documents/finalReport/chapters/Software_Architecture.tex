@@ -194,7 +194,17 @@ The Raspberry Pi is open hardware, with the exception of the primary chip on the
 	
 	\begin{enumerate}
 		\item Movement package \\ 
-			This package is responsible to handle the movement of the robot,  		
+			This package is responsible to handle the movement of the robot, as it takes the input form joystick/bluetooth and using node Joystick it publish the wanted button to the low level Hardware to do an action upon the received button.
+			
+			this package have tow nodes, the first one on the RPi which handle the joystick/bluetooth part of taking command, the second node is on Arduino which receive the command and handle the action of movement as wanted.
+			
+			An Extra topic is add to the Arduino node to handle the ultrasonic sensor reading for more known of the environments variables. 
+			\begin{figure}[h]		
+				\centering
+				\includegraphics[width =.8\textwidth]{Movement_pck}
+				\caption{General view of Movement Package.}
+				\label{Fig:Movement}
+			\end{figure}
 		\item Client package  \\
 			This package is responsible to handle the communication through the TCP/IP connection, 	   
 	\end{enumerate}

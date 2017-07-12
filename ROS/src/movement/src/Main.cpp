@@ -1,6 +1,6 @@
-#include <std_msgs/Int8.h>
-#include <movement/vfloat.h>
-#include <ros/ros.h>
+//#include <std_msgs/Int8.h>
+//#include <std_msgs/Float32.h>
+//#include <ros/ros.h>
 #include <BodyIK.h>
 
 
@@ -19,13 +19,15 @@ int main(int argc, char** argv)
 	Hexa.Femur = 35.0;
 	Hexa.Tibia = 72.0;
 	Hexa.BodySideLength = 80.0;
-
-	ros::init(argc, argv, "servo_joy");
+	Hexa.BodyCenterOffset1 = BodySideLength / 2;
+	Hexa.BodyCenterOffset2 = sqrt((BodySideLength * BodySideLength) - (BodyCenterOffset1 * BodyCenterOffset1));
+	/*
+	ros::init(argc, argv, "Arduino_node");
 	ros::NodeHandle servoHandler;
-	ros::Publisher  pub = servoHandler.advertise<movement::vfloat>("/angles1", 1000);
-	ros::Subscriber sub = servoHandler.subscribe("move_direction", 1000, oncall);
+	ros::Publisher  pub = servoHandler.advertise<std_msgs::Float32>("/Ultrasonic", 1000);
+	ros::Subscriber sub = servoHandler.subscribe("/Joystick_", 1000, oncall);
 	ros::Rate loop_rate(10); 
-
+	*/
 	Hexa.calibration();
 	// Hexa.clacHexaBodyIK(PosX, PosY, PosZ, RotX, RotY, RotZ);
 	Hexa.clacHexaBodyIK(5, 5, 5,5,5,5);
@@ -37,7 +39,7 @@ int main(int argc, char** argv)
 		4 LeftMiddle
 		5 LeftRear
 
-	*/
+	
 	while(ros::ok())
 	{
 		for(int i=0; i < 6; i++)
@@ -49,21 +51,12 @@ int main(int argc, char** argv)
 		loop_rate.sleep(); 
 		
 	}
-	/*
+	*/
+
 	// For Testing the output value 
 	for (int j = 0; j < 6; j++)
-	{
-	for (vec_float::iterator i = Hexa.IKangles[j].begin(); i != Hexa.IKangles[j].end(); i++)
-	{
-	std::cout << *(i) << "\n";
-	}
-
-	}
-
-
-
-	int x;
-	std::cin >> x;*/
+		for (vec_float::iterator i = Hexa.IKangles[j].begin(); i != Hexa.IKangles[j].end(); i++)
+			std::cout << *(i) << "\n";
 	return 0;
 
 }
