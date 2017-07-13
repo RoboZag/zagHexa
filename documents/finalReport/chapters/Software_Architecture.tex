@@ -307,7 +307,33 @@ The Arduino Mega 2560 is a microcontroller board based on the ATmega2560. It has
 		\label{Fig:joy}
 	\end{figure}
 
-	\subsection{Bluetooth}
+	\subsection{BT Joystick}
+	Goals:
+		Using the Mobile  Bluetooth to control the robot as it contain joystick simulator to send the command to RPi, also this app capable to receive a video recorded form the Mobile on the robot as a background to the joystick so we can control every thing from one app and to see what the robot see.
+		
+	How it works:
+		Using serial communication to Send data between two Bluetooth devices.
+		\begin{figure}[h]		
+			\centering
+			\includegraphics[width =.45\textwidth]{BT_app}
+			\caption{Function for sending data through Bluetooth.}
+			\label{Fig:BT}
+		\end{figure}
+		
+		First we get the delay value from the setting the user saved.
+		We make a handler that schedule the runnable to be executed at some point in the future.
+		A new thread is made to send the Bluetooth data called "r" that will use the "bt" model that knows how to deal with Bluetooth then we tell the model to send the data.
+		Then the handler will tell the runnable "r" to be executed at some point of the future that time will be determined by the variable "delay".
+	How to use the program:
+	\begin{itemize}
+		\item After opening the program, the program will show you a button to open Bluetooth press "turn on" and confirm opening Bluetooth for your device.
+		\item The first thing you need to do is setting and choosing IP and Port that you will connect to.
+		\item Remove the port if you will connect to a global server or leave it and choose the right port to connect to in the case of local server.
+		\item Now to return to the main activity press run at the bottom-center of the screen and the age is loaded at the background.
+		\item Choose a Bluetooth a device to connect to.
+		\item Change the joypad buttons look alike config to make ever button send the intended data.
+		\item Now use the joypad buttons to control the robot.
+	\end{itemize}
 		
 	\subsection{Wi-Fi}
 		Another line of communication is between our control station and an Android smart phone mounted on the robot through a TCP/IP client server application.
