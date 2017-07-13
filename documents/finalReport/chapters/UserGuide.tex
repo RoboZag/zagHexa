@@ -491,3 +491,110 @@ The first method is very easy to configure; it's like connecting two PCs on the 
 The second method is a direct connection of board to laptop through the Ethernet. This method can be used when the robot is not moving.
 In this method, the board and the laptop can communicate via SSH at the same time and it can share 
 Internet access too. We are using this method in this chapter for working with ROS.
+
+\subsection{Making Raspberry connect automatically to our network at start up }
+First of all as we always like to work remotely without need to stuck beside raspberry, but the problem is that raspberry by default on startup the wifi adapter detects the networks available in the surrounding area. so to avoid conflict between the networks we will assign it to work with our network and search for it. 
+if it found, prioritize it and connect to it.
+First go to : /etc/network/interfaces
+then add:
+\begin{lstlisting}[language=XML]
+auto wlan0
+	iface wlan0 inet dhcp 
+	wpa-ssid {ssid}
+	wpa-psk  {password}
+\end{lstlisting}
+Then run this in terminal:
+\begin{lstlisting}[language=XML]
+sudo dhclient wlan0
+\end{lstlisting}
+\textbf{Note}:
+
+\begin{itemize}
+\item SSID : is the network name you want it to auto connect\\
+\item This configuration is done once on fresh installed system. 
+
+\end{itemize}
+\clearpage
+\section{Connect raspberry pi 3 and arduino with serial usb cable}
+
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=8.47cm,height=5.99cm]{figures/s12.jpg}
+\end{figure}
+
+
+\textbf{\begin{center}
+		Using USB Cable Between Raspberry Pi and Arduino
+\end{center}}
+
+There are many ways of connecting the Raspberry Pi and Arduino, such as 
+using the GPIO and Serial pins and using I2C. But this could be one of the easiest way to get them talking, because hardware  that required is minimal: all you will need is a micro USB cable that comes with the Arduino. 
+First of all, make sure you have installed pySerial, which 
+gives you the ability to read from and write to the serial port with Python Programming language. 
+
+\subsection{Arduino Talking to Raspberry Pi via USB cable}
+We will send 'Hi ZagHexa' from the Arduino to the Raspberry Pi every 2 seconds. 
+Here is the Arduino source code.
+\begin{lstlisting}[language=XML]
+
+void setup(){
+Serial.begin(9600);}
+
+void loop(){
+Serial.println("Hi ZagHexa");
+delay(2000);}
+\end{lstlisting}
+
+Run Python 2 on Raspberry Pi. You will find this from the menu under 
+Programming, you should use Python 2 not 3.
+
+Type the following:
+\begin{lstlisting}[language=XML]
+import serial
+ser = serial.Serial('/dev/ttyACM0', 9600)
+\end{lstlisting}
+The first argument - /dev/ttyACM0 is the name for the USB interface used. To find out the port name, we need to run this command in terminal without Arduino plugged in:
+\begin{lstlisting}[language=XML]
+ls /dev/tty*
+\end{lstlisting}
+Now plug in your Arduio and run the command again. If a new name appears, then this is the name of your port.
+
+The second argument - 9600 is the baud rate and should match with what 
+you set in the Arduino program.
+
+Now lets start a loop listening for messages from the Arduino.
+\begin{lstlisting}[language=XML]
+while 1 :
+ser.readline()
+\end{lstlisting}
+You will need two hit enter twice after you type the second line. 
+Messages 'Hi ZagHexa' should now start to appear every 2 seconds. You can press Ctrl + C to stop (interrupt) the Python program.
+
+\subsection{Raspberry Pi Sending Data To Arduino}
+In this example, Raspberry Pi will be sending back a single number/character and Arduino will turn on and off the LED on Pin 12 so many times.
+\begin{lstlisting}[language=XML]
+const int ledPin = 12;
+
+void setup(){
+pinMode(ledPin, OUTPUT);
+Serial.begin(9600);}
+
+void loop(){
+if (Serial.available()){
+	light(Serial.read() - '0');}
+	delay(500);}
+	
+void light(int n){
+	for (int i = 0; i<n; i++) {
+		digitalWrite(ledPin, HIGH);
+		delay(100);
+		digitalWrite(ledPin, LOW);
+		delay(100); } 
+	}
+\end{lstlisting}
+On the Raspberry Pi Side, you need to type
+\begin{lstlisting}[language=XML]
+ser.write('3')
+\end{lstlisting}
+\textbf{Now you should see the LED on the Arduino light up 3 times.}
