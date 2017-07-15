@@ -305,7 +305,7 @@ and put the following code in it:
 		\label{fig:s6}
 	\end{figure}
 	\\\textbf{In the next figures you will see the effect of changing sliders values to the joints angles and positions}
-	\begin{figure}[h]
+	\begin{figure}[H]
 		\centering
 		\includegraphics[height=.5\linewidth]{s7}
 		\caption{Control sliders and their effect on the robot }
@@ -325,24 +325,13 @@ and put the following code in it:
 	\end{figure}
 \clearpage
 \vspace{10cm}
-\section{ Matlab Simulation}
-In the second simulation, we modelled the robot in MATLAB and employing the Robotics Toolbox. The main purpose of this simulation is to calculate and simulate the kinematics of robot. To create the six-legged walking robot, we started by creating a three-axis robot arm that we used as a leg. Then we implemented a trajectory for the leg that is suitable for walking. Finally, we instantiated six instances of the leg to create the walking robot. The equations given in Sec.4 are programmed first for one leg and tested on successful working, the whole body kinematics were also programmed and tested.
-The results were very useful in modifying the walking gaits of the robot which then implemented in the real robot. Figure 10 shows one such simulations in which the same experiment performed on the real robot to test the whole body kinematics for raising and lowering the body height.
-\begin{figure}[h]
-	\centering
-	\includegraphics[width =.8\textwidth]{Fig15_1.jpg} 
-	\includegraphics[width =.8\textwidth]{Fig15_2.jpg}
-	\caption{ Hexapod robot Simulation.}
-	\label{sim}
-\end{figure}
-
 \textbf{We will launch it with the following command:}
 \begin{lstlisting}[language=terCmd]
 $ roslaunch zaghexa_sim display_model.launch model:="`rospack find zaghexa_sim`/urdf/zaghexa_sim.urdf"
 \end{lstlisting}
 
 \textbf{if every thing is fine and you have no errors, it will load RVIZ and you will see:}
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth, height=0.4\textheight]{s5}
 	\caption{output of urdf to graphics}
@@ -364,7 +353,7 @@ $ roslaunch zaghexa_sim display.launch model:="`rospack find zaghexa_sim`/urdf/z
 %	\label{fig:s6}
 %\end{figure}
 \\\textbf{In the next figures you will see the effect of changing sliders values to the joints angles and positions}
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{s7}
 	\caption{Joint state publisher GUI with its control sliders and their effect on the robot }
@@ -373,13 +362,24 @@ $ roslaunch zaghexa_sim display.launch model:="`rospack find zaghexa_sim`/urdf/z
 \begin{figure}[htb]
 	\centering
 	\includegraphics[width=0.6\textwidth]{simViews}
-    	\caption{Different views of the robot}
-%	\caption{top view of the robot}
-%	\label{fig:s8}
-%	\includegraphics[height=0.3\textheight]{s9}
-%	\caption{Different views of the robot}
-%	\label{fig:s9}
-%	\includegraphics[height=0.3\textheight]{s10}
-%	\caption{Different views of the robot}
-%	\label{fig:s10}
+	\caption{Different views of the robot}
+	%	\caption{top view of the robot}
+	%	\label{fig:s8}
+	%	\includegraphics[height=0.3\textheight]{s9}
+	%	\caption{Different views of the robot}
+	%	\label{fig:s9}
+	%	\includegraphics[height=0.3\textheight]{s10}
+	%	\caption{Different views of the robot}
+	%	\label{fig:s10}
 \end{figure}
+\section{ Matlab Simulation}
+In the second simulation, we modelled the robot in MATLAB and employing the Robotics Toolbox. The main purpose of this simulation is to calculate and simulate the kinematics of robot. To create the six-legged walking robot, we started by creating a three-axis robot arm that we used as a leg. Then we implemented a trajectory for the leg that is suitable for walking. Finally, we instantiated six instances of the leg to create the walking robot. The equations given in Sec.4 are programmed first for one leg and tested on successful working, the whole body kinematics were also programmed and tested.
+The results were very useful in modifying the walking gaits of the robot which then implemented in the real robot. Figure 10 shows one such simulations in which the same experiment performed on the real robot to test the whole body kinematics for raising and lowering the body height.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width =.8\textwidth]{Fig15_1.jpg} 
+	\includegraphics[width =.8\textwidth]{Fig15_2.jpg}
+	\caption{ Hexapod robot Simulation.}
+	\label{sim}
+\end{figure}
+

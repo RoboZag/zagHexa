@@ -1,17 +1,12 @@
 %Report Structure =============================================================
-%Introduction
-%		Chapter 1 Introduction /khaled
-%Fundamentals
-%		Chapter 2 Hardware Design /alaa still
-%Contributions
-%		Chapter 3 software arch. /mahmoud
-%   Chapter 4    robot kinematics /alaa
-%Topic2
-%   Chapter 5    simulation /khaled
-%   chapter 6    userguide /hend
-
+%		Chapter 1 Introduction 
+%		Chapter 2 Hardware Design 
+%		Chapter 3 Software architecture
+% 		Chapter 4 Mechanical Design
+%  	    Chapter 5 Experiments and simulation
+%       Chapter 6 Userguide
 %		Chapter 6 Conclusions and Future Outlook 
-% References
+% 		References
 %==============================================================================
 
 \input{myFinalReportSettings}
@@ -37,8 +32,9 @@
 %\begin{minipage}[b]{1\linewidth}
      %\listofalgorithms
 %\end{minipage}
-\listoftables
-\listofalgorithms
+
+%\listoftables
+%\listofalgorithms
 
 
 \chapter*{List of Symbols and Abbreviations}
@@ -66,7 +62,7 @@
         ``There is nothing more difficult to take in hand, more perilous to conduct or more uncertain in its success than to take the lead in the introduction of a new order of things.''}}
 \chapter{Introduction}\label{ch:introduction}
 \input{chapters/intro}
-%\input{chapters/stateOfArt}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \setchapterpreamble[o]{%
@@ -77,46 +73,48 @@
 \input{chapters/design}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+\setchapterpreamble[o]{%
+	\dictum[Steve jobs, \textit{(businessman, inventor,Apple CEO, 1955--2011)}]{% source: https://www.brainyquote.com/quotes/quotes/s/stevejobs416875.html
+		``You can't connect the dots looking forward; you can only connect them looking backwards. So you have to trust that the dots will somehow connect in your future. You have to trust in something - your gut, destiny, life, karma, whatever. This approach has never let me down, and it has made all the difference in my life.''}\vspace{0.1em}}
 
 \chapter{Software Architecture}\label{ch:SoftwareArchitecture}
 \input{chapters/Software_Architecture}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-
 \setchapterpreamble[o]{%
     \dictum[Alan Turing, \textit{(British pioneering computer scientist, cryptanalyst,$\cdots$, and philosopher, 1912--1954)}]{%
         ``A computer would deserve to be called intelligent if it could deceive a human into believing that it was human.''}}
 
 \chapter{Mechanical Design} \label{ch:mechanical}
 \input{chapters/mechanical.tex}
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \setchapterpreamble[o]{%
 	\dictum[Richard P. Feynman, \textit{(American theoretical physicist, 1918--1988)}]{%
 		``It doesn't matter how beautiful your theory is, it doesn't matter how smart you are. If it doesn't agree with experiment, it's wrong.''}}
 \chapter{Experiments and Simulation} \label{ch:simulation}
 \input{chapters/simulation.tex}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setchapterpreamble[o]{%
+	\dictum[Albert Einstein, \textit{(physicist, 1879--1955)}]{%
+		``Education is what remains after one has forgotten what one has learned in school.''}}
+\chapter{Userguide}\label{ch:userManual}
+\input{chapters/UserGuide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\appendix
+\renewcommand*\chapterformat{\color{blue}{Appendix \thechapter}\vspace{-0.6cm}}%\autodot
+%\chapter{This is My Appendix Title}\label{ch:cameraModel}
+%%\input{chapters/appCameraModel}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \setchapterpreamble[o]{\dictum[George Henry Lewes, \textit{( English philosopher and critic of literature, 1817--1878)}]{The true function of philosophy is to educate us in the principles of reasoning and not to put an end to further reasoning by the introduction of fixed conclusions.}}
 \chapter{Conclusions and Future Outlook} \label{ch:conclusion}
 \input{chapters/conclusion}
 %\input{chapters/futureWork}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\appendix
-\renewcommand*\chapterformat{\color{blue}{Appendix \thechapter}\vspace{-0.6cm}}%\autodot
-%\chapter{This is My Appendix Title}\label{ch:cameraModel}
-%%\input{chapters/appCameraModel}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\chapter{Introduction to ROS}\label{ch:userManual}
-\input{chapters/UserGuide}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \backmatter %------------------------------------------------------------------
 \cleardoublepage{}

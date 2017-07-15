@@ -350,9 +350,9 @@ The Arduino Mega 2560 is a microcontroller board based on the ATmega2560. It has
 			- Network Access Layer\\
 			In the TCP/IP architecture, the Data Link Layer and Physical Layer are normally grouped together to become the Network Access layer. TCP/IP makes use of existing Data Link and Physical Layer tandards rather than defining its own. Many RFCs describe how IP utilizes and interfaces with the existing data link protocols such as Ethernet, Token Ring, FDDI, HSSI, and ATM. The physical layer, which defines the hardware communication properties, is not often directly interfaced with the TCP/IP protocols in the network layer and above. []
 			
-			\begin{figure}[h]		
+			\begin{figure}[H]		
 				\centering
-				\includegraphics[width =.8\textwidth]{TCP_IP_Protocol_Stack_4_Layer_Model}
+				\includegraphics[width =.8\textwidth,height=16cm]{TCP_IP_Protocol_Stack_4_Layer_Model}
 				\caption{TCP/IP Protocol.}
 				\label{Fig:TCP/IP}
 			\end{figure}
@@ -380,25 +380,83 @@ The Arduino Mega 2560 is a microcontroller board based on the ATmega2560. It has
 				\item ID number to select one sensor to get its data.
 			\end{itemize}
 				
-			Server will reply in the first case by an array of numbers in the same order of the sensors in the index file, in the second case it will reply by a single float number that its index match the request one.
+			Server will reply in the first case by an array of numbers in the same order of the sensors in the index file, in the second case it will reply by a single float number that its index match the request one.\\\\\\
 			
 		\end{itemize}
 
 
 \section{Sonar System}
-\subsection{\textbf{Components needed:}}
+\subsection{Main Components}
+	\begin{enumerate}
+		\item Ultrasonic sensor
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=10cm,height=5cm]{figures/ultra}
+				\caption{Ultrasonic sensor}
+				\label{Fig:ultrasonic}
+			\end{figure}
+		An Ultrasonic sensor is a device that can measure the distance to an object by using sound waves. 
+		It measures distance by sending out a sound wave at a specific frequency and listening for that sound wave to bounce back. 
+		By recording the elapsed time between the sound wave being generated and the sound wave bouncing back, it is possible to calculate the distance between the sonar sensor and the object.
+		Since it is known that sound travels through air at about 340 m/s you can take the time for the sound wave to return and multiply it by 340 meters to find the total round-trip distance of the sound wave. 
+		Round-trip means that the sound wave traveled 2 times the distance to the object before it was detected by the sensor; it includes the 'trip' from the sonar sensor to the object AND the 'trip' from the object to the Ultrasonic sensor (after the sound wave bounced off the object).
+		To find the distance to the object, simply divide the round-trip distance in half.
+		\vspace{0mm}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=10cm,height=2.5cm]{figures/ultra2}
+			\caption{Distance calculation}
+			\label{Fig:Distance calculation}
+		\end{figure}
+		\vspace{0mm}
+		It is important to understand that some objects might not be detected by ultrasonic sensors. 
+		This is because some objects are shaped or positioned in such a way that the sound wave bounces off the object, but are deflected away from the Ultrasonic sensor. 
+		It is also possible for the object to be too small to reflect enough of the sound wave back to the sensor to be detected.
+		Other objects can absorb the sound wave all together (cloth, carpeting, etc), which means that there is no way for the sensor to detect them accurately. 
+		These are important factors to consider when designing and programming a robot using an ultrasonic sensor.
+		
+		\item PIR sensor
+		 \vspace{0mm}
+		 \begin{figure}[H]
+		 	\centering
+		 	\includegraphics[width=7cm,height=4cm]{figures/PIR}
+		 	\caption{PIR sensor}
+		 	\label{Fig:PIR sensor}
+		 \end{figure}
+		 \vspace{0mm}
+		 PIR sensors allow you to sense motion, almost always used to detect whether a human has moved in or out of the sensors range. 
+		 They are small, inexpensive, low-power, easy to use and don't wear out easily.
+		 For that reason they are commonly found in appliances and gadgets used in homes or businesses. 
+		 \textbf{The working principle}: The module actually consists of a Pyroelectric sensor which generates energy when exposed to heat.
+		 That means when a human or animal body will get in the range of the sensor it will detect a movement because the human or animal body emits heat energy in a form of infrared radiation. That’s where the name of the sensor comes from, a \textbf{Passive Infra-Red sensor}. And the term “passive” means that sensor \textbf{is not} using any energy for detecting purposes, it just works by detecting the energy given off by the other objects.
+		 \vspace{0mm}
+		 \begin{figure}[H]
+		 	\centering
+		 	\includegraphics[width=10cm,height=5cm]{figures/PIR2}
+		 	\caption{PIR sensor inside}
+		 	\label{Fig:PIR sensor}
+		 \end{figure}
+		 \vspace{0mm}
+		 The module also consists a specially designed cover named Fresnel lens, which focuses the infrared signals onto the pyroelectric sensor.
+		  \vspace{0mm}
+		 \begin{figure}[H]
+		 	\centering
+		 	\includegraphics[width=14cm,height=14cm]{figures/PIR3}
+		 	\caption{PIR sensor inside}
+		 	\label{Fig:PIR sensor}
+		 \end{figure}
+		 \vspace{0mm}
+		\item Servo motor 
+		\item Arduino board and Jumper wires
+	\end{enumerate}
 
-\begin{enumerate}
-\item  Ultrasonic sensor
-\item  PIR sensor
-\item  Servo motor
-\item  Arduino board
-\item  Jump wires
-\end{enumerate}
-\subsection{\textbf{Circuit scheme:}}
-\begin{figure}[h]
+\subsection{Circuit scheme}
+
+\begin{figure}[H]
 	\centering
-	\includegraphics{figures/sonar}
+	\includegraphics[width=14cm]{figures/sonar}
+	\caption{Circuit scheme}
+	\label{Fig:Scheme}
 \end{figure}
 The Ultrasonic Sensor is connected to the pins number 4 and 5, PIR to pin 7 and the servomotor to the pin number 6 on the Arduino Board. 
 
@@ -420,7 +478,7 @@ So as processing can handle and read their values and process them to get the ou
 
 This is simply demonstrated in this figure:
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=14cm,height=7cm]{figures/sonar2}
 \end{figure}
@@ -432,18 +490,17 @@ These variables will be used for drawing the sonar, the lines, the detected obje
 
 For drawing the sonar main screen, this function~was made \textbf{drawRadar()}~which consist of~\textbf{arc()}~and~\textbf{line()} functions as you see in the next figure.
 They are 4 half circles and lines to demonstrate the degrees meter.
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=14cm,height=7cm]{figures/sonar3}
 \end{figure}
 For drawing the line that is moving along the radar this function \textbf{drawLine(). }Its center of rotation is set with the \textbf{translate() }function and using the line() function in which the myAngle variable is used the line is redrawn for each degree.
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=14cm,height=7cm]{figures/sonar4}
-\end{figure}\\\\\\
+\end{figure}
  For drawing the detected objects this function \textbf{drawObject()} gets the distance from ultrasonic sensor, transforms it into pixels and in combination with the angle of the sensor draws the object on the sonar.
-
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=14cm,height=7cm]{figures/sonar5}
 \end{figure}
@@ -451,7 +508,7 @@ For drawing the line that is moving along the radar this function \textbf{drawLi
 For the text on the screen the function \textbf{drawText()} draws texts on particular locations. All of these functions are called in the main \textbf{draw()} function which repeats all the time and draws the screen. 
 
 And the final output as you can see 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=14cm,height=8cm]{figures/sonar6}
 \end{figure}
