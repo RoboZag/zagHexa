@@ -383,7 +383,79 @@ The Arduino Mega 2560 is a microcontroller board based on the ATmega2560. It has
 			Server will reply in the first case by an array of numbers in the same order of the sensors in the index file, in the second case it will reply by a single float number that its index match the request one.
 			
 		\end{itemize}
-		
+
+
+\section{Sonar System}
+\subsection{\textbf{Components needed:}}
+
+\begin{enumerate}
+\item  Ultrasonic sensor
+\item  PIR sensor
+\item  Servo motor
+\item  Arduino board
+\item  Jump wires
+\end{enumerate}
+\subsection{\textbf{Circuit scheme:}}
+\begin{figure}[h]
+	\centering
+	\includegraphics{figures/sonar}
+\end{figure}
+The Ultrasonic Sensor is connected to the pins number 4 and 5, PIR to pin 7 and the servomotor to the pin number 6 on the Arduino Board. 
+
+Now we need to make a code and upload it to the Arduino Board that will enable the interaction between the Arduino and the Processing IDE.
+
+\textbf{Hints about processing:}
+
+\begin{enumerate}
+\item \textbf{ }The Processing Development Environment (PDE) makes it easy to write Processing programs. Programs are written in the text editor and started by pressing the run button. 
+
+\item  In Processing, a computer program is called a sketch. Sketches are stored in the Sketchbook, which is a folder on your computer. Sketches can draw two- and three-dimensional graphics.
+
+\item  Processing has different programming modes to make it possible to deploy sketches on different platforms and program in different ways. The Java mode is the default. Other programming modes may be downloaded by selecting "Add Mode''.
+\end{enumerate}
+
+The Target is to make the calculation of distance, moving servo and publishing angle and PIR give the signal if it detected something to the serial port.
+
+So as processing can handle and read their values and process them to get the output.
+
+This is simply demonstrated in this figure:
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=14cm,height=7cm]{figures/sonar2}
+\end{figure}
+After uploading the code to Arduino and checked that the output on serial with the required pattern.
+
+Now we will receive the values for the angle and the distance measured by the sensor from the Arduino Board into the Processing IDE using the SerialEvent() function which reads the data from the Serial Port and we will put the values of the PIR, angle and the distance into the variables myPIR, myAngle and myDistance.
+
+These variables will be used for drawing the sonar, the lines, the detected objects{\dots}etc.
+
+For drawing the sonar main screen, this function~was made \textbf{drawRadar()}~which consist of~\textbf{arc()}~and~\textbf{line()} functions as you see in the next figure.
+They are 4 half circles and lines to demonstrate the degrees meter.
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=14cm,height=7cm]{figures/sonar3}
+\end{figure}
+For drawing the line that is moving along the radar this function \textbf{drawLine(). }Its center of rotation is set with the \textbf{translate() }function and using the line() function in which the myAngle variable is used the line is redrawn for each degree.
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=14cm,height=7cm]{figures/sonar4}
+\end{figure}\\\\\\
+ For drawing the detected objects this function \textbf{drawObject()} gets the distance from ultrasonic sensor, transforms it into pixels and in combination with the angle of the sensor draws the object on the sonar.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=14cm,height=7cm]{figures/sonar5}
+\end{figure}
+
+For the text on the screen the function \textbf{drawText()} draws texts on particular locations. All of these functions are called in the main \textbf{draw()} function which repeats all the time and draws the screen. 
+
+And the final output as you can see 
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=14cm,height=8cm]{figures/sonar6}
+\end{figure}
+
 \section{GUI}
 
 Future work
