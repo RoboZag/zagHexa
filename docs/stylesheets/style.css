@@ -117,6 +117,12 @@ img {
 }
 /**/
 /**/
+.side-nav li {
+  line-height: 40px;
+}
+.side-nav li>a{
+  height: 2px;
+}
 .side-nav p{
   margin-left: 33px;
 }
@@ -127,7 +133,7 @@ img {
 .side-nav .icon{
   margin-left: 33px;
   font-size: 15px;
-  line-height: 2.5em;
+  line-height: 1.5em;
 
 }
 .side-nav .foot{
@@ -320,7 +326,6 @@ header li {
 .menu li.icon {
   width:270px;
   float:left;
-  position:fixed;
   margin-top: 20px;
   margin-left: 10px;
   font-size: 17px;
@@ -802,10 +807,16 @@ hr {
     margin:0;
   }
 
-  header, section, footer div.menu{
+  header, section, footer {
     float:none;
     position:static;
     width:auto;
+  }
+  div.menu{
+    float:none;
+    position:static;
+    width:auto;
+
   }
 
   header {
@@ -892,12 +903,12 @@ hr {
     width:99%;
   }
 
-  div.menu li, div.menu ul li + li + li {
+  /*div.menu li, div.menu ul li + li + li {
     width:33%;
   }
   footer li, footer ul li + li + li {
     width:33%;
-  }
+  }*/
 }
 
 @media print {
