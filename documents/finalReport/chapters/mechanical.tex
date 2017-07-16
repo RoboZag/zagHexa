@@ -233,12 +233,12 @@ First, the coxa angle can be found directly by knowing the end effectors positio
 \end{figure}
 
 \begin{align}
-    \frac{x}{y} & =\tan (y)\to \gamma =\tan ^{-1}\frac{x}{y} \\
-    L              & = \sqrt{Z_{offset}^{2}+(L_{1}+\cos A)^{2}}\\
-    a_{L}        & = \cos ^{-1}(\frac{Z_{offset}}{L})\\
+    \frac{x}{y} & =\tan (\gamma)\to \gamma =\tan ^{-1}\frac{x}{y} \\
+    L              & = \sqrt{Z_{offset}^{2}+(L_{1}+\cos (A_1 + A_2))^{2}}\\
+    A_{1}        & = \cos ^{-1}(\frac{Z_{offset}}{L})\\
     Tibia^{2}  & =Femar^{2}+L^{2}-2(Femar)(L)\cos \alpha _{2} \\
-    \alpha _{2} & =\cos^{-1}(\frac{Tibia^{2}-Femar^{2}-L^{2}}{-2(Femar)(L)}) \\
-    \alpha      & =\alpha _{1}+\alpha _{2}\\
-    \alpha      & = \cos ^{-1}(\frac{Z_{offset}}{L})+\cos ^{-1}(\frac{Tibia^{2}-Femar^{2}-L^{2}}{-2(Femar)(L)}) \\
-    \beta        & = \cos^{-1}(\frac{L^{2}-Femar^{2}-Tibia^{2}}{-2(Femar)(Tibia)}
+    A_{2} & =\cos^{-1}(\frac{Tibia^{2}-Femar^{2}-L^{2}}{-2(Femar)(L)}) \\
+    A & =A_{1} + A_{2}\\
+    A & = \cos ^{-1}\left(\frac{Z_{offset}}{L})+\cos ^{-1}(\frac{Tibia^{2}-Femar^{2}-L^{2}}{-2(Femar)(L)}\right) \\
+    B & = \cos^{-1}\left(\frac{L^{2}-Femar^{2}-Tibia^{2}}{-2(Femar)(Tibia)}\right)
 \end{align}

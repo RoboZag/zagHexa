@@ -154,22 +154,22 @@ We used ROS Kinetic Kame distribution, which is available for Ubuntu Xenial(16.0
  
  Build a workspace folder in the home directory and create a src folder inside the workspace folder:
  \begin{itemize}
- 	\item \$ mkdir ~/catkin\_ws/src
+ 	\item \lstinline|$ mkdir ~/catkin_ws/src|
  	Switch to the source folder. The packages are created inside this package:
- 	\item \$ cd ~/catkin\_ws/src
+ 	\item \lstinline|$ cd ~/catkin_ws/src|
  	Initialize a new catkin workspace:
- 	\item \$ catkin\_init\_workspace
+ 	\item \lstinline|$ catkin_init_workspace|
 	We can build the workspace even if there are no packages. We can use the following command to switch to the workspace folder:
- 	\item \$ cd ~/catkin\_ws
+ 	\item \lstinline|$ cd ~/catkin_ws|
  	The catkin\_make command will build the following workspace:
- 	\item \$ catkin\_make
+ 	\item \lstinline|$ catkin_make|
  \end{itemize}
 
  After building the empty workspace, we should set the environment of the current workspace to be visible by the ROS system.
  This process is called overlaying a workspace. We should add the package environment using the following command:
  \begin{itemize}
- 	\item \$ echo "source ~/catkin\_ws/devel/setup.bash" >> ~/.bashrc 
- 	\item \$ source ~/.bashrc
+ 	\item \lstinline|$ echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc |
+ 	\item \lstinline|$ source ~/.bashrc|
  \end{itemize}
  This command will source a bash script called setup.bash inside the devel workspace folder. To set the environment in all bash sessions, we need to add a source command in the .bashrc file, which will source this script whenever a bash session starts.
  

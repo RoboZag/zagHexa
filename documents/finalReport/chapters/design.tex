@@ -169,6 +169,25 @@ Later, we use an Arduino Mega in replacement of the PCA 9685 servo controller to
 	\label{figure_t}
 \end{figure}
 
+	 Arduino Mega specification
+\begin{center}
+	\begin{tabular}{ |c|c|}
+		\hline
+		Microcontroller			& ATmega2560 \\ \hline
+		Operating Voltage		& 5V\\ \hline
+		Input Voltage			& (recommended) 7-12V\\ \hline
+		Input Voltage (limits) 	& 6-20V\\ \hline
+		Digital I/O Pins 		& 54 (of which 14 provide PWM output)\\ \hline
+		Analog Input Pins 		& 16\\ \hline
+		DC Current per I/O Pin	& 40 mA\\ \hline
+		DC Current for 3.3V Pin & 50 mA\\ \hline
+		Flash Memory			& 256 KB of which 8 KB used by bootloader\\ \hline
+		SRAM					& 8 KB\\ \hline
+		EEPROM 					& 4 KB\\ \hline
+		Clock Speed 			& 16 MHz\\ \hline
+	\end{tabular}
+\end{center}
+
 \subsection{Servo interface}
 We want to make a servo interface with the arduino mega and that would make installing the servos so easy without making a mess. In theory we could use 48 servos on a Mega board, but we only soldered 18 servo ports, just to keep wires tidy and compact.
 

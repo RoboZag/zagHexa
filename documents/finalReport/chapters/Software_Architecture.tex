@@ -8,7 +8,7 @@ Robot Operating System (ROS) provides operating system like service for the robo
 
 ROS currently only runs on Unix-based platforms. Software for ROS is primarily tested on Ubuntu and Mac OS X systems, though the ROS community has been contributing support for Fedora, Gentoo, Arch Linux and other Linux platforms. While a port to Microsoft Windows for ROS is possible, it has not yet been fully explored.
 
-The core ROS system, along with useful tools and libraries are regularly released as a ROS Distribution. This distribution is similar to a Linux distribution and provides a set of compatible software for others to use and build upon example for this distribution: Hydro, Indigo, Jade, Kinetic, Lunar...etc. [http://wiki.ros.org]
+The core ROS system, along with useful tools and libraries are regularly released as a ROS Distribution. This distribution is similar to a Linux distribution and provides a set of compatible software for others to use and build upon example for this distribution: Hydro, Indigo, Jade, Kinetic, Lunar...etc.
 
 Our choice was Kinetic because is the update  distribution that have a LTS with high variety of support from ROS community that make it easy to exchange the knowledge and figure out how to solve issues and to come up with new idea to implement it. 
 \subsection{Why ROS?}
@@ -37,7 +37,7 @@ Interested reader can find more information,material, and much more at:  \url{ww
 	
 	The use of nodes in ROS provides several benefits to the overall system. There is additional fault tolerance as crashes are isolated to individual nodes. Code complexity is reduced in comparison to monolithic systems. Implementation details are also well hidden as the nodes expose a minimal API to the rest of the graph and alternate implementations, even in other programming languages, can easily be substituted.
 	
-	All running nodes have a graph resource name that uniquely identifies them to the rest of the system. For example, /hokuyo\_node could be the name of a Hokuyo driver broadcasting laser scans. Nodes also have a node type, that simplifies the process of referring to a node executable on the fileystem. These node types are package resource names with the name of the node's package and the name of the node executable file. In order to resolve a node type, ROS searches for all executables in the package with the specified name and chooses the first that it finds. As such, you need to be careful and not produce different executables with the same name in the same package. Finally, a ROS node is written with the use of a ROS client library, such as roscpp or rospy.
+	All running nodes have a graph resource name that uniquely identifies them to the rest of the system. Nodes also have a node type, that simplifies the process of referring to a node executable on the fileystem. These node types are package resource names with the name of the node's package and the name of the node executable file. In order to resolve a node type, ROS searches for all executables in the package with the specified name and chooses the first that it finds. As such, you need to be careful and not produce different executables with the same name in the same package. Finally, a ROS node is written with the use of a ROS client library, such as roscpp or rospy.
 	
 \subsection{Publisher/Subscriber}
 	The Publisher object represents a publisher on the ROS network. The object publishes to an available topic or to a topic that it creates. This topic has an associated message type. When the Publisher object publishes a message to the topic, all subscribers to the topic receive this message. The same topic can have multiple publishers and subscribers.
@@ -146,35 +146,6 @@ The Raspberry Pi is open hardware, with the exception of the primary chip on the
 	There are, of course, lots of other choices. OpenELEC and RaspBMC are both operating system distributions based on Linux that are targeted towards using the Raspberry Pi as a media center. There are also non-Linux systems, like RISC OS, which run on the Pi. Some enthusiasts have even used the Raspberry Pi to learn about operating systems by designing their own.
 \end{itemize}
 
-% Take this to the Component Part 
-	Raspberry Pi 3 Model B specification
-	The Raspberry Pi 3 Model B is the third generation Raspberry Pi. This powerful credit-card sized single board computer can be used for many applications and supersedes the original Raspberry Pi Model B+ and Raspberry Pi 2 Model B. Whilst maintaining the popular board format the Raspberry Pi 3 Model	B brings you a more powerful processer, 10x faster than the first generation Raspberry Pi. Additionally it adds wireless LAN \& Bluetooth connectivity making it the ideal solution for powerful connected designs.
-\begin{figure}[h]
-\centering
-\includegraphics[width =.8\textwidth]{RP3}
-\caption{Raspberry Pi 3 Model B.}
-\label{Fig:RP3}
-\end{figure}
-\begin{center}
-\begin{tabular}{ |l||p{12cm}|}
-	\hline
-	Processor      & Broadcom BCM2387 chipset. 1.2GHz Quad-Core ARM Cortex-A53 802.11 b/g/n Wireless LAN and Bluetooth 4.1 (Bluetooth Classic and LE)\\ \hline
-	GPU               & Dual Core VideoCore IV® Multimedia Co-Processor. Provides Open GL ES 2.0, hardware-accelerated OpenVG, and 1080p30 H.264 high-profile decode. \\ \hline
-	Memory          & 1GB LPDDR2  \\ \hline
-	Operating System  & Boots from Micro SD card, running a version of the Linux operating system  \\ \hline
-	Dimensions     & 85 x 56 x 17mm  \\ \hline
-	Power             & Micro USB socket 5V1, 2.5A  \\ \hline
-	Ethernet          & 10/100 BaseT Ethernet socket  \\ \hline
-	Video Output   & HDMI (rev 1.3 \& 1.4 Composite RCA (PAL and NTSC)  \\ \hline
-	Audio Output   & Audio Output 3.5mm jack, HDMI     \\ \hline
-	USB                 & 4 x USB 2.0 Connector   \\ \hline
-	GPIO Connector    & 40-pin 2.54 mm (100 mil) expansion header: 2x20 strip Providing 27 GPIO pins as well as +3.3 V, +5 V and GND supply lines \\ \hline
-	Camera Connector  & 15-pin MIPI Camera Serial Interface (CSI-2) \\ \hline
-	Display Connector & Display Serial Interface (DSI) 15 way flat flex cable connector with two data lanes and a clock lane    \\ \hline
-	Memory Card       & Slot Push/pull Micro SDIO  \\ \hline
-\end{tabular}
-\end{center}
-
 	\subsubsection{Ubuntu MATE with Raspberry Pi}
 	Ubuntu MATE is a stable, easy-to-use operating system with a configurable desktop environment. It is ideal for those who want the most out of their computers and prefer a traditional desktop metaphor. With modest hardware requirements it is suitable for modern workstations, single board computers and older hardware alike. Ubuntu MATE makes modern computers fast and old computers usable.
 	
@@ -230,24 +201,6 @@ The Arduino Mega 2560 is a microcontroller board based on the ATmega2560. It has
 	\caption{Arduino Mega.}
 	\label{Fig:Mega}
 \end{figure}
-	 Arduino Mega specification
-\begin{center}
-	\begin{tabular}{ |c|c|}
-		\hline
-		Microcontroller			& ATmega2560 \\ \hline
-		Operating Voltage		& 5V\\ \hline
-		Input Voltage			& (recommended) 7-12V\\ \hline
-		Input Voltage (limits) 	& 6-20V\\ \hline
-		Digital I/O Pins 		& 54 (of which 14 provide PWM output)\\ \hline
-		Analog Input Pins 		& 16\\ \hline
-		DC Current per I/O Pin	& 40 mA\\ \hline
-		DC Current for 3.3V Pin & 50 mA\\ \hline
-		Flash Memory			& 256 KB of which 8 KB used by bootloader\\ \hline
-		SRAM					& 8 KB\\ \hline
-		EEPROM 					& 4 KB\\ \hline
-		Clock Speed 			& 16 MHz\\ \hline
-	\end{tabular}
-\end{center}
 
 		\subsubsection{Arduino whit Raspberry Pi} 
 		
@@ -260,12 +213,23 @@ The Arduino Mega 2560 is a microcontroller board based on the ATmega2560. It has
 			\item Use a USB to Serial adapter with a cheaper/smaller Arduino like a Pro Mini or a self-made Shrimp. This is the best DIY option and has the same advantage of method 2 that you can power the Arduino/Shrimp from USB.
 			\item Use the Serial Pins on the Raspberry Pi to connect to a cheaper/smaller Aruduino like a Pro Mini or a self-made Shrimp. This is theoretically the cheapest method but by far the most hassle. This is also the best method if you are using the cheaper Raspberry Pi Model A and its single USB port is being used for Wifi.
 		\end{enumerate}	
-		Using the second method to connect the two devices in serial connection,
+		Using the second method to connect the two devices in serial connection.
 		
 		
-		\subsubsection{Arduino PWM to Servo Motors} 
-		
-		
+		\subsubsection{Walking pattern implementation using Arduino} 
+		in this section we will talk about the implementation of the walking pattern in brief, first we should know that there are tow way of implementing walking pattern:
+		\begin{itemize}
+			\item Using constant angles to move each leg {Forward Kinematics}
+			\item Using position coordinates to move the boy {Inverse Kinematics}
+		\end{itemize} 
+		Using one of these techniques can give us a smooth walking pattern with move ability in Inverse Kinematics to manipulate the body will it standing.
+		As we can see in Fig.\ref{Fig:flowcahrt} we start by setting all the angles of the servo to be in standing position and read for movement, after that the main loop will wait for an order from the joystick to move, once it take the order it call the function calculate IK to get the angle to writ it on the servo so we end up with a smooth movement with a variety of body manipulation.
+		\begin{figure}[h]		
+			\centering
+			\includegraphics[width =.8\textwidth]{Walking_flow_chart}
+			\caption{Flow chart of the Inverse Kinematics code.}
+			\label{Fig:flowcahrt}
+		\end{figure}
 \section{Mobile Application}
 
 	Most of the android devices have built-in sensors that measure motion, orientation, and various environmental condition.
@@ -313,7 +277,7 @@ The Arduino Mega 2560 is a microcontroller board based on the ATmega2560. It has
 		Using serial communication to Send data between two Bluetooth devices.
 		\begin{figure}[h]		
 			\centering
-			\includegraphics[width =.45\textwidth]{BT_app}
+			\includegraphics[width =.8\textwidth]{BT_app}
 			\caption{Function for sending data through Bluetooth.}
 			\label{Fig:BT}
 		\end{figure}
@@ -513,6 +477,47 @@ And the final output as you can see
 	\includegraphics[width=14cm,height=8cm]{figures/sonar6}
 \end{figure}
 
-\section{GUI}
+\section{RQT GUI}
+ROS is packed with tons of tools for debugging, visualizing, and performing simulation. 
+rqt\_gui is one of these tools that provides a GUI plugin for visualizing the ROS computation graph.
 
-Future work
+rqt\_plot provides a GUI plugin visualizing numeric values in a 2D plot using different plotting backend.
+Installation:
+\begin{lstlisting}[language=terCmd]
+	$ sudo apt-get install ros-kinetic-rqt
+	$ sudo apt-get install ros-kinetic-rqt-common-plugins
+\end{lstlisting}
+
+OR
+\lstinline|$ rosdep install rqt_plot|
+
+How to RUN
+\lstinline|$ rqt_plot|
+
+To specify topic(s) to plot, you need full path name of the topics published. You can find them easily for instance by the command below:
+\begin{lstlisting}[language=terCmd]
+$ rostopic list
+/rosout        
+/rosout_agg
+/turtle1/cmd_vel
+/turtle1/color_sensor
+/turtle1/pose
+\end{lstlisting}
+There are two ways to give the topic names to rqt_plot as explained in following sections. In both ways, topics that are set in previous run is resumed (as far as the program was shut down without error).
+Both of the following lines plot the same topics.
+\begin{lstlisting}[language=terCmd]
+$ rqt_plot /turtle1/pose/x:y:z
+$ rqt_plot /turtle1/pose/x /turtle1/pose/y /turtle1/pose/z
+\end{lstlisting}
+In this example, we are interfacing Accelerometer ADXL 335 to Arduino Mega through ADC pins and plotting the values using the ROS tool called rqt_plot.
+The preceding code will publish the ADC values of X, Y, and Z axes in a topic called 
+/adc. The code uses the rosserial_arduino::Adc message to handle the ADC value. We can plot the values using the rqt_plot tool.
+Following is the command to plot the three axes values in a single plot:
+\lstinline|$ rqt_plot adc/adc0 adc/adc1 adc/adc2|
+Next is a screenshot of the plot of the three channels of ADC:
+\begin{figure}[H]
+	\centering
+	\includegraphics[width =.8\textwidth]{figures/ADC}
+	\caption{Plot of ADC in rqt_plot}
+	\label{Fig:ADC}
+\end{figure}
