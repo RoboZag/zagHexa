@@ -224,9 +224,9 @@ The Arduino Mega 2560 is a microcontroller board based on the ATmega2560. It has
 		\end{itemize} 
 		Using one of these techniques can give us a smooth walking pattern with move ability in Inverse Kinematics to manipulate the body will it standing.
 		As we can see in Fig.\ref{Fig:flowcahrt} we start by setting all the angles of the servo to be in standing position and read for movement, after that the main loop will wait for an order from the joystick to move, once it take the order it call the function calculate IK to get the angle to writ it on the servo so we end up with a smooth movement with a variety of body manipulation.
-		\begin{figure}[h]		
+		\begin{figure}[H]		
 			\centering
-			\includegraphics[width =.8\textwidth]{Walking_flow_chart}
+			\includegraphics[width =.8\textwidth,height=15cm]{Walking_flow_chart}
 			\caption{Flow chart of the Inverse Kinematics code.}
 			\label{Fig:flowcahrt}
 		\end{figure}
@@ -489,10 +489,13 @@ Installation:
 \end{lstlisting}
 
 OR
-\lstinline|$ rosdep install rqt_plot|
-
+\begin{lstlisting}
+[language=terCmd]{ rosdep install rqt_plot} 
+\end{lstlisting}
 How to RUN
-\lstinline|$ rqt_plot|
+\begin{lstlisting}
+ {$ rqt_plot }
+\end{lstlisting}
 
 To specify topic(s) to plot, you need full path name of the topics published. You can find them easily for instance by the command below:
 \begin{lstlisting}[language=terCmd]
@@ -503,21 +506,22 @@ $ rostopic list
 /turtle1/color_sensor
 /turtle1/pose
 \end{lstlisting}
-There are two ways to give the topic names to rqt_plot as explained in following sections. In both ways, topics that are set in previous run is resumed (as far as the program was shut down without error).
+There are two ways to give the topic names to rqt plot as explained in following sections. In both ways, topics that are set in previous run is resumed (as far as the program was shut down without error).
 Both of the following lines plot the same topics.
 \begin{lstlisting}[language=terCmd]
 $ rqt_plot /turtle1/pose/x:y:z
 $ rqt_plot /turtle1/pose/x /turtle1/pose/y /turtle1/pose/z
 \end{lstlisting}
-In this example, we are interfacing Accelerometer ADXL 335 to Arduino Mega through ADC pins and plotting the values using the ROS tool called rqt_plot.
-The preceding code will publish the ADC values of X, Y, and Z axes in a topic called 
-/adc. The code uses the rosserial_arduino::Adc message to handle the ADC value. We can plot the values using the rqt_plot tool.
-Following is the command to plot the three axes values in a single plot:
-\lstinline|$ rqt_plot adc/adc0 adc/adc1 adc/adc2|
+In this example, we are interfacing Accelerometer ADXL 335 to Arduino Mega through ADC pins and plotting the values using the ROS tool called rqt plot.
+The preceding code will publish the ADC values of X, Y, and Z axes in a topic called adc. The code uses the rosserial arduino::Adc message to handle the ADC value. We can plot the values using the rqt plot tool.
+\\\\Following is the command to plot the three axes values in a single plot:
+\begin{lstlisting}[language=terCmd] 
+$rqt_plot adc/adc0 adc/adc1 adc/adc2
+\end{lstlisting}
 Next is a screenshot of the plot of the three channels of ADC:
 \begin{figure}[H]
 	\centering
 	\includegraphics[width =.8\textwidth]{figures/ADC}
-	\caption{Plot of ADC in rqt_plot}
+	\caption{Plot of ADC in rqt plot}
 	\label{Fig:ADC}
 \end{figure}
