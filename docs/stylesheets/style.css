@@ -798,7 +798,10 @@ hr {
   margin:0 0 20px;
 }
 
-
+.btn{
+  background-color: #39c;
+  left: 200px;
+}
 
 @media print, screen and (max-width: 960px) {
 
