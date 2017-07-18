@@ -87,7 +87,7 @@
 			        <a href="../index.html" class="breadcrumb">Home</a>
 			        <a href="index.html" class="breadcrumb">Tutorials</a>
 			        <a href="ros.html" class="breadcrumb">ROS</a>
-			        <a href="instal.html" class="breadcrumb">General Concepts</a>
+			        <a href="concept.html" class="breadcrumb">General Concepts</a>
 
 			      </div>
 			    </div>
@@ -109,6 +109,7 @@
 		      		</ul> -->
 		      		<p><b style="color: #39c">Packages:</b> The ROS packages are the most basic unit of the ROS software. <br>It contains the ROS runtime process (nodes), libraries, configuration files, and so on, which are organized together as a single unit.<br><strong>Packages</strong> are the atomic build item and release item in the ROS software.</p>
 		      		<p><b style="color: #39c"> Package manifest:</b> The package manifest file is inside a package that contains information about the package, author, license, dependencies, compilation flags, and so on. The<em> package.xml</em> file inside the ROS package is the manifest file of that package.</p>
+		      		
 		      		<p><b style="color: #39c">Structure of a typical ROS package:</b><br>
 		      		<b>package.xml:</b> This is the package manifest file of this package.<br>
 					<b>CMakeLists.txt:</b> This is the CMake build file of this package.<br>
@@ -119,37 +120,43 @@
 					<b>src:</b> This folder stores the C++ source codes.<br> </p>
 					<p>We need to know some commands to create, modify, and work with the ROS packages.<br>
 					<b style="color: #39c">Here are some of the commands used to work with ROS packages:</b>
-					<pre><code><strong>$catkin_create_pkg</strong> : This command is used to create a new package </code></pre>
-					<pre><code><strong>$rospack</strong> : This command is used to get information about the package in the file system </code></pre>
-					<pre><code><strong>$catkin_make</strong> : This command is used to build the packages in the workspace </code></pre>
-					<pre><code><strong>$rosdep</strong> : This command will install the system dependencies required for this package </code></pre>		
+					<pre><code>$catkin_create_pkg : This command is used to create a new package </code></pre>
+					<pre><code>$rospack : This command is used to get information about the package in the file system </code></pre>
+					<pre><code>$catkin_make : This command is used to build the packages in the workspace </code></pre>
+					<pre><code>$rosdep : This command will install the system dependencies required for this package </code></pre>		
 					</p> <br>
+					
+
 					<p><b style="color: #39c">Messages (.msg):</b> The ROS messages are a type of information that is sent from one ROS process to the other.<br> We can define a custom message inside the msg folder inside a package(my_package/msg/MyMessageType.msg).<br>The extension of the message file is <em>.msg</em> .<br> 
 					Nodes communicate with each other using messages.<br> Messages are simply data structure containing the typed field, which can hold a set of data and that can be sent to another node. <br>There are standard primitive types (integer, floating point, Boolean, and so on) and these are supported by ROS messages.<br>ROS has inbuilt tools called <em>rosmsg</em> to get information about ROS messages.<br> 
 					<b style="color: #39c">Here are some parameters used along with <em>rosmsg</em> :</b></p>
-					<pre><code><strong>$rosmsg show [message]</strong> : This shows the message description</code></pre>
-					<pre><code><strong>$rosmsg list</strong> : This lists all messages </code></pre>
-					<pre><code><strong>$rosmsg package [package_name]</strong> : This lists messages in a package </code></pre>
-					<pre><code><strong>$rosmsg packages [package_1] [package_2]</strong> : This lists packages that contain messages. </code></pre>		
+					<pre><code>$rosmsg show [message] : This shows the message description</code></pre>
+					<pre><code>$rosmsg list : This lists all messages </code></pre>
+					<pre><code>$rosmsg package [package_name] : This lists messages in a package </code></pre>
+					<pre><code>$rosmsg packages [package_1] [package_2] : This lists packages that contain messages. </code></pre>		
 		      		</p><br>
+		      		
+
 		      		<p><b style="color: #39c"> Services (.srv):</b> The ROS service is a kind of request/reply interaction between processes(Nodes).<br> One node will send a request and wait until it gets a response from the other. The request/response communication is also using the ROS message description.<br>The reply and request data types can be defined inside the <em>srv</em> folder inside the package (my_package/srv/MyServiceType.srv).<br>In some robot applications, a publish/subscribe model will not be enough if it needs a request/response interaction.<br> The publish/subscribe model is a kind of one-way transport system and when we work with a distributed system, we might need a request/response kind of interaction. ROS Services are used in these case.<br> We can define a service definition that contains two parts; one is for requests and the other is for responses. Using ROS Services, we can write a server node and client node.<br> The server node provides the service under a name, and when the client node sends a request message to this server, it will respond and send the result to the client. The client might need to wait until the server responds.<br> The ROS service interaction is like a remote procedure call.<br></p>
 		      		<p><b style="color: #39c"> The following explain how to use the<em> rosservice</em> tool to get information about the running services:</b></p>
-		      		<pre><code><strong>$rosservice call /service args</strong> : This tool will call the service using the given arguments</code></pre>
-					<pre><code><strong>$rosservice find service_type</strong> : This command will find services in the given service type </code></pre>
-					<pre><code><strong>$rosservice info /services</strong> : This will print information about the given service </code></pre>
-					<pre><code><strong>$rosservice list</strong> : This command will list the active services running on the system </code></pre>	
-					<pre><code><strong>$rosservice type /service</strong> : This command will print the service type of a given service.</code></pre>		
-					<pre><code><strong>$rosservice uri /service</strong> : This tool will print the service ROSRPC URI. </code></pre><br>
+		      		<pre><code>$rosservice call /service args : This tool will call the service using the given arguments</code></pre>
+					<pre><code>$rosservice find service_type : This command will find services in the given service type </code></pre>
+					<pre><code>$rosservice info /services : This will print information about the given service </code></pre>
+					<pre><code>$rosservice list : This command will list the active services running on the system </code></pre>	
+					<pre><code>$rosservice type /service : This command will print the service type of a given service.</code></pre>		
+					<pre><code>$rosservice uri /service : This tool will print the service ROSRPC URI. </code></pre><br>
+					
+					
 					<p><b style="color: #39c">Topics:</b> Each message in ROS is transported using named buses called topics.<br> When a node sends a message through a topic, then we can say the node is publishing a topic.<br> When a node receives a message through a topic, then we can say that the node is subscribing to a topic.<br> The publishing node and subscribing node are not aware of each other's existence. We can even subscribe a topic that might not have any publisher.<br> In short, the production of information and consumption of it are decoupled.<br> Each topic has a unique name, and any node can access this topic and send data through it as long as they have the right message type.</p>
 					<p><b style="color: #39c">The <em>rostopic</em> tool can be used to get information about ROS topics. 
 					<br>Here is the syntax of this command:</b></p>
-					<pre><code><strong>$rostopic bw /topic</strong> : This command will display the bandwidth used by the given topic.</code></pre>
-					<pre><code><strong>$rostopic echo /topic</strong> : This command will print the content of the given topic. </code></pre>
-					<pre><code><strong>$rostopic find /message_type</strong> : This command will find topics using the given message type. </code></pre>
-					<pre><code><strong>$rostopic hz /topic</strong> : This command will display the publishing rate of the given topic. </code></pre>	
-					<pre><code><strong>$rostopic list</strong> : This command will list all active topics in the ROS system.</code></pre>	
-					<pre><code><strong>$rostopic pub /topic message_type args</strong> : This command can be used to publish a value to a topic with a message type. </code></pre>
-					<pre><code><strong>$rostopic type /topic</strong> : This will display the message type of the given topic . </code></pre><br>
+					<pre><code>$rostopic bw /topic : This command will display the bandwidth used by the given topic.</code></pre>
+					<pre><code>$rostopic echo /topic : This command will print the content of the given topic. </code></pre>
+					<pre><code>$rostopic find /message_type : This command will find topics using the given message type. </code></pre>
+					<pre><code>$rostopic hz /topic : This command will display the publishing rate of the given topic. </code></pre>	
+					<pre><code>$rostopic list : This command will list all active topics in the ROS system.</code></pre>	
+					<pre><code>$rostopic pub /topic message_type args : This command can be used to publish a value to a topic with a message type. </code></pre>
+					<pre><code>$rostopic type /topic : This will display the message type of the given topic . </code></pre><br>
 					<a href="concepts.html">
 						<button class="btn waves-effect waves-light" type="submit" name="action" style="text-align: center;">Next
 	    					<i class="material-icons right">skip_next</i> 
