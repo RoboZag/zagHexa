@@ -1,9 +1,49 @@
+////////////////////////
+// ZagHexa configuration
+////////////////////////
+
+/*  Y-axis
+*  ^		3			  0
+*  |        \           /
+*  |         \         /
+*  |          \-------/
+*  |          |       |
+*  |   4 -----|ZAGHEXA|----- 1
+*  |          |       |
+*  |          /-------\
+*  |         /         \
+*  |        /           \
+*  |       5              2
+*  |
+*  x ---------------------------------- >X-axis
+* Z-axis
+*            /\
+*    Femmur /  \
+*          /    \ Tibia
+* __Coxa__/      \
+*                 \
+*                  \
+*
+* Coxa Lenght = 12.0;
+* Femur Lenght = 35.0;
+* Tibia Lenght = 72.0;
+* BodySideLength = 45.0;
+*
+*/
+
 #ifndef BodyIK_H
 #define BodyIK_H
 
 #include <math.h>
 
-#define Debuge false
+#if defined(ARDUINO) && ARDUINO >= 100
+  #include "Arduino.h"
+#else
+  #include "WProgram.h"
+#endif
+
+#define DEBUGE false
+#define PI 3.1415926535897932384626433832795
 #define RightFrontRot    0
 #define RightFrontLift   1
 #define RightFrontTibia  2
@@ -22,33 +62,31 @@
 #define LeftRearRot      15
 #define LeftRearLift     16
 #define LeftRearTibia    17
-#define PI 3.1415926535897932384626433832795
+
 
 
 class BodyIk {
-	
+
 private:
-	
-	float feetpos[5];
-	int refAngle[18];
-	float* IKanglesi;
-	float* Bodyi;
-	float* angle;
-	
+
+	float feetpos[4];
+	float IKanglesi[18];
+	float Bodyi[18];
+	float angle[3];
 public:
-	float Coxa = 12;
-	float Femur = 35;
-	float Tibia = 72;
-	float BodySideLength;
-	float BodyCenterOffset1;
-	float BodyCenterOffset2;
-	float* IKangles[6];
-	~BodyIk();
+	BodyIk();
+	float Coxa = 25.0;// in mm
+	float Femur = 76.0;// in mm
+	float Tibia = 112.0;// in mm
+	float BodySideLength = 75.0;
+	float BodyCenterOffset1 = BodySideLength / 2;
+	float BodyCenterOffset2 = sqrt((BodySideLength * BodySideLength) - (BodyCenterOffset1 * BodyCenterOffset1));
+	//float* IKangles[6];
+	int refAngle[18];
 	float* correct_angle(int Leg_num);
-	void calibration();
-	float* Body(float Pos[], float feetposx, float feetposy, float BodyCenterOffsetx, float BodyCenterOffsety);
+	void Body(float Pos[], float feetposx, float feetposy, float BodyCenterOffsetx, float BodyCenterOffset, int legNum);
 	void clacHexaBodyIK(float PosX, float PosY, float PosZ, float RotX, float RotY, float RotZ);
-	float* Leg(float* BodyI[], float Pos[], float feetposX, float feetposY, int angle);
+	void Leg(float Pos[], float feetposX, float feetposY, int angle, int legNum);
 };
 
 #endif // !BodyIK_H

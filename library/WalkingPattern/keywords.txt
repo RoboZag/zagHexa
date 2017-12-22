@@ -1,0 +1,5 @@
+WalkingPattern KEYWORD1
+Ripple KEYWORD2
+Tripod	KEYWORD2
+Wave KEYWORD2
+Gait KEYWORD2
