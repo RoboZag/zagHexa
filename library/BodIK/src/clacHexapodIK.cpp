@@ -38,7 +38,7 @@ BodyIk::BodyIk()
 	refAngle[LeftRearRot] 		= 90;
 	refAngle[LeftRearLift] 		= 80;
 	refAngle[LeftRearTibia] 	= 90;
-
+	attch_servo();
 }
 
 // Rotation 
@@ -140,5 +140,44 @@ float* BodyIk::correct_angle(int Leg_num) {
 	}
 	
 	return angle;
+}
+void BodyIk::attch_servo(){
+	_Servo[RightFrontRot]	.attach(22);
+	_Servo[RightFrontLift]  .attach(24);
+	_Servo[RightFrontTibia] .attach(26);
+	_Servo[RightMiddleRot]  .attach(28);
+	_Servo[RightMiddleLift] .attach(30);
+	_Servo[RightMiddleTibia].attach(32);
+	_Servo[RightRearRot]    .attach(34); 
+	_Servo[RightRearLift]	.attach(36); 
+	_Servo[RightRearTibia]  .attach(38);
+	_Servo[LeftFrontRot]    .attach(23); 
+	_Servo[LeftFrontLift]   .attach(25); 
+	_Servo[LeftFrontTibia]  .attach(27);
+	_Servo[LeftMiddleRot]   .attach(29); 
+	_Servo[LeftMiddleLift]  .attach(31); 
+	_Servo[LeftMiddleTibia] .attach(33);
+	_Servo[LeftRearRot]     .attach(35); 
+	_Servo[LeftRearLift]    .attach(37); 
+	_Servo[LeftRearTibia]   .attach(39);
+	
+}
+void BodyIk::twitch(int legNum,int offset, bool wait = false){
+	float* newAngle;
+	newAngle = correct_angle(legNum);							// Coxa[0], Femmur[1], Tibia[2]
+	_Servo[legNum*3 + offset].write(floor(newAngle[offset]), velocity, wait);	
+}
+void BodyIk::write_ref(int servo, bool wait = false){
+	_Servo[servo].write(refAngle[servo], velocity, wait);
+}
+void BodyIk::trans_rotat(int val,float PosX,float PosY, float PosZ,float RotX, float RotY, float RotZ){
+	float * angle;
+	clacHexaBodyIK(PosX, PosY, PosZ, RotX, RotY, RotZ);
+	for( byte legNum = 0; legNum < 6; legNum++)
+	{
+		angle = correct_angle(legNum);
+		for(int offset=0; offset<3; offset++)
+		_Servo[legNum*3 +offset].write(floor(angle[offset]), val, true);
+	}
 }
 

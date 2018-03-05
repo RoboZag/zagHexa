@@ -35,6 +35,7 @@
 #define BodyIK_H
 
 #include <math.h>
+#include <VarSpeedServo.h>
 
 #if defined(ARDUINO) && ARDUINO >= 100
   #include "Arduino.h"
@@ -43,7 +44,6 @@
 #endif
 
 #define DEBUGE false
-#define PI 3.1415926535897932384626433832795
 #define RightFrontRot    0
 #define RightFrontLift   1
 #define RightFrontTibia  2
@@ -62,16 +62,16 @@
 #define LeftRearRot      15
 #define LeftRearLift     16
 #define LeftRearTibia    17
-
+#define PI 3.1415926535897932384626433832795
 
 
 class BodyIk {
 
 private:
-
-	float feetpos[4];
+	VarSpeedServo   _Servo[18];
 	float IKanglesi[18];
 	float Bodyi[18];
+	float feetpos[4];
 	float angle[3];
 public:
 	BodyIk();
@@ -81,8 +81,14 @@ public:
 	float BodySideLength = 75.0;
 	float BodyCenterOffset1 = BodySideLength / 2;
 	float BodyCenterOffset2 = sqrt((BodySideLength * BodySideLength) - (BodyCenterOffset1 * BodyCenterOffset1));
-	//float* IKangles[6];
 	int refAngle[18];
+	int    velocity;
+	void attch_servo();
+	//void write_all_ref(int val = 255);
+	void write_ref(int, bool wait= false);
+	void initialize_servos(int);
+	void BodyIk::twitch(int legNum,int offset, bool wait = false);
+	void trans_rotat(int,float,float,float,float,float,float);
 	float* correct_angle(int Leg_num);
 	void Body(float Pos[], float feetposx, float feetposy, float BodyCenterOffsetx, float BodyCenterOffset, int legNum);
 	void clacHexaBodyIK(float PosX, float PosY, float PosZ, float RotX, float RotY, float RotZ);
