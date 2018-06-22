@@ -109,4 +109,7 @@ July, 2017
         
       
         \vfill
-        {\tiny Revision SVN.198.50.\mydate }
+        {\tiny Revision git.198.50.\mydate   % get git version number to be used as the version no. of the doc.
+            \immediate\write18{./myGitVer.sh.command \jobname.txt}
+            Version: \input{\jobname.txt}}
+    }

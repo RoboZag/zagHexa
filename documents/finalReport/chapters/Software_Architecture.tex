@@ -313,14 +313,13 @@ The Arduino Mega 2560 is a microcontroller board based on the ATmega2560. It has
 			
 			- Network Access Layer\\
 			In the TCP/IP architecture, the Data Link Layer and Physical Layer are normally grouped together to become the Network Access layer. TCP/IP makes use of existing Data Link and Physical Layer tandards rather than defining its own. Many RFCs describe how IP utilizes and interfaces with the existing data link protocols such as Ethernet, Token Ring, FDDI, HSSI, and ATM. The physical layer, which defines the hardware communication properties, is not often directly interfaced with the TCP/IP protocols in the network layer and above. []
-			
-			\begin{figure}[H]		
+			\begin{figure}[h]		
 				\centering
-				\includegraphics[width =.8\textwidth,height=16cm]{TCP_IP_Protocol_Stack_4_Layer_Model}
-				\caption{TCP/IP Protocol.}
+				\includegraphics[width =.5\textwidth]{TCP_IP_Protocol_Stack_4_Layer_Model}
+				\caption{TCP/IP Protocol Protocol Stack 4 Layer Model.}
 				\label{Fig:TCP/IP}
 			\end{figure}
-		
+        
 			TCP/IP uses the client/server model of communication in which a computer user (a client) requests and is provided a service (such as sending a Web page) by another computer (a server) in the network. TCP/IP communication is primarily point-to-point, meaning each communication is from one point (or host computer) in the network to another point or host computer. TCP/IP and the higher-level applications that use it are collectively said to be "stateless" because each client request is considered a new request unrelated to any previous one (unlike ordinary phone conversations that require a dedicated connection for the call duration). Being stateless frees network paths so that everyone can use them continuously. (Note that the TCP layer itself is not stateless as far as any one message is concerned. Its connection remains in place until all packets in a message have been received.)
 			
 			\item Protocol
@@ -349,7 +348,7 @@ The Arduino Mega 2560 is a microcontroller board based on the ATmega2560. It has
 		\end{itemize}
 
 
-\section{Sonar System: Main Components}
+\section{Sonar System}
 	\begin{enumerate}
 		\item \textbf{Ultrasonic sensor}\\
 		An Ultrasonic sensor is a device that can measure the distance to an object by using sound waves. 
@@ -361,48 +360,32 @@ The Arduino Mega 2560 is a microcontroller board based on the ATmega2560. It has
 		\begin{equation*}
         distance = \frac{\text{speed of sound} \times \text{time taken}}{2}
         \end{equation*}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.43\textwidth]{figures/ultra}
+            \caption{Ultrasonic sensor}
+            \label{Fig:ultrasonic}
+        \end{figure}
 		It is important to understand that some objects might not be detected by ultrasonic sensors. 
 		This is because some objects are shaped or positioned in such a way that the sound wave bounces off the object, but are deflected away from the Ultrasonic sensor. 
 		It is also possible for the object to be too small to reflect enough of the sound wave back to the sensor to be detected.
 		Other objects can absorb the sound wave all together (cloth, carpeting, etc), which means that there is no way for the sensor to detect them accurately. 
 		These are important factors to consider when designing and programming a robot using an ultrasonic sensor.
-			\begin{figure}[H]
-            \centering
-            \includegraphics[width=10cm,height=5cm]{figures/ultra}
-            \caption{Ultrasonic sensor}
-            \label{Fig:ultrasonic}
-        \end{figure}
-		\item PIR sensor
-		 \vspace{0mm}
-		 \begin{figure}[H]
-		 	\centering
-		 	\includegraphics[width=7cm,height=4cm]{figures/PIR}
-		 	\caption{PIR sensor}
-		 	\label{Fig:PIR sensor}
-		 \end{figure}
-		 \vspace{0mm}
+
+		\item \textbf{PIR sensor}\\
 		 PIR sensors allow you to sense motion, almost always used to detect whether a human has moved in or out of the sensors range. 
 		 They are small, inexpensive, low-power, easy to use and don't wear out easily.
 		 For that reason they are commonly found in appliances and gadgets used in homes or businesses. 
+          \begin{figure}[H]
+             \centering
+             \includegraphics[width=0.36\textwidth]{figures/PIR}\qquad
+             \includegraphics[width=0.5\textwidth]{figures/PIR2}\\
+             \includegraphics[width=0.36\textwidth]{figures/PIR3}
+             \caption[PIR sensor details]{PIR sensor (left) and PIR sensor inside (right), and sensor cover showing its Fresnel lens (bottom)}
+             \label{Fig:PIR sensor}
+         \end{figure}
 		 \textbf{The working principle}: The module actually consists of a Pyroelectric sensor which generates energy when exposed to heat.
-		 That means when a human or animal body will get in the range of the sensor it will detect a movement because the human or animal body emits heat energy in a form of infrared radiation. That’s where the name of the sensor comes from, a \textbf{Passive Infra-Red sensor}. And the term “passive” means that sensor \textbf{is not} using any energy for detecting purposes, it just works by detecting the energy given off by the other objects.
-		 \vspace{0mm}
-		 \begin{figure}[H]
-		 	\centering
-		 	\includegraphics[width=10cm,height=5cm]{figures/PIR2}
-		 	\caption{PIR sensor inside}
-		 	\label{Fig:PIR sensor}
-		 \end{figure}
-		 \vspace{0mm}
-		 The module also consists a specially designed cover named Fresnel lens, which focuses the infrared signals onto the pyroelectric sensor.
-		  \vspace{0mm}
-		 \begin{figure}[H]
-		 	\centering
-		 	\includegraphics[width=0.5\textwidth]{figures/PIR3}
-		 	\caption{PIR sensor inside}
-		 	\label{Fig:PIR sensor}
-		 \end{figure}
-
+		 That means when a human or animal body will get in the range of the sensor it will detect a movement because the human or animal body emits heat energy in a form of infrared radiation. That’s where the name of the sensor comes from, a \textbf{Passive Infra-Red sensor}. And the term “passive” means that sensor \textbf{is not} using any energy for detecting purposes, it just works by detecting the energy given off by the other objects. The module also consists a specially designed cover named Fresnel lens, which focuses the infrared signals onto the pyroelectric sensor (shown in Fig.\ref{Fig:ADC}).
 		\item Servo motor 
 		\item Arduino board and Jumper wires
 	\end{enumerate}

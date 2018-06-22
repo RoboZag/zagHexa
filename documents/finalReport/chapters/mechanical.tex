@@ -22,17 +22,15 @@ Kinematics architecture depends on the factors related to the application in whi
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width =0.8\textwidth]{figure_b}
-	\caption{Classification of hexapod legs types}
+	\includegraphics[width =0.85\textwidth]{figure_b}
+	\caption{Classification of hexapod leg types}
 	\label{figure b.png}
-
 \end{figure}
 
-At the first stage, one can choose between bio inspired and non-zoomorphic legs. Bio inspired leg configuration is motivated primarily by animal gait, such as reptiles, mammals or arachnid. The first one has legs and bodies for moving over rough and uneven terrains. The principal characteristic of the Reptilian type is that the legs are placed on both ends of the protruding body and knees to the side of the base. Mammals’ bodies are above the legs, which gives less support to the base and lower power consumption is needed to support the body, but it requires more stability than other types of animal. In Arachnid configuration, legs extremities are situated on both sides, sticking the knees at the top of the spider’s body. The orientation of the legs in respect to the body of the hexapod robot can be done with three configurations: frontal, sagittal or circular as shown in \ref{figure c.png} .
-
+At the first stage, one can choose between bio inspired and non-zoomorphic legs. Bio inspired leg configuration is motivated primarily by animal gait, such as reptiles, mammals or arachnid. The first one has legs and bodies for moving over rough and uneven terrains. The principal characteristic of the Reptilian type is that the legs are placed on both ends of the protruding body and knees to the side of the base. Mammals’ bodies are above the legs, which gives less support to the base and lower power consumption is needed to support the body, but it requires more stability than other types of animal. In Arachnid configuration, legs extremities are situated on both sides, sticking the knees at the top of the spider’s body. The orientation of the legs in respect to the body of the hexapod robot can be done with three configurations: frontal, sagittal or circular as shown in \ref{figure c.png}.
 \begin{figure}[h]
 	\centering
-	\includegraphics[width =0.8\textwidth]{figure_c}
+	\includegraphics[width =0.75\textwidth]{figure_c}
 	\caption{Hexapod leg configurations}
 	\label{figure c.png}
 \end{figure}
@@ -41,7 +39,7 @@ In the first one, the directions are perpendicular to the advancement of the leg
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width =0.8\textwidth]{figure_d}
+	\includegraphics[width =0.75\textwidth]{figure_d}
 	\caption{Joint configurations}
 	\label{figure d.png}
 \end{figure}
@@ -54,29 +52,22 @@ Contraction rates are controlled by the heating and cooling; the major drawback 
 
 \subsection{Actuators Arrangements}
 Typically, specific actuator arrangements are developed in order to obtain maximum leg workspace with a minimal kinematic structure. Several types of geometrical arrangements such as in \ref{figure_e} are recurrent in literature.
-
 \begin{figure}[h]
 	\centering
-	\includegraphics[width =0.8\textwidth]{figure_e}
+	\includegraphics[width =0.5\textwidth]{figure_e}
 	\caption{Three DoF solution}
 	\label{figure_e}
 \end{figure}
 
-The design consists of links connected through knee joints. The walking motion is accomplished by controlling the angle of the links to position the feet. There are a number of different ways in which the joints can be actuated. Options include mounting the motor at the joint itself, or using a pulley and belt \ref{figure_f} or lead screw \ref{figure_g} to set the angle of the knee using an actuator mounted near the base of the leg.
-
-\begin{figure}[H]
+The design consists of links connected through knee joints. The walking motion is accomplished by controlling the angle of the links to position the feet. There are a number of different ways in which the joints can be actuated. Options include mounting the motor at the joint itself, or using a pulley and belt or lead screw \ref{figure_f} to set the angle of the knee using an actuator mounted near the base of the leg.
+\begin{figure}[h]
 	\centering
-	\includegraphics{figure_f}
-	\caption{Pinion-belt arrangement}
+	\includegraphics{figure_f}\qquad
+    	\includegraphics{figure_g}
+	\caption{Pinion-belt arrangement (left) and Lead screw leg (right)}
 	\label{figure_f}
 \end{figure}
 
-\begin{figure}[H]
-	\centering
-	\includegraphics{figure_g}
-	\caption{Lead screw leg}
-	\label{figure_g}
-\end{figure}
 
 The major drawback of last design is the necessity to actuate remote joints. On the other hand, latching the actuator at the knee joint adds various dynamic effects to the leg which have to be compensated by the controller. This adds complexity to the control algorithms needed to move the leg.\\
 It also requires more powerful motors at the hip joint to move the added mass of the leg. Remote actuation, in which the actuators are located at the base of the leg, eliminates some of these problems, at the cost of increasing the complexity of the mechanism. The coupling of the motion of the end effector relative to the actuators is another undesirable characteristic of this leg design.  Another potential leg design is modeled according to a typical mammalian leg with a four-bar linkage structure. The major drawback of this design is that the motions are highly coupled and the effective workspace is somewhat limited. Moreover, the entire weight of the robot is supported by the hip joint and they necessitate a powerful and expensive motor.
@@ -219,26 +210,23 @@ J_{K1} & 0      & 0 \\
 \end{bmatrix}
 \end{equation}
 
-
 \subsection{Inverse kinematics}
 The forward kinematics (FK) is a simple equation used to calculate the position of the end effectors for the leg in the robot base frame, by injecting values of each joint angle. But the reverse operation, namely inverse kinematics (IK), is more complex. IK is employed to find all the joint angles given the position of the end effectors. In general, solving the IK equations can be a bit of a challenge. Some positions cannot be reached at all, as the physical system is unable to get there, and some end effectors positions can have more than one solution, and not all of them are desirable.
-
-We solve the IK problem for each leg separately, as this makes it possible to solve it geometrically, by setting up some constrains. The first constraint for solving the IK equations due the fact that all robot joints allow rotation about one axis only. The second constraint is that the Femur, Tibia joints always rotate on parallel axes. The third set of constraints arises from the physical limitations for each joint, giving us some angular interval for each joint in which the servos can actually rotate the link. In \ref{leg}, the angles of movement are shown.
-First, the coxa angle can be found directly by knowing the end effectors position then simply using $atan2(y,x)$ to calculate it. Equations (6) through (14) are used to find the individual joint angles.
 \begin{figure}[h]
-	\centering
-	\includegraphics[width =.6\textwidth]{Fig8.png}
-	\caption{ Illustration of the 2D triangle with vertices in the coxa, the femur, and tibia link from origin.}
-	\label{fig8}
+    \centering
+    \includegraphics[width =.55\textwidth]{Fig8.png}
+    \caption{ Illustration of the 2D triangle with vertices in the coxa, the femur, and tibia link from origin.}
+    \label{fig8}
 \end{figure}
-
+We solve the IK problem for each leg separately, as this makes it possible to solve it geometrically, by setting up some constrains. The first constraint for solving the IK equations due the fact that all robot joints allow rotation about one axis only. The second constraint is that the Femur, Tibia joints always rotate on parallel axes. The third set of constraints arises from the physical limitations for each joint, giving us some angular interval for each joint in which the servos can actually rotate the link. In \ref{leg}, the angles of movement are shown.
+First, the coxa angle can be found directly by knowing the end effectors position then simply using $atan2(y,x)$ to calculate it.  \ref{eq:invS} through \ref{eq:invE} are used to find the individual joint angles.
 \begin{align}
-    \frac{x}{y} & =\tan (\gamma)\to \gamma =\tan ^{-1}\frac{x}{y} \\
+    \frac{x}{y} & =\tan (\gamma)\to \gamma =\tan ^{-1}\frac{x}{y} \label{eq:invS}\\
     L              & = \sqrt{Z_{offset}^{2}+(L_{1}+\cos (A_1 + A_2))^{2}}\\
     A_{1}        & = \cos ^{-1}(\frac{Z_{offset}}{L})\\
     Tibia^{2}  & =Femar^{2}+L^{2}-2(Femar)(L)\cos \alpha _{2} \\
     A_{2} & =\cos^{-1}(\frac{Tibia^{2}-Femar^{2}-L^{2}}{-2(Femar)(L)}) \\
     A & =A_{1} + A_{2}\\
     A & = \cos ^{-1}\left(\frac{Z_{offset}}{L})+\cos ^{-1}(\frac{Tibia^{2}-Femar^{2}-L^{2}}{-2(Femar)(L)}\right) \\
-    B & = \cos^{-1}\left(\frac{L^{2}-Femar^{2}-Tibia^{2}}{-2(Femar)(Tibia)}\right)
+    B & = \cos^{-1}\left(\frac{L^{2}-Femar^{2}-Tibia^{2}}{-2(Femar)(Tibia)}\right) \label{eq:invE}
 \end{align}
