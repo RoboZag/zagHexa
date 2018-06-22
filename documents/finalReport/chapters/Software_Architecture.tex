@@ -344,41 +344,34 @@ The Arduino Mega 2560 is a microcontroller board based on the ATmega2560. It has
 				\item ID number to select one sensor to get its data.
 			\end{itemize}
 				
-			Server will reply in the first case by an array of numbers in the same order of the sensors in the index file, in the second case it will reply by a single float number that its index match the request one.\\\\\\
+			Server will reply in the first case by an array of numbers in the same order of the sensors in the index file, in the second case it will reply by a single float number that its index match the request one.
 			
 		\end{itemize}
 
 
-\section{Sonar System}
-\subsection{Main Components}
+\section{Sonar System: Main Components}
 	\begin{enumerate}
-		\item Ultrasonic sensor
-			\begin{figure}[H]
-				\centering
-				\includegraphics[width=10cm,height=5cm]{figures/ultra}
-				\caption{Ultrasonic sensor}
-				\label{Fig:ultrasonic}
-			\end{figure}
+		\item \textbf{Ultrasonic sensor}\\
 		An Ultrasonic sensor is a device that can measure the distance to an object by using sound waves. 
 		It measures distance by sending out a sound wave at a specific frequency and listening for that sound wave to bounce back. 
 		By recording the elapsed time between the sound wave being generated and the sound wave bouncing back, it is possible to calculate the distance between the sonar sensor and the object.
 		Since it is known that sound travels through air at about 340 m/s you can take the time for the sound wave to return and multiply it by 340 meters to find the total round-trip distance of the sound wave. 
 		Round-trip means that the sound wave traveled 2 times the distance to the object before it was detected by the sensor; it includes the 'trip' from the sonar sensor to the object AND the 'trip' from the object to the Ultrasonic sensor (after the sound wave bounced off the object).
 		To find the distance to the object, simply divide the round-trip distance in half.
-		\vspace{0mm}
-		\begin{figure}[H]
-			\centering
-			\includegraphics[width=10cm,height=2.5cm]{figures/ultra2}
-			\caption{Distance calculation}
-			\label{Fig:Distance calculation}
-		\end{figure}
-		\vspace{0mm}
+		\begin{equation*}
+        distance = \frac{\text{speed of sound} \times \text{time taken}}{2}
+        \end{equation*}
 		It is important to understand that some objects might not be detected by ultrasonic sensors. 
 		This is because some objects are shaped or positioned in such a way that the sound wave bounces off the object, but are deflected away from the Ultrasonic sensor. 
 		It is also possible for the object to be too small to reflect enough of the sound wave back to the sensor to be detected.
 		Other objects can absorb the sound wave all together (cloth, carpeting, etc), which means that there is no way for the sensor to detect them accurately. 
 		These are important factors to consider when designing and programming a robot using an ultrasonic sensor.
-		
+			\begin{figure}[H]
+            \centering
+            \includegraphics[width=10cm,height=5cm]{figures/ultra}
+            \caption{Ultrasonic sensor}
+            \label{Fig:ultrasonic}
+        \end{figure}
 		\item PIR sensor
 		 \vspace{0mm}
 		 \begin{figure}[H]
@@ -405,11 +398,11 @@ The Arduino Mega 2560 is a microcontroller board based on the ATmega2560. It has
 		  \vspace{0mm}
 		 \begin{figure}[H]
 		 	\centering
-		 	\includegraphics[width=14cm,height=14cm]{figures/PIR3}
+		 	\includegraphics[width=0.5\textwidth]{figures/PIR3}
 		 	\caption{PIR sensor inside}
 		 	\label{Fig:PIR sensor}
 		 \end{figure}
-		 \vspace{0mm}
+
 		\item Servo motor 
 		\item Arduino board and Jumper wires
 	\end{enumerate}
@@ -513,8 +506,9 @@ $ rqt_plot /turtle1/pose/x:y:z
 $ rqt_plot /turtle1/pose/x /turtle1/pose/y /turtle1/pose/z
 \end{lstlisting}
 In this example, we are interfacing Accelerometer ADXL 335 to Arduino Mega through ADC pins and plotting the values using the ROS tool called rqt plot.
-The preceding code will publish the ADC values of X, Y, and Z axes in a topic called adc. The code uses the rosserial arduino::Adc message to handle the ADC value. We can plot the values using the rqt plot tool.
-\\\\Following is the command to plot the three axes values in a single plot:
+The preceding code will publish the ADC values of X, Y, and Z axes in a topic called adc. The code uses the rosserial arduino::Adc message to handle the ADC value. We can plot the values using the rqt plot tool.\\
+
+Following is the command to plot the three axes values in a single plot:
 \begin{lstlisting}[language=terCmd] 
 $rqt_plot adc/adc0 adc/adc1 adc/adc2
 \end{lstlisting}

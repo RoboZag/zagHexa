@@ -11,11 +11,13 @@
 
 \input{myFinalReportSettings}
 \usepackage[colorinlistoftodos]{todonotes}
+\usepackage{tasks}
 \begin{document}
 \pagestyle{empty}
+
 \include{myFrontMatter/title}
 \include{myFrontMatter/dedication}
-\maketitle 						% Titelei wird erzeugt
+%\maketitle 						% Titelei wird erzeugt
 \frontmatter %-------------------------------------------------------------
 \pagestyle{fancy}
 
@@ -100,7 +102,7 @@
 \setchapterpreamble[o]{%
 	\dictum[Albert Einstein, \textit{(physicist, 1879--1955)}]{%
 		``Education is what remains after one has forgotten what one has learned in school.''}}
-\chapter{Userguide}\label{ch:userManual}
+\chapter{User Guide}\label{ch:userManual}
 \input{chapters/UserGuide}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \appendix

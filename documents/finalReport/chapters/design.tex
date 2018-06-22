@@ -4,26 +4,26 @@ In this chapter we will walk through the hardware design of our hexapod includin
 \section{Design consideration}
 Designing hexapod legged robots is far from trivial. A very numerous and a wide range of possibilities exist to design a hexapod. Designers must take several decisions which influence the operation and technical features. Some of the most important design issues and constraints according to \cite{48h} can be outlined as:
 
-\begin{itemize}
-	\item The mechanical structure of robot body.
-	\item Leg architecture.
-	\item Max sizes.
-	\item Actuators and drive mechanisms.
-	\item Control architecture.
-	\item Power supply.
-	\item Walking gaits and speed.
-	\item Obstacle avoidance capability.
-	\item Payload.
-	\item Autonomy.
-	\item Operation features.
-	\item Cost.
-\end{itemize}
+\begin{tasks}[style=itemize,after-item-skip = {-1ex}](2)
+	\task! The mechanical structure of robot body.
+	\task Leg architecture.
+	\task Max sizes.
+	\task Actuators and drive mechanisms.
+	\task Control architecture.
+	\task Power supply.
+	\task Walking gaits and speed.
+	\task Obstacle avoidance capability.
+	\task Payload.
+	\task Autonomy.
+	\task Operation features.
+	\task Cost.
+\end{tasks}
 
 The above mentioned design issues and constraints can be classified as design input (or key	features) and design output (or main design characteristics) as shown in the scheme of \ref{GD}.
 
 \begin{figure}[H]		
 	\centering
-	\includegraphics[width =.8\textwidth]{GD}
+	\includegraphics[width =.9\textwidth]{GD}
     \caption{ A scheme for preliminary layout design of hexapod walking robots.}
 	\label{GD}
 \end{figure}
@@ -36,7 +36,7 @@ The power to the entire system is supplied through two 5 volts NiMH batteries. T
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width =.5\textwidth]{Fig2}
+	\includegraphics[width =.6\textwidth]{Fig2}
 	\caption{ The electronic system of the robot.}
 	\label{fig4}
 \end{figure}
